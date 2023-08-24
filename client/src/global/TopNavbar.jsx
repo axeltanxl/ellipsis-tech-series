@@ -8,8 +8,9 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { generateColors } from '../initialSettings';
+import CreateCanvas from '../components/canvas/CreateCanvas';
 const drawerWidth = 240;
-const navItems = [{name : 'Home', link : "/"}, {name : 'About', link : "/about"},{name : 'Contact', link : "/contact"}];
+const navItems = [{name : 'Home', link : "/"}, {name : 'Sodium tracker', link : "/track"},{name : 'Profile', link : "/profile"}];
 
 function TopNavBar(props) {
   const { window } = props;
@@ -52,13 +53,19 @@ function TopNavBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
+          <div className="flex flex-1">
+            <Typography
+                variant="h6"
+                component="div"
+                sx={{display: { xs: 'none', sm: 'flex' }, alignItems :'center', mx:"20px" }}
+                
+            >
+                App Name
+            </Typography>
+            <div className="w-[100px] h-[100px]">
+                <CreateCanvas urlToGLTF={"./kidney_cross-section/scene.gltf"} rotation={[0,Math.PI / 4, 0]}/>
+            </div>
+          </div>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map(({name, link}) => (
               <Button key={name} sx={{ color: colors.text }} href={link}>
