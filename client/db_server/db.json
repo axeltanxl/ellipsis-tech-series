@@ -1,0 +1,16 @@
+{
+    "example_home" : [
+        {
+            "id" : 1,
+            "data" : "example_data"
+        },
+        {
+            "id" : 2,
+            "data" : "example_data2"
+        },
+        {
+            "id" : 3,
+            "data" : "example_data3"
+        }
+    ]
+}
