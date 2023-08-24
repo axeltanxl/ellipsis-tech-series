@@ -44,10 +44,12 @@ const CreateCanvas = ({urlToGLTF, scale=1, position=[0, 0, 0], rotation=[0,0,0],
     >
         <Suspense fallback={<CanvasLoader/>} > 
             <OrbitControls 
-            // enableZoom={false} 
-            // enableRotate={false}
+            enableZoom={false} 
+            enableRotate={false}
             maxPolarAngle={Math.PI / 2} 
-            minPolarAngle={Math.PI / 2}/>
+            minPolarAngle={Math.PI / 2}
+            autoRotate
+            />
             <Item urlToGLTF={urlToGLTF} scale={scale} position={position} rotation={rotation} helper={helper}/>
             {helper && <Helper/>}
             {helper && <gridHelper rotation={[Math.PI / 2, 0, 0]}/>}
