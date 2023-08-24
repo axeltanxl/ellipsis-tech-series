@@ -1,14 +1,17 @@
 import { Box, Button, CircularProgress, Typography } from "@mui/material"
 import { useExample } from "../hooks/requests/useExample"
 import { TiltCard } from "../components/TiltCard"
-import ComputerCanvas from "../components/canvas/ComputerCanvas"
 import CreateCanvas from "../components/canvas/CreateCanvas"
 
 const Example = () => {
     const { data : exampleData, isSuccess, isLoading} = useExample()
 
     if(isLoading){
-        return <CircularProgress/>
+        return (
+        <Box>
+            <CircularProgress/>
+            <Typography>Start the json server with npm run startServer</Typography>
+        </Box>)
     }
     if(isSuccess){
         return (
@@ -36,17 +39,8 @@ const Example = () => {
             
             <div className="w-[400px] h-[400px] flex gap-4">
                 <div className="w-[150px] h-[150px]" >
-                    <CreateCanvas urlToGLTF={"./desktop_pc/scene.gltf"} scale={0.3} rotation={[0,-1,0]} position={[0,-1, 0]}/>
+                    <CreateCanvas urlToGLTF={"./desktop_pc/scene.gltf"} scale={0.3} rotation={[0,-1,0]} position={[0,-1, 0]} helper/>
                 </div>
-                <div className="w-[150px] h-[150px]" >
-                    <CreateCanvas urlToGLTF={"./planet/scene.gltf"} helper/>
-                </div>
-
-                <div className="w-[150px] h-[150px]" >
-                    <CreateCanvas urlToGLTF={"./green_city_trash_can/scene.gltf"} scale={2} position={[0, -1, 0]} />
-                </div>
-                
-                {/* <Helper/> */}
             </div>
         </Box>
         )
