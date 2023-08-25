@@ -7,8 +7,8 @@ import {
     Divider, Drawer, IconButton} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import { generateColors } from '../initialSettings';
-import CreateCanvas from '../components/canvas/CreateCanvas';
+import { generateColors } from '../../initialSettings';
+import CreateCanvas from '../../components/canvas/CreateCanvas';
 const drawerWidth = 240;
 const navItems = [{name : 'Home', link : "/"}, {name : 'Sodium tracker', link : "/track"},{name : 'Profile', link : "/profile"}];
 
