@@ -23,7 +23,7 @@ const ProfileForm = () => {
     <form onSubmit={handleSubmit(handleSave)} noValidate>
 
                 <Box display="flex" p="20px" pb="10px" >
-                    <Grid container spacing={2} justifyContent="space-between">
+                    <Grid container spacing={2} display="flex" alignItems="center" justifyContent="space-around">
                         {
                             inputs.map((item, index) => {
                                 return (
@@ -31,6 +31,13 @@ const ProfileForm = () => {
                                         <label>{item.label}</label>
                                         <Controller name={item.name} control={control} render={({ field }) =>
                                             <TextField {...field} variant="outlined" size="small"
+                                            sx={{
+                                                "& .MuiOutlinedInput-root": {
+                                                    "&.Mui-focused fieldset": {
+                                                        borderColor: "primary.main"
+                                                    }
+                                                    }
+                                            }}
                                             InputProps={{
                                                 endAdornment: <InputAdornment position="end">{item.adornment}</InputAdornment>,
                                             }}
@@ -47,7 +54,7 @@ const ProfileForm = () => {
                     </Grid>
                     </Grid>
                 </Box>
-                <Box p="25px" >
+                <Box className="flex justify-end m-[50px]">
                     <Button variant="contained">save</Button>
                 </Box>
             </form>
