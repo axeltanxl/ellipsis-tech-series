@@ -4,10 +4,11 @@ import Nearby from "../pages/NearbyPage";
 import Food from "../pages/FoodPage";
 import Profile from "../pages/ProfilePage";
 import FoodApi from '../pages/FoodApiPage';
-
+import Login from "../pages/Login";
 const AppRoutes = () => (
   <Routes>
     <Route exact path="/" element={<Home />} />
+    <Route exact path="/login" element={<Login />} />
     <Route exact path="/nearby" element={<Nearby />} />
     <Route exact path="/food" element={<Food />} />
     <Route exact path="/foodapi" element={<FoodApi />} />
