@@ -8,38 +8,44 @@ import thunk from 'redux-thunk'
 
 
 const initialState = {
-    alpha : [],
-    beta : [],
-    gamma : [],
+    successModal : false,
+    sodiumData : {
+        meal : "",
+        location : "",
+        foodEntry: ""
+    },
+    mealData : [],
+
 }
 
 
-export const exampleSlice = createSlice({
-    name : "post",
+export const generalSlice = createSlice({
+    name : "general",
     initialState,
     reducers : {
-        setAlpha : (state, action) => {
-            state.alpha = [...action.payload]
+        setSuccessModal : (state, action) => {
+            state.successModal = action.payload
         },
-        setBeta : (state, action) => {
-            state.beta = [...action.payload]
+        setSodiumData : (state, action) => {
+            state.sodiumData = {...action.payload}
         },
-        setGamma : (state, action) => {
-            state.gamma = [...action.payload]
+        setMealData : (state, action) => {
+            state.mealData = [...action.payload]
         },
     }
 })
 
 
 export const {
-    setAlpha, setBeta, setGamma
-} = exampleSlice.actions;
+   setSuccessModal, setSodiumData, setMealData
+} = generalSlice.actions;
 
 
 const persistConfig = {
     key: 'example',
     storage,
     timeout : 1000,
+    blacklist : ["successModal", "sodiumData"]
 };
 
-export const exampleReducer = persistReducer(persistConfig, exampleSlice.reducer);
+export const exampleReducer = persistReducer(persistConfig, generalSlice.reducer);

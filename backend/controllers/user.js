@@ -8,7 +8,7 @@ const ACCESS_TOKEN_SECRET = config.ACCESS_TOKEN_SECRET;
 const EXPIRY = config.EXPIRY;
 
 const register = async (req, res) => {
-  const { name, email, password, confirmPassword, age, height, weight, activityLevel, isCKD } = req.body;
+  const { name, email, password, age, height, weight, activityLevel, isCKD } = req.body;
   
   try {
     //check if email already exists
@@ -17,13 +17,24 @@ const register = async (req, res) => {
       return res.status(400).json({ message: "Email address has already been taken!" });
     }
 
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords dont match!"});
-    }
-
     //create salt
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Calculate formula for sugar treshold
+    let activityMultiplier;
+    if (activityLevel === "Sedentary") {
+      activityMultiplier = 1.3;
+    } else if (activityLevel === "Light") {
+      activityMultiplier = 1.55;
+    } else if (activityLevel === "Moderate") {
+      activityMultiplier = 1.65;
+    } else if (activityLevel === "High") {
+      activityMultiplier = 1.8;
+    } else {
+      activityMultiplier = 1.0;
+    }
+    const sugarAmount = weight * 24 * activityMultiplier;
 
     //create entry
     const user = await User.create({
@@ -34,11 +45,12 @@ const register = async (req, res) => {
       height,
       weight,
       activityLevel,
-      isCKD
+      isCKD,
+      recommendedSugarIntake: sugarAmount
     })
     
     const userToSign = {
-      user_id: user.toJSON().id,
+      id: user.toJSON().id,
       name,
       email
     }
@@ -69,7 +81,7 @@ const login = async (req, res) => {
     }
 
     const userToSign = {
-      user_id: user.toJSON().id,
+      id: user.toJSON().id,
       name: user.name,
       email
     }
@@ -85,4 +97,17 @@ const login = async (req, res) => {
   }
 }
 
-module.exports = { register, login };
+const getProfile = async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    const userData = await User.findById(userId);
+    return res.status(200).json({message: "SUCCESS", data: userData});
+
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: err});
+  }
+
+}
+
+module.exports = { register, login, getProfile };

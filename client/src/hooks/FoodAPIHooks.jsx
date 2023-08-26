@@ -3,5 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 
 
 export const useNLPS = (query) => {
-    return useQuery(["search nutrition from food"], () => searchFoodWithNLP(query));
+    return useQuery({
+    queryKey: ["search nutrition from food"], 
+    queryFn : () => searchFoodWithNLP(query),
+    retry : false
+});
 }

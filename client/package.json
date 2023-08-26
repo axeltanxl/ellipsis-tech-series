@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@formkit/auto-animate": "^0.7.0",
     "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^3.3.0",
     "@ionic/cli": "^7.1.1",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.5",
@@ -31,6 +32,7 @@
     "framer-motion": "^10.16.1",
     "ionicons": "^7.1.2",
     "json-server": "^0.17.3",
+    "jwt-decode": "^3.1.2",
     "maath": "^0.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -41,7 +43,8 @@
     "react-router-dom": "^6.15.0",
     "react-search-box": "^3.0.0",
     "react-tilt": "^1.0.2",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
