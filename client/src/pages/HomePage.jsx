@@ -32,7 +32,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="items-center xs:m-4 sm:mx-4 xs:ml-4 sm:mr-8 md:mr-12 lg:mr-16 xl:mr-20 sm:-ml-10 lg:-ml-16 sm:my-0 sm:w-4/5 lg:w-1/2 xs:text-2xl lg:text-4xl xl:text-5xl flex justify-center xs:text-center sm:text-start w-3/4 font-bold">
-          Log foods and their sodium level.
+          Log foods and know their sodium levels.
         </div>
       </div>
 
