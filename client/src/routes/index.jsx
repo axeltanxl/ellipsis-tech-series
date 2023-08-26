@@ -10,7 +10,7 @@ const AppRoutes = () => (
     <Route exact path="/" element={<Home />} />
     <Route exact path="/nearby" element={<Nearby />} />
     <Route exact path="/food" element={<Food />} />
-    <Route exact path="/food" element={<FoodApi />} />
+    <Route exact path="/foodapi" element={<FoodApi />} />
     <Route exact path="/profile" element={<Profile />} />
   </Routes>
 );

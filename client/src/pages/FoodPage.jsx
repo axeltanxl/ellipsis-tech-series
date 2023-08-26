@@ -1,6 +1,7 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Layout from "../components/Layout";
 import FoodEntry from "../components/foodPage/FoodEntry";
+import { SuccessModal } from "../components/foodPage/SuccessModal";
 
 const Food = () => {
 
@@ -11,6 +12,9 @@ const Food = () => {
             <Typography variant="h4">Track your sodium levels by giving us a general 
             description of your meals and we will automatically deduce your sodium levels </Typography>
         </div>
+        <Box>
+            <SuccessModal/>
+        </Box>
       <FoodEntry/>
     </Layout>
   );
