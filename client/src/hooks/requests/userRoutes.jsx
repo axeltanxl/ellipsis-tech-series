@@ -20,3 +20,21 @@ export const useRegister = () => {
         }
     })
 }
+
+export const useLogin = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    return useMutation(login, {
+        onSuccess : (data) => {
+            console.log(data)
+            // dispatch(updateDetails({...data}))
+            navigate("/");
+        },
+        onError : (err)=> {
+            const errorMessage = err.response.data.message 
+            alert(errorMessage);
+            // reset();
+        }
+    })
+}
