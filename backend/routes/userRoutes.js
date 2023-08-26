@@ -4,6 +4,6 @@ const {authenticateToken} = require('../utils/middleware');
 
 router.post('/register', userController.register);
 router.post('/login', userController.login);
-router.post('/updateSodium', authenticateToken, userController.updateUserRecSodiumIntake);
+router.get('/getProfile', authenticateToken, userController.getProfile);
 
 module.exports = router;

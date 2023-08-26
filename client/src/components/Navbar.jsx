@@ -37,7 +37,7 @@ export default function Navbar() {
                 }}
                 className="block self-center whitespace-nowrap text-xl font-semibold text-blue-700 hover:cursor-alias"
               >
-                LOGO
+                NADIUM
               </Link>
             </div>
             <button
