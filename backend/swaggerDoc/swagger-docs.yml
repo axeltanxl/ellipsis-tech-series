@@ -1,0 +1,18 @@
+tags:
+  - name: user
+    description: Everything about the users.
+  - name: meal
+    description: Everything about the meals that users will log.
+ 
+# paths:
+
+
+    
+components:
+  # schemas: 
+        
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
