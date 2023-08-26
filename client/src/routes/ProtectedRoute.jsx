@@ -3,8 +3,17 @@ import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { useQueryClient } from "@tanstack/react-query"
 
-const jwtHasExpired = () => {
-    return false;
+export const jwtHasExpired = () => {
+    const jwt = localStorage.getItem("jwt")
+    if(!jwt){return false;}
+    try {
+        const expiry = jwt_decode(jwt).exp
+        const currentTime = new Date().getTime() / 1000;
+        return (currentTime > expiry);
+    } catch (error) {
+        console.log("invalid jwt")
+        return false;
+    }
 }
 
 export const ProtectedRoute = () => {

@@ -37,7 +37,9 @@ export const signUpSchema = yup.object()
                 .required("this field is required"),
             weight: yup.string()
                 .required("this field is required"),
-            isPatient: yup.string()
+            isCKD: yup.string()
                 .required("this field is required"),
+            activityLevel : yup.string()
+            .required("this field is required"),
         }
     ).required() 
