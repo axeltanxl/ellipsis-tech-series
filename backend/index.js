@@ -25,6 +25,10 @@ app.use(express.json())
 app.use('/api/users', userRouter)
 app.use('/api/meals', mealRouter)
 
+app.get('/', (req, res) => {
+    res.send("Base Connection Successful");
+});
+
 app.listen(config.PORT, () => {
   console.log(`Server running on port ${config.PORT}`)
 })

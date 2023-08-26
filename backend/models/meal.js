@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 mongoose.set('strictQuery', false);
 
-const MEAL_TYPE = ['BREAKFAST', 'BRUNCH', 'LUNCH', 'TEA', 'DINNER', 'SNACK', 'DESSERT'];
+const MEAL_TYPE = ['BREAKFAST', 'BRUNCH', 'LUNCH', 'TEA', 'DINNER', 'SUPPER', 'SNACK', 'DESSERT'];
 const PREPARATION_TYPE = ['HOME-COOKED', 'RESTAURANT', 'TAKEAWAY'];
 
 const mealSchema = new mongoose.Schema({
