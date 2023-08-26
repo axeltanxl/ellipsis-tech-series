@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 
 const HomePage = () => {
+    
   return (
     <Layout>
       <div className="flex justify-center items-center xs:flex-col sm:flex-row xs:my-12 sm:my-16 md:my-20 lg:my-24 xl:my-28 xs:mx-8 sm:mx-10 md:mx-16">
