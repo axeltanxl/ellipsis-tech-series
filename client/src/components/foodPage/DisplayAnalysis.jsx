@@ -24,7 +24,10 @@ const DisplayAnalysis = () => {
 
 
         if(isSuccess){
-            // createMeal("char kway teow", "65", "breakfast")
+
+            // SHOULD WORK IN THIS FORMAT
+            createMeal({food : "char kway teow", sodiumAmount : 65, sugarAmount : 66 , mealType :  "BREAKFAST"})
+            //_____
 
             console.log(data);
             console.log(query);

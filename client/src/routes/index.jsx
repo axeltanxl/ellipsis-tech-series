@@ -13,13 +13,10 @@ const AppRoutes = () => (
     {/* <Route exact path="/" element={<Home />} />
     <Route exact path="/nearby" element={<Nearby />} />
     <Route exact path="/food" element={<Food />} />
-<<<<<<< HEAD
     <Route exact path="/food" element={<FoodApi />} />
     <Route exact path="/signup" element={<Signup />} /> */}
-=======
-    <Route exact path="/foodapi" element={<FoodApi />} />
-    <Route exact path="/signup" element={<Signup />} />
->>>>>>> 0c3aff0bb50a35605fa3bf29e572b20f35540c20
+    {/* <Route exact path="/foodapi" element={<FoodApi />} />
+    <Route exact path="/signup" element={<Signup />} /> */}
     <Route exact path="/login" element={<Login />} />
 
     <Route element={<ProtectedRoute />}>

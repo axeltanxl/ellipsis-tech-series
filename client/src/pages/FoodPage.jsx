@@ -9,8 +9,7 @@ import { useCreateMeal } from "../hooks/requests/mealRoutes";
 
 const Food = () => {
     
-    const { mutate : createMeal } = useCreateMeal();
-    createMeal({food : "char kway teow", sodiumAmount : "65", mealType :  "breakfast"})
+
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
