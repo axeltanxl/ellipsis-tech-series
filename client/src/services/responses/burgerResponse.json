@@ -1,0 +1,608 @@
+{
+    "common": [
+        {
+            "food_name": "burger",
+            "serving_unit": "sandwich",
+            "tag_name": "hamburger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "608",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/608_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "burgers",
+            "serving_unit": "sandwich",
+            "tag_name": "hamburger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "608",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/608_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "elk burger",
+            "serving_unit": "burger on bun",
+            "tag_name": "elk burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "6873",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "burger bun",
+            "serving_unit": "hamburger bun",
+            "tag_name": "hamburger bun",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "226",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/226_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "beef burger",
+            "serving_unit": "sandwich",
+            "tag_name": "hamburger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "608",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/608_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "tofu burger",
+            "serving_unit": "sandwich",
+            "tag_name": "tofu burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "4488",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "lamb burger",
+            "serving_unit": "burger",
+            "tag_name": "lamb burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "3568",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/3568_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "bison burger",
+            "serving_unit": "burger on bun",
+            "tag_name": "bison burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "4048",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "bacon burger",
+            "serving_unit": "item",
+            "tag_name": "bacon cheeseburger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "1806",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/1806_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "vegan burger",
+            "serving_unit": "burger",
+            "tag_name": "vegan burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "3532",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/3532_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "burger patty",
+            "serving_unit": "oz",
+            "tag_name": "hamburger patty",
+            "serving_qty": 3,
+            "common_type": null,
+            "tag_id": "2043",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/2043_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "turkey burger",
+            "serving_unit": "burger on bun",
+            "tag_name": "turkey burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "1416",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/1416_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "veggie burger",
+            "serving_unit": "veggie burger on bun",
+            "tag_name": "veggie burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "44",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/44_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "salmon burger",
+            "serving_unit": "burger",
+            "tag_name": "salmon burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "1710",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/1710_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "quinoa burger",
+            "serving_unit": "burger on bun",
+            "tag_name": "quinoa burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "6139",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "chicken burger",
+            "serving_unit": "burger on bun",
+            "tag_name": "chicken burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "1424",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/1424_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "buffalo burgers",
+            "serving_unit": "burger on bun",
+            "tag_name": "bison burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "4048",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "black bean burger",
+            "serving_unit": "burger on bun",
+            "tag_name": "black bean burger",
+            "serving_qty": 1,
+            "common_type": null,
+            "tag_id": "3650",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/3650_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "turkey burger patty",
+            "serving_unit": "oz",
+            "tag_name": "turkey burger patty",
+            "serving_qty": 3,
+            "common_type": null,
+            "tag_id": "5739",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/5739_thumb.jpg"
+            },
+            "locale": "en_US"
+        },
+        {
+            "food_name": "burger king french fries",
+            "serving_unit": "medium serving",
+            "tag_name": "burger king fries",
+            "serving_qty": 1,
+            "common_type": 1,
+            "tag_id": "2173",
+            "photo": {
+                "thumb": "https://nix-tag-images.s3.amazonaws.com/2173_thumb.jpg"
+            },
+            "locale": "en_US"
+        }
+    ],
+    "branded": [
+        {
+            "food_name": "Burger Buns",
+            "serving_unit": "bun",
+            "nix_brand_id": "55cfdb17ca7bc34f5b85262c",
+            "brand_name_item_name": "BallPark Burger Buns",
+            "serving_qty": 1,
+            "nf_calories": 150,
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/64c6439a61f9690007f8014a.jpeg"
+            },
+            "brand_name": "BallPark",
+            "region": 1,
+            "brand_type": 2,
+            "nix_item_id": "51d2ffc2cc9bff111580f93e",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Alaskan Salmon Burger",
+            "serving_unit": "burger",
+            "nix_brand_id": "51db37c9176fe9790a8996c7",
+            "brand_name_item_name": "Trident Alaskan Salmon Burger",
+            "serving_qty": 1,
+            "nf_calories": 170,
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/643d277b515da300084504a2.jpeg"
+            },
+            "brand_name": "Trident",
+            "region": 1,
+            "brand_type": 2,
+            "nix_item_id": "53874407c58919142a541fa7",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "BurgerFi Burger",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000316",
+            "brand_name_item_name": "BurgerFi BurgerFi Burger",
+            "serving_qty": 1,
+            "nf_calories": 660,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "BurgerFi",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "516d9a40e3afed032c7daae6",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "All Natural Turkey Burgers",
+            "serving_unit": "burger",
+            "nix_brand_id": "51db37cb176fe9790a8998fb",
+            "brand_name_item_name": "Bubba Burger All Natural Turkey Burgers",
+            "serving_qty": 1,
+            "nf_calories": 190,
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/53b438ce3df5c22911c49fe5.jpeg"
+            },
+            "brand_name": "Bubba Burger",
+            "region": 1,
+            "brand_type": 2,
+            "nix_item_id": "53b4381d62a00d281cd2371e",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "BurgerFi Burger, Single",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000316",
+            "brand_name_item_name": "BurgerFi BurgerFi Burger, Single",
+            "serving_qty": 1,
+            "nf_calories": 470,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "BurgerFi",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "15219505874780fefa996967",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Cinco Burger Burger",
+            "serving_unit": "Serving",
+            "nix_brand_id": "57f6b2314a6581d426d16e4a",
+            "brand_name_item_name": "Burger 21 Cinco Burger Burger",
+            "serving_qty": 1,
+            "nf_calories": 660,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "Burger 21",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "c64049218732886e187e1d58",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "BurgerFi Chili, Burger Topping",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000316",
+            "brand_name_item_name": "BurgerFi BurgerFi Chili, Burger Topping",
+            "serving_qty": 1,
+            "nf_calories": 80,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "BurgerFi",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "152195052cc50048bf760f52",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Burger Topping, Sexy Burger",
+            "serving_unit": "serving",
+            "nix_brand_id": "61292a13ab421a0d506a0f5e",
+            "brand_name_item_name": "The WORKS Craft Burgers & Beer Burger Topping, Sexy Burger",
+            "serving_qty": 1,
+            "nf_calories": 190,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "The WORKS Craft Burgers & Beer",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "d3ea84524f5961896875d43d",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Burger Topping, Blues Burger",
+            "serving_unit": "serving",
+            "nix_brand_id": "61292a13ab421a0d506a0f5e",
+            "brand_name_item_name": "The WORKS Craft Burgers & Beer Burger Topping, Blues Burger",
+            "serving_qty": 1,
+            "nf_calories": 350,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "The WORKS Craft Burgers & Beer",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "d3ea8452595b7a3113e783dc",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Burgermaster",
+            "serving_unit": "Serving",
+            "nix_brand_id": "521b95474a56d006cae2a12c",
+            "brand_name_item_name": "Burgermaster Burgermaster",
+            "serving_qty": 1,
+            "nf_calories": 790,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "Burgermaster",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "53444fb59a631f1645ed046e",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "BurgerFi Sauce",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000316",
+            "brand_name_item_name": "BurgerFi BurgerFi Sauce",
+            "serving_qty": 1,
+            "nf_calories": 80,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "BurgerFi",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "516d9a40e3afed032c7daafe",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Bacon Cheddar Burger With Burger Patty Choice Turkey Burger",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000044",
+            "brand_name_item_name": "Johnny Rockets Bacon Cheddar Burger With Burger Patty Choice Turkey Burger",
+            "serving_qty": 1,
+            "nf_calories": 670,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "Johnny Rockets",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "1521160379856755074daa04",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Burger Topping, B.A.B Burger",
+            "serving_unit": "serving",
+            "nix_brand_id": "61292a13ab421a0d506a0f5e",
+            "brand_name_item_name": "The WORKS Craft Burgers & Beer Burger Topping, B.A.B Burger",
+            "serving_qty": 1,
+            "nf_calories": 290,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "The WORKS Craft Burgers & Beer",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "d3ea84528916dfa23d26694c",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Chicken Burgers",
+            "serving_unit": "burger",
+            "nix_brand_id": "545a524da1e8ac9e23de35f9",
+            "brand_name_item_name": "Amylu Chicken Burgers",
+            "serving_qty": 1,
+            "nf_calories": 190,
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/6475d8a92ca16d00077e580f.jpeg"
+            },
+            "brand_name": "Amylu",
+            "region": 1,
+            "brand_type": 2,
+            "nix_item_id": "6475d8a92ca16d00077e580e",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "BurgerFi Bacon Cheeseburger",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000316",
+            "brand_name_item_name": "BurgerFi BurgerFi Bacon Cheeseburger",
+            "serving_qty": 1,
+            "nf_calories": 840,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "BurgerFi",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "152195051e7eea7cc47f0b8b",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "BurgerFi Cheeseburger, Single",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000316",
+            "brand_name_item_name": "BurgerFi BurgerFi Cheeseburger, Single",
+            "serving_qty": 1,
+            "nf_calories": 540,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "BurgerFi",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "152195054f288c919bfe8322",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "BurgerFi Chicken Sandwich",
+            "serving_unit": "Serving",
+            "nix_brand_id": "513fbc1283aa2dc80c000316",
+            "brand_name_item_name": "BurgerFi BurgerFi Chicken Sandwich",
+            "serving_qty": 1,
+            "nf_calories": 530,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "BurgerFi",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "15219505bf228bcec8a0cf77",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Carolina Burger",
+            "serving_unit": "serving",
+            "nix_brand_id": "59e8b940b3ea3f901643d3ae",
+            "brand_name_item_name": "Wayback Burgers Carolina Burger",
+            "serving_qty": 1,
+            "nf_calories": 800,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "Wayback Burgers",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "c64062541b32fbd49a76e406",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Kid's Burger",
+            "serving_unit": "Serving",
+            "nix_brand_id": "57f6b2314a6581d426d16e4a",
+            "brand_name_item_name": "Burger 21 Kid's Burger",
+            "serving_qty": 1,
+            "nf_calories": 990,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "Burger 21",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "c6404921f0f46f23de022fcb",
+            "locale": "en_US"
+        },
+        {
+            "food_name": "Single Burger",
+            "serving_unit": "serving",
+            "nix_brand_id": "59e8b940b3ea3f901643d3ae",
+            "brand_name_item_name": "Wayback Burgers Single Burger",
+            "serving_qty": 1,
+            "nf_calories": 350,
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "brand_name": "Wayback Burgers",
+            "region": 1,
+            "brand_type": 1,
+            "nix_item_id": "c64062549403bb4263821245",
+            "locale": "en_US"
+        }
+    ]
+}

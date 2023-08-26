@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { searchFoodByItemResult, searchFoodWithSodiumThresholdResult } from './responses/mockData';
+
+import { getNearbyPlaces } from './mapService';
 
 /**
  * Search for foods based on a query.
@@ -62,6 +65,48 @@ export const searchFood = async (query) => {
 	} catch (error) {
 		console.log(error);
 		throw error;
+	}
+};
+
+// POST to search for food but with less than or equal threshold for sodium
+export const searchFoodWithSodiumThreshold = async (query, threshold = null) => {
+	console.log(import.meta.env.VITE_IS_DEVELOPMENT);
+	if (import.meta.env.VITE_IS_DEVELOPMENT === 'true') {
+		return searchFoodWithSodiumThresholdResult;
+	} else {
+		let data = JSON.stringify({
+			query,
+			detailed: true,
+		});
+
+		if (threshold) {
+			data = JSON.stringify({
+				query,
+				detailed: true,
+				full_nutrients: {
+					307: { lte: threshold },
+				},
+			});
+		}
+
+		let config = {
+			method: 'post',
+			url: `https://trackapi.nutritionix.com/v2/search/instant`,
+			headers: {
+				'x-app-id': process.env.NUTRITIONIX_API_ID,
+				'x-app-key': process.env.NUTRITIONIX_API_KEY,
+				'Content-Type': 'application/json',
+			},
+			data,
+		};
+
+		try {
+			const response = await axios.request(config);
+			return response.data;
+		} catch (error) {
+			console.log(error);
+			throw error;
+		}
 	}
 };
 
@@ -263,4 +308,191 @@ export const searchFoodWithNLP = async (query) => {
 		console.log(error);
 		throw error;
 	}
+};
+
+export const searchFoodByItem = async (query) => {
+	if (import.meta.env.VITE_IS_DEVELOPMENT === 'true') {
+		return searchFoodByItemResult;
+	} else {
+		let config = {
+			method: 'get',
+			url: `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${query}`,
+			headers: {
+				'x-app-id': process.env.NUTRITIONIX_API_ID,
+				'x-app-key': process.env.NUTRITIONIX_API_KEY,
+			},
+		};
+
+		try {
+			const response = await axios.request(config);
+			return response.data;
+		} catch (error) {
+			console.log(error);
+			throw error;
+		}
+	}
+};
+
+/**
+ * @example
+ * {
+ *      "restaurants": [
+ *          {
+ *              "restaurant_name": "McDonald's",
+ *              "locations": [
+ *                  {
+ *                      "type": "POI",
+ *                      "id": "Nc_nXTYQqeSi4NQkX4lypg",
+ *                      "score": 2.0745999813,
+ *                      "info": "search:ta:158009000697673-TW",
+ *                      "poi": {
+ *                          "name": "Chef Hung Taiwan Beef Noodles Jian Bei",
+ *                          "phone": "+886 2 2500 6850",
+ *                          "brands": [
+ *                              {
+ *                                  "name": "Chef Hung Taiwan Beef Noodles"
+ *                              }
+ *                          ],
+ *                          "categorySet": [
+ *                              {
+ *                                  "id": 7315059
+ *                              }
+ *                          ],
+ *                          "url": "www.taiwannoodle.com.tw",
+ *                          "categories": [
+ *                              "restaurant",
+ *                              "taiwanese"
+ *                          ],
+ *                          "classifications": [
+ *                              {
+ *                                  "code": "RESTAURANT",
+ *                                  "names": [
+ *                                      {
+ *                                          "nameLocale": "en-US",
+ *                                          "name": "restaurant"
+ *                                      }
+ *                                  ]
+ *                              }
+ *                          ]
+ *                      }
+ *                  ],
+ *                  "address": {
+ *                      "streetNumber": "72",
+ *                      "streetName": "Jianguo North Road Section 2",
+ *                      "municipalitySubdivision": "Zhongshan District",
+ *                      "municipality": "Taipei City",
+ *                      "countrySubdivision": "Taipei City",
+ *                      "postalCode": "104",
+ *                      "extendedPostalCode": "10479",
+ *                      "countryCode": "TW",
+ *                      "country": "Taiwan",
+ *                      "countryCodeISO3": "TWN",
+ *                      "freeformAddress": "72, Jianguo North Road Section 2, Zhongshan District, Taipei City 10479",
+ *                      "localName": "Zhongshan District"
+ *                  },
+ *                  "position": {
+ *                      "lat": 25.054937,
+ *                      "lon": 121.536449
+ *                  },
+ *                  "viewport": {
+ *                      "topLeftPoint": {
+ *                          "lat": 25.05584,
+ *                          "lon": 121.53546
+ *                      },
+ *                      "btmRightPoint": {
+ *                          "lat": 25.05404,
+ *                          "lon": 121.53744
+ *                      }
+ *                  },
+ *                  "entryPoints": [
+ *                      {
+ *                          "type": "main",
+ *                          "position": {
+ *                              "lat": 25.05493,
+ *                              "lon": 121.53661
+ *                          }
+ *                      }
+ *                  ],
+ *                  "available_options": [
+ *                      {
+ *                          "food_name": "Big Mac",
+ *                          "serving_qty": 1,
+ *                          "serving_unit": "Serving",
+ *                          "serving_weight_grams": null,
+ *                          "calories": 590,
+ *                          "sodium_mg": 1050,
+ *                          "photo": {
+ *                              "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+ *                              "highres": null,
+ *                              "is_user_uploaded": false
+ *                          },
+ *                          "updated_at": "2023-06-21T18:41:12+00:00"
+ *                      }
+ *                  ]
+ *              }
+ *          ]
+ *  }
+ *
+ */
+export const fuzzySearchFoodByLocation = async (query, lat, long, limit = 5, radius = 1000) => {
+	const nutritionData = await searchFoodWithSodiumThreshold(query);
+	let foods = [];
+	const restaurantOptions = nutritionData.branded || [];
+
+	for (const element of restaurantOptions) {
+		const foodResult = await searchFoodByItem(element.nix_item_id);
+
+		if (foodResult.foods) {
+			const currentFood = foodResult.foods[0];
+			const brandName = currentFood.nix_brand_name;
+			const nearbyPlacesResponse = await getNearbyPlaces(brandName);
+			const filteredLocations = nearbyPlacesResponse.results.filter((location) =>
+				location.poi.brands.some((brand) => brand.name === brandName)
+			);
+
+			const uniqueLocations = filteredLocations.filter(
+				(location) =>
+					!foods.some((food) =>
+						food.locations.some(
+							(existingLocation) => existingLocation.id === location.id
+						)
+					)
+			);
+
+			if (uniqueLocations.length > 0) {
+				foods.push({
+					food_name: currentFood.food_name,
+					serving_qty: currentFood.serving_qty,
+					serving_unit: currentFood.serving_unit,
+					calories: currentFood.nf_calories,
+					sodium_mg: currentFood.nf_sodium,
+					sugar_mg: currentFood.nf_sugar,
+					photo: currentFood.photo,
+					updated_at: currentFood.updated_at,
+					brand_name: brandName,
+					locations: uniqueLocations,
+				});
+			}
+		}
+	}
+
+	const groupedByBrand = {};
+	foods.forEach((food) => {
+		if (!groupedByBrand[food.brand_name]) {
+			groupedByBrand[food.brand_name] = {
+				restaurant_name: food.brand_name,
+				locations: [],
+				available_options: [],
+			};
+		}
+		groupedByBrand[food.brand_name].available_options.push(food);
+		groupedByBrand[food.brand_name].locations.push(...food.locations);
+	});
+
+	const finalResult = {
+		restaurants: Object.values(groupedByBrand),
+	};
+	console.log(finalResult);
+
+	return finalResult;
 };

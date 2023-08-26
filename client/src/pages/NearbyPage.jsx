@@ -13,8 +13,6 @@ const Nearby = () => {
 
 	const [geoLocation, setGeoLocation] = useState({ latitude: 1.296568, longitude: 103.852119 }); // Default location
 	const [geoError, setGeoError] = useState(null);
-	const [searchResults, setSearchResults] = useState([]);
-	const [selectedPlace, setSelectedPlace] = useState(null);
 
 	useEffect(() => {
 		let map = tt.map({
@@ -37,58 +35,11 @@ const Nearby = () => {
 		);
 	}, []);
 
-	const onSearchChange = async (query) => {
-		if (query.length > 0) {
-			let results = await getNearbyPlaces(query, geoLocation.latitude, geoLocation.longitude);
-			setSearchResults(results);
-		}
-	};
-
-	const setPlace = (key) => {
-		let place = searchResults.find((p) => p.id === key);
-		setSelectedPlace(place);
-	};
-
 	return (
 		<Layout>
 			<Banner
 				geoLocation={geoLocation}
 				geoError={geoError}
-			/>
-
-			<ReactSearchBox
-				placeholder="Search for nearby places"
-				matchedRecords={searchResults
-					.map((result) => ({
-						key: result.id,
-						name: result.poi.name,
-						dist: result.dist,
-						value: `${result.poi.name} | ${(result.dist / 1000).toFixed(2)}km `,
-					}))
-					.sort((a, b) => a.dist - b.dist)}
-				data={searchResults
-					.map((result) => ({
-						key: result.id,
-						name: result.poi.name,
-						dist: result.dist,
-						value: result.poi.name,
-					}))
-					.sort((a, b) => a.dist - b.dist)}
-				onSelect={(place) => setPlace(place.key)}
-				autoFocus={true}
-				onChange={(query) => onSearchChange(query)}
-				fuseConfigs={{
-					minMatchCharLength: 0,
-					threshold: 1,
-					distance: 1000,
-					sort: false,
-				}}
-				keys={['name']}
-			/>
-
-			<Place
-				className="place-box"
-				data={selectedPlace}
 			/>
 
 			<div
