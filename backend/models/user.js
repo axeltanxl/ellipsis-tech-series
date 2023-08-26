@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  age: {
+    type: Number,
+    required: true
+  },
   height: {
     type: Number,
     required: true
@@ -27,9 +31,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  meals: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Meals'
+  isCKD: {
+    type: Boolean,
+    required: true
+  },
+  recommendedSodiumIntake: {
+    type: Number,
+    default: 1500
+  },
+  recommendedSugarIntake: {
+    type: Number
   }
 })
 
