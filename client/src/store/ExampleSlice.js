@@ -14,7 +14,8 @@ const initialState = {
         location : "",
         foodEntry: ""
     },
-    meals : [],
+    mealData : [],
+
 }
 
 

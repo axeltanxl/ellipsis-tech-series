@@ -11,7 +11,7 @@ export const getUserMeals = async () => {
     return res.data;
 }
 
-export const getSingleMeal = async ({mealID}) => {
+export const getSingleMeal = async (mealID) => {
     const res = await axiosInstance({
         method : "get",
         url : `/meals/${mealID}`,
@@ -21,10 +21,10 @@ export const getSingleMeal = async ({mealID}) => {
     return res.data;
 }
 
-export const getFilteredMeals = async ({dateRange}) => {
+export const getFilteredMeals = async (dateRange) => {
     const res = await axiosInstance({
         method : "post",
-        url : `/meals/getMine`,
+        url : `/meals/filterDateRange`,
         headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` },
         data: dateRange
     })
