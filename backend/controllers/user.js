@@ -8,17 +8,13 @@ const ACCESS_TOKEN_SECRET = config.ACCESS_TOKEN_SECRET;
 const EXPIRY = config.EXPIRY;
 
 const register = async (req, res) => {
-  const { name, email, password, confirmPassword, age, height, weight, activityLevel, isCKD } = req.body;
+  const { name, email, password, age, height, weight, activityLevel, isCKD } = req.body;
   
   try {
     //check if email already exists
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       return res.status(400).json({ message: "Email address has already been taken!" });
-    }
-
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords dont match!"});
     }
 
     //create salt
@@ -38,7 +34,7 @@ const register = async (req, res) => {
     })
     
     const userToSign = {
-      user_id: user.toJSON().id,
+      id: user.toJSON().id,
       name,
       email
     }
@@ -69,7 +65,7 @@ const login = async (req, res) => {
     }
 
     const userToSign = {
-      user_id: user.toJSON().id,
+      id: user.toJSON().id,
       name: user.name,
       email
     }
@@ -85,4 +81,18 @@ const login = async (req, res) => {
   }
 }
 
-module.exports = { register, login };
+// For user to update their recommended sodium intake lvl
+const updateUserRecSodiumIntake = async (req, res, next) => {
+  try {
+    const newSodiumIntake = req.body.sodiumIntake;
+    let userData = await User.findById(req.user.user_id);
+    userData.recommendedSodiumIntake = newSodiumIntake;
+    await User.findByIdAndUpdate(req.user.user_id, userData);
+    return res.status(200).json({message: "SUCCESS", data: userData});
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: err});
+  }
+}
+
+module.exports = { register, login, updateUserRecSodiumIntake };
