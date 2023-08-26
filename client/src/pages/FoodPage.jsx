@@ -1,13 +1,8 @@
 import { Typography } from "@mui/material";
 import Layout from "../components/Layout";
 import FoodEntry from "../components/foodPage/FoodEntry";
-import { useNLPS } from "../hooks/FoodAPIHooks";
 
 const Food = () => {
-    const {error, isError, isSuccess, data} = useNLPS("1 hard boiled egg");
-    if(isSuccess){
-        console.log(data)
-    }
 
   return (
     <Layout>

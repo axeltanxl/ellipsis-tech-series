@@ -68,7 +68,7 @@ const FoodEntry = () => {
             </div>
         </div>
         
-        <DisplaySodiumLevels/>
+        {/* <DisplaySodiumLevels query={food}/> */}
         <div className="w-full flex justify-end items-start my-8">
             <Button type="submit" variant="contained">Submit</Button>
         </div>
