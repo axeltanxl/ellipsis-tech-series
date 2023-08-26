@@ -56,9 +56,12 @@ const SignupForm = () => {
                   display="flex"
                   flexDirection="column"
                   my="5px"
-                  xs={5}
+                  xs={8.5}
+                  sm={10}
+                  md={5}
                   key={index}
                   item={true}
+                  className="xs:w-[350px]"
                 >
                   <label>{item.label}</label>
                   <Controller
@@ -79,7 +82,11 @@ const SignupForm = () => {
                             {inputs
                               .find((item) => item.name === "activityLevel")
                               .options.map((option) => (
-                                <MenuItem key={option} value={option}>
+                                <MenuItem
+                                  key={option}
+                                  value={option}
+                                  InputProps={{ dense: true }}
+                                >
                                   {option}
                                 </MenuItem>
                               ))}
@@ -118,7 +125,7 @@ const SignupForm = () => {
           </button>
           <button
             className="py-1 mt-2 text-sm bg-white text-gray-400 hover:text-black rounded-lg border-0"
-            onClick={navigate("/signup1")}
+            onClick={() => navigate("/signup1")}
           >
             Back
           </button>
