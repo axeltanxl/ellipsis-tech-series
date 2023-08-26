@@ -81,4 +81,18 @@ const login = async (req, res) => {
   }
 }
 
-module.exports = { register, login };
+// For user to update their recommended sodium intake lvl
+const updateUserRecSodiumIntake = async (req, res, next) => {
+  try {
+    const newSodiumIntake = req.body.sodiumIntake;
+    let userData = await User.findById(req.user.user_id);
+    userData.recommendedSodiumIntake = newSodiumIntake;
+    await User.findByIdAndUpdate(req.user.user_id, userData);
+    return res.status(200).json({message: "SUCCESS", data: userData});
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: err});
+  }
+}
+
+module.exports = { register, login, updateUserRecSodiumIntake };
