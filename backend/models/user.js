@@ -3,9 +3,8 @@ const mongoose = require('mongoose')
 mongoose.set('strictQuery', false)
 
 const userSchema = new mongoose.Schema({
-  username: {
+  name: {
     type: String,
-    minLength: 5,
     required: true
   },
   email: {
@@ -15,6 +14,18 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  height: {
+    type: Number,
+    required: true
+  },
+  weight: {
+    type: Number,
+    required: true
+  },
+  activityLevel: {
+    type: String,
+    required: false
   },
   meals: {
     type: mongoose.Schema.Types.ObjectId,
