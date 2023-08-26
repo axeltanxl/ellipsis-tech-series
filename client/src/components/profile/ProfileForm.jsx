@@ -1,6 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
-import { Box, Button, Checkbox, Grid, TextField, FormControlLabel, InputAdornment } from "@mui/material"
+import { Box, Button, Checkbox, Grid, FormControlLabel } from "@mui/material"
 import { DevTool } from "@hookform/devtools";
+import TextFieldForm from "../TextFieldForm";
 
 const ProfileForm = () => {
     const defaultValues = {
@@ -30,18 +31,7 @@ const ProfileForm = () => {
                                     <Grid display="flex" flexDirection="column" my="5px" xs={5} key={index} item={true}>
                                         <label>{item.label}</label>
                                         <Controller name={item.name} control={control} render={({ field }) =>
-                                            <TextField {...field} variant="outlined" size="small"
-                                            sx={{
-                                                "& .MuiOutlinedInput-root": {
-                                                    "&.Mui-focused fieldset": {
-                                                        borderColor: "primary.main"
-                                                    }
-                                                    }
-                                            }}
-                                            InputProps={{
-                                                endAdornment: <InputAdornment position="end">{item.adornment}</InputAdornment>,
-                                            }}
-                                            />
+                                            <TextFieldForm field={field} adornment={item.adornment}/>
                                         } />
                                     </Grid>
                                 )
