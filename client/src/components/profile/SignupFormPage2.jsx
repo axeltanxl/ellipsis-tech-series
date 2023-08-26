@@ -124,13 +124,13 @@ const SignupForm = () => {
         <Box className="flex flex-col justify-center items-center">
           <button
             className="py-2 w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
-            onClick={navigate("/signup2")}
+            onClick={() => navigate("/signup2")}
           >
             Submit
           </button>
           <button
             className="py-1 mt-2 text-sm bg-white text-gray-400 hover:text-black rounded-lg border-0"
-            onClick={navigate("/signup1")}
+            onClick={() => navigate("/signup1")}
           >
             Back
           </button>

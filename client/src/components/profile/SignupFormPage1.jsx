@@ -114,14 +114,23 @@ const SignupForm = () => {
           </Grid>
         </Box>
 
-        <Box className="flex justify-center">
+        <Box className="flex flex-col justify-center items-center">
           {/* <Button variant="contained">submit</Button> */}
           <button
             className="py-2 mt-[5px] w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
-            onClick={navigate("/signup2")}
+            onClick={() => navigate("/signup2")}
           >
             Next
           </button>
+          <div className="text-sm">
+            Already have an account?{" "}
+            <button
+              className="py-1 mt-2 text-sm bg-white text-gray-400 hover:text-black rounded-lg border-0"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </button>
+          </div>
         </Box>
       </form>
       <DevTool control={control} />
