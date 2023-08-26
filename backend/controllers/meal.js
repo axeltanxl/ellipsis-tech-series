@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const logMeal = async (req, res, next) => {
   try {
     const { food, sodiumAmount, mealType, description } = req.body;
+
     const userId = req.user.user_id;
     console.log(req.user);
 

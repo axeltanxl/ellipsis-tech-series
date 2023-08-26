@@ -3,7 +3,6 @@ const mealController = require('../controllers/meal');
 const meal = require('../models/meal');
 const {authenticateToken} = require('../utils/middleware');
 
-// TODO: Use User's authentication
 router.post('/create', authenticateToken, mealController.logMeal);
 router.get('/getMine', authenticateToken, mealController.getMyMeals);
 router.get('/mealLocations', authenticateToken, mealController.getMealLocations);

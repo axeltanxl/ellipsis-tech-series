@@ -14,6 +14,7 @@ import {
   InputLabel,
 } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
+import CustomisedTextField from "../CustomisedTextField";
 
 const SignupForm = () => {
   const defaultValues = {
@@ -40,7 +41,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(handleSave)} noValidate>
+      <form onSubmit={handleSubmit(handleSave)} >
         <Box display="flex" p="20px" pb="10px">
           <Grid
             container
@@ -55,9 +56,12 @@ const SignupForm = () => {
                   display="flex"
                   flexDirection="column"
                   my="5px"
-                  xs={5}
+                  xs={8.5}
+                  sm={10}
+                  md={5}
                   key={index}
                   item={true}
+                  className="xs:w-[350px]"
                 >
                   <label>{item.label}</label>
                   <Controller
@@ -65,32 +69,24 @@ const SignupForm = () => {
                     control={control}
                     render={({ field }) =>
                       item.name !== "activityLevel" ? (
-                        <TextField
-                          {...field}
-                          variant="outlined"
-                          size="small"
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "&.Mui-focused fieldset": {
-                                borderColor: "primary.main",
-                              },
-                            },
-                          }}
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                {item.adornment}
-                              </InputAdornment>
-                            ),
-                          }}
-                        />
+                       
+                        <CustomisedTextField
+                        field={field}
+                        errors={errors}
+                        name={item.name}
+                        label={item.label}
+                        adornment={item.adornment}/>
                       ) : (
                         <FormControl>
                           <Select {...field}>
                             {inputs
                               .find((item) => item.name === "activityLevel")
                               .options.map((option) => (
-                                <MenuItem key={option} value={option}>
+                                <MenuItem
+                                  key={option}
+                                  value={option}
+                                  InputProps={{ dense: true }}
+                                >
                                   {option}
                                 </MenuItem>
                               ))}
@@ -124,13 +120,12 @@ const SignupForm = () => {
         <Box className="flex flex-col justify-center items-center">
           <button
             className="py-2 w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
-            onClick={navigate("/signup2")}
-          >
+            type="submit">
             Submit
           </button>
           <button
             className="py-1 mt-2 text-sm bg-white text-gray-400 hover:text-black rounded-lg border-0"
-            onClick={navigate("/signup1")}
+            onClick={() => navigate("/signup1")}
           >
             Back
           </button>
