@@ -18,13 +18,13 @@ const AppRoutes = () => (
     {/* <Route exact path="/foodapi" element={<FoodApi />} />
     <Route exact path="/signup" element={<Signup />} /> */}
     <Route exact path="/login" element={<Login />} />
+    <Route exact path="/signup" element={<Signup />} />
 
     <Route element={<ProtectedRoute />}>
       <Route exact path="/" element={<Home />} />
       <Route exact path="/nearby" element={<Nearby />} />
       <Route exact path="/food" element={<Food />} />
       <Route exact path="/foodapi" element={<FoodApi />} />
-      <Route exact path="/signup" element={<Signup />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/profile" element={<Profile />} />
     </Route>
