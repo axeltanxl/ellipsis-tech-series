@@ -6,6 +6,7 @@ import Signup1 from "../pages/SignupPage1";
 import Signup2 from "../pages/SignupPage2"
 import Login from "../pages/LoginPage";
 import FoodApi from "../pages/FoodApiPage";
+import Profile from "../pages/Profile"
 // import Profile from "../pages/ProfilePage";
 import { ProtectedRoute } from "./ProtectedRoute";
 const AppRoutes = () => (
@@ -20,6 +21,8 @@ const AppRoutes = () => (
         <Route exact path="/signup1" element={<Signup1 />} />
         <Route exact path="/signup2" element={<Signup2 />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/profile" element={<Profile />} />
+        
     </Route>
     {/* <Route exact path="/profile" element={<Profile />} /> */}
   </Routes>
