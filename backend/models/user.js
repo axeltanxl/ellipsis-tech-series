@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema({
   isCKD: {
     type: Boolean,
     required: true
+  },
+  recommendedSodiumIntake: {
+    type: Number,
+    default: 1500
   }
 })
 
