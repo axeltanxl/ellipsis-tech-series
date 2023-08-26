@@ -8,17 +8,13 @@ const ACCESS_TOKEN_SECRET = config.ACCESS_TOKEN_SECRET;
 const EXPIRY = config.EXPIRY;
 
 const register = async (req, res) => {
-  const { name, email, password, confirmPassword, age, height, weight, activityLevel, isCKD } = req.body;
+  const { name, email, password, age, height, weight, activityLevel, isCKD } = req.body;
   
   try {
     //check if email already exists
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       return res.status(400).json({ message: "Email address has already been taken!" });
-    }
-
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords dont match!"});
     }
 
     //create salt
@@ -38,7 +34,7 @@ const register = async (req, res) => {
     })
     
     const userToSign = {
-      user_id: user.toJSON().id,
+      id: user.toJSON().id,
       name,
       email
     }
@@ -69,7 +65,7 @@ const login = async (req, res) => {
     }
 
     const userToSign = {
-      user_id: user.toJSON().id,
+      id: user.toJSON().id,
       name: user.name,
       email
     }
