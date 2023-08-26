@@ -4,8 +4,12 @@ import Layout from "../components/Layout";
 import FoodEntry from "../components/foodPage/FoodEntry";
 // import Table from "../components/foodPage/FoodTable";
 import { SuccessModal } from "../components/foodPage/SuccessModal";
+import { useCreateMeal } from "../hooks/requests/mealRoutes";
+
 
 const Food = () => {
+    
+
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
@@ -115,8 +119,8 @@ const Food = () => {
           </table>
         </div>
       </div>
-
-      <div>{/* <FoodEntry /> */}</div>
+      <SuccessModal />
+      <div><FoodEntry /></div>
     </Layout>
   );
 };

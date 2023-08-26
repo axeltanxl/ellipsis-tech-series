@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const logMeal = async (req, res, next) => {
   try {
     const { food, sodiumAmount, sugarAmount, mealType } = req.body;
-
     const userId = req.user.id;
 
     // Get time
