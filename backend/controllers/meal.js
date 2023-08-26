@@ -7,7 +7,9 @@ const mongoose = require('mongoose');
 const logMeal = async (req, res, next) => {
   try {
     const { food, sodiumAmount, mealType, description } = req.body;
-    const userId = req.user.id;
+
+    const userId = req.user.user_id;
+    console.log(req.user);
 
     // Get time
     const time = moment.tz('Asia/Singapore');
@@ -42,7 +44,7 @@ const logMeal = async (req, res, next) => {
       })
     }
     await newMeal.save();
-    return res.status(201).json({ message: 'SUCCESS', data: newMeal });
+    return res.status(200).json({ message: 'SUCCESS', data: newMeal });
   } catch (err) {
     // console.log(err);
     return res.status(500).json({ error: err });
@@ -53,7 +55,7 @@ const logMeal = async (req, res, next) => {
 // For a user to look at all their meals in flip-chronological order
 const getMyMeals = async (req, res, next) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user.user_id;
     const myMeals = await Meal.find({ userId: userId }).sort({ time: -1 });
 
     return res.status(200).json({ message: 'SUCCESS', data: myMeals });
@@ -78,7 +80,7 @@ const getMeal = async (req, res, next) => {
 // For a user to look at all the meals in that duration
 const getDurationMeals = async (req, res, next) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user.user_id;
     const startDate = req.body.startDate;
     const endDate = req.body.endDate;
 
@@ -109,7 +111,7 @@ const removeMeal = async (req, res, next) => {
 // For a user to find all the meals that are not home-cooked (essentially bought from somewhere) 
 const getMealLocations = async (req, res, next) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user.user_id;
     const meals = await Meal.find({
       userId: userId,
       description: {

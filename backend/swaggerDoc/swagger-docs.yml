@@ -1,0 +1,517 @@
+tags:
+  - name: user
+    description: Everything about the users.
+  - name: meal
+    description: Everything about the meals that users will log.
+ 
+paths:
+  /api/users/register:
+    post:
+      tags: 
+        - user
+      summary: To allow new users to register a new account
+      description: New users will register a new account here, and be authenticated (signed in) to their new account immediately
+      operationId: registerUser
+      requestBody:  
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                confirmPassword:
+                  type: string
+                age:
+                  type: string
+                height:
+                  type: string
+                weight:
+                  type: string
+                activityLevel:
+                  type: string
+                isCKD:
+                  type: boolean
+      responses:
+        '200': 
+          description: User successfully creates a new account and is logged in the page automatically.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user: 
+                    type: object
+                    properties: 
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      password:
+                        type: string
+                      age:
+                        type: string
+                      height:
+                        type: string
+                      weight:
+                        type: string
+                      activityLevel:
+                        type: string
+                      isCKD:
+                        type: boolean
+                  accessToken: 
+                    type: string
+        '400': 
+          description: Either email has been used before or the two password dont match
+  /api/users/login:
+    post:
+      tags: 
+        - user
+      summary: To allow users to login to their own account
+      description: Usrs will login to their account here, and be authenticated (signed in).
+      operationId: loginUser
+      requestBody:  
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200': 
+            description: User successfully logs in to thier account.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    user: 
+                      type: object
+                      properties: 
+                        name:
+                          type: string
+                        email:
+                          type: string
+                        password:
+                          type: string
+                        age:
+                          type: string
+                        height:
+                          type: string
+                        weight:
+                          type: string
+                        activityLevel:
+                          type: string
+                        isCKD:
+                          type: boolean
+                    accessToken: 
+                      type: string
+        '401':
+          description: Either user's email does not exist in the database or the password provided is incorrect.
+  /api/meals/create:
+    post:
+      tags:
+        - meal
+      summary: To create a meal
+      description: Logged-in users can create a log on the meal that they eat
+      operationId: createMeal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                food:
+                  type: string
+                sodiumAmount:
+                  type: integer
+                  format: int64
+                mealType:
+                  type: string
+                  enum:
+                    - "BREAKFAST"
+                    - "BRUNCH"
+                    - "LUNCH"
+                    - "TEA"
+                    - "DINNER"
+                    - "SUPPER"
+                    - "SNACK"
+                    - "DESSERT"
+                description:
+                  type: string
+                  enum:
+                    - HOME-COOKED
+                    - RESTAURANT
+                    - TAKEAWAY
+                location:
+                  type: object
+                  properties:
+                    longitude:
+                      type: string
+                    latitude:
+                      type: string
+                    address:
+                      type: string
+      responses:
+        '200': 
+          description: When a user successfully logs a meal
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "SUCCESS"
+                  data:
+                    type: object
+                    properties:
+                      food:
+                        type: string
+                      userId: 
+                        type: string
+                        format: mongoose.Types.ObjectId
+                      time: 
+                        type: string
+                        format: date
+                      sodiumAmount:
+                        type: integer
+                        format: int64
+                      mealType:
+                        type: string
+                        enum:
+                          - "BREAKFAST"
+                          - "BRUNCH"
+                          - "LUNCH"
+                          - "TEA"
+                          - "DINNER"
+                          - "SUPPER"
+                          - "SNACK"
+                          - "DESSERT"
+                      description:
+                        type: string
+                        enum:
+                          - HOME-COOKED
+                          - RESTAURANT
+                          - TAKEAWAY
+                      location:
+                        type: object
+                        properties:
+                          longitude:
+                            type: string
+                          latitude:
+                            type: string
+                          address:
+                            type: string
+                        id:
+                          type: string
+                          format: mongoose.Types.ObjectId
+        '500': 
+          description: Any form of server error if the data was not able to write into database successfully
+      security:
+        - bearerAuth: []
+  /api/meals/getMine:
+    get:
+      tags:
+        - meal
+      summary: To get all meals
+      description: Logged-in users can access all the meals of theirs
+      operationId: getAllUserMeals
+      responses:
+        '200': 
+          description: When a user successfully logs a meal
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "SUCCESS"
+                  data:
+                    type: object
+                    properties:
+                      food:
+                        type: string
+                      userId: 
+                        type: string
+                        format: mongoose.Types.ObjectId
+                      time: 
+                        type: string
+                        format: date
+                      sodiumAmount:
+                        type: integer
+                        format: int64
+                      mealType:
+                        type: string
+                        enum:
+                          - "BREAKFAST"
+                          - "BRUNCH"
+                          - "LUNCH"
+                          - "TEA"
+                          - "DINNER"
+                          - "SUPPER"
+                          - "SNACK"
+                          - "DESSERT"
+                      description:
+                        type: string
+                        enum:
+                          - HOME-COOKED
+                          - RESTAURANT
+                          - TAKEAWAY
+                      location:
+                        type: object
+                        properties:
+                          longitude:
+                            type: string
+                          latitude:
+                            type: string
+                          address:
+                            type: string
+                        id:
+                          type: string
+                          format: mongoose.Types.ObjectId
+        '500': 
+          description: Any form of server error if the data was not able to write into database successfully
+      security:
+        - bearerAuth: []
+  /api/meals/mealLocations:
+    get:
+      tags:
+        - meal
+      summary: To get the locations of all meals
+      description: Logged-in users can access all the meals of theirs that were not home-cooked, and from there determine the locations
+      operationId: getAllUserMealsWLocations
+      responses:
+        '200': 
+          description: When a user successfully gets the information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "SUCCESS"
+                  data:
+                    type: object
+                    properties:
+                      food:
+                        type: string
+                      userId: 
+                        type: string
+                        format: mongoose.Types.ObjectId
+                      time: 
+                        type: string
+                        format: date
+                      sodiumAmount:
+                        type: integer
+                        format: int64
+                      mealType:
+                        type: string
+                        enum:
+                          - "BREAKFAST"
+                          - "BRUNCH"
+                          - "LUNCH"
+                          - "TEA"
+                          - "DINNER"
+                          - "SUPPER"
+                          - "SNACK"
+                          - "DESSERT"
+                      description:
+                        type: string
+                        enum:
+                          - HOME-COOKED
+                          - RESTAURANT
+                          - TAKEAWAY
+                      location:
+                        type: object
+                        properties:
+                          longitude:
+                            type: string
+                          latitude:
+                            type: string
+                          address:
+                            type: string
+                        id:
+                          type: string
+                          format: mongoose.Types.ObjectId
+        '500': 
+          description: Any form of server error if the data was not able to write into database successfully
+      security:
+        - bearerAuth: []
+  /api/meals/filerDateRange:
+    post:
+      tags:
+        - meal
+      summary: To get all meals within the time period
+      description: Logged-in users can access all the meals of theirs that were between that time period
+      operationId: getAllUsersInPeriod
+      requestBody:
+          description: The date range users want to check between
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  startDate:
+                    type: string
+                    format: date
+                  endDate:
+                    type: string
+                    format: date
+      responses:
+        '200': 
+          description: When a user successfully gets the information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "SUCCESS"
+                  data:
+                    type: object
+                    properties:
+                      food:
+                        type: string
+                      userId: 
+                        type: string
+                        format: mongoose.Types.ObjectId
+                      time: 
+                        type: string
+                        format: date
+                      sodiumAmount:
+                        type: integer
+                        format: int64
+                      mealType:
+                        type: string
+                        enum:
+                          - "BREAKFAST"
+                          - "BRUNCH"
+                          - "LUNCH"
+                          - "TEA"
+                          - "DINNER"
+                          - "SUPPER"
+                          - "SNACK"
+                          - "DESSERT"
+                      description:
+                        type: string
+                        enum:
+                          - HOME-COOKED
+                          - RESTAURANT
+                          - TAKEAWAY
+                      location:
+                        type: object
+                        properties:
+                          longitude:
+                            type: string
+                          latitude:
+                            type: string
+                          address:
+                            type: string
+                        id:
+                          type: string
+                          format: mongoose.Types.ObjectId
+        '500': 
+          description: Any form of server error if the data was not able to write into database successfully
+      security:
+        - bearerAuth: []
+  /api/meals/{mealId}:
+    get:
+      tags:
+        - meal
+      summary: To get the a meal
+      description: Logged-in users can access a meals of theirs through the use of meal id
+      operationId: getMealById
+      responses:
+        '200': 
+          description: When a user successfully gets the information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "SUCCESS"
+                  data:
+                    type: object
+                    properties:
+                      food:
+                        type: string
+                      userId: 
+                        type: string
+                        format: mongoose.Types.ObjectId
+                      time: 
+                        type: string
+                        format: date
+                      sodiumAmount:
+                        type: integer
+                        format: int64
+                      mealType:
+                        type: string
+                        enum:
+                          - "BREAKFAST"
+                          - "BRUNCH"
+                          - "LUNCH"
+                          - "TEA"
+                          - "DINNER"
+                          - "SUPPER"
+                          - "SNACK"
+                          - "DESSERT"
+                      description:
+                        type: string
+                        enum:
+                          - HOME-COOKED
+                          - RESTAURANT
+                          - TAKEAWAY
+                      location:
+                        type: object
+                        properties:
+                          longitude:
+                            type: string
+                          latitude:
+                            type: string
+                          address:
+                            type: string
+                        id:
+                          type: string
+                          format: mongoose.Types.ObjectId
+        '500': 
+          description: Any form of server error if the data was not able to write into database successfully
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - meal
+      summary: To get the a meal
+      description: Logged-in users can access a meals of theirs through the use of meal id
+      operationId: getMealById
+      responses:
+        '200': 
+          description: When a user successfully removes a meal
+        '500': 
+          description: Any form of server error if the data was not able to write into database successfully
+      security:
+        - bearerAuth: []
+
+
+
+    
+components:
+  # schemas: 
+        
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
