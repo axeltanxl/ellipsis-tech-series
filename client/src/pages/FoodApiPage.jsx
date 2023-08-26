@@ -1,6 +1,17 @@
-import { Box, Typography } from '@mui/material';
-import { useEffect, useState, Component } from 'react';
+import Layout from '../components/Layout';
+import { useEffect, useState } from 'react';
 import { searchFood, searchNutritionByFoodName, searchFoodWithNLP } from '../services/foodService';
+
+const FoodApi = () => {
+	return (
+		<Layout>
+			<h1>NLP search</h1>
+			<NLPSearch />
+			<h1>Food or restaurant search</h1>
+			<FoodSearch />
+		</Layout>
+	);
+};
 
 function FoodSearch() {
 	const [foods, setFoods] = useState([]);
@@ -25,7 +36,8 @@ function FoodSearch() {
 
 	return (
 		<div>
-			<h1>List of Food Names</h1>
+			<p>Searching for kaya toast</p>
+			<h2>List of Food Names</h2>
 			<ul>
 				{foods.map((food, index) => (
 					<li key={index}>
@@ -75,7 +87,8 @@ function NLPSearch() {
 
 	return (
 		<div>
-			<h1>List of Food Names</h1>
+			<p>Searching for 2 eggs and 1 bacon</p>
+			<h2>List of Food Names</h2>
 			<ul>
 				{foods.map((food, index) => (
 					<li key={index}>
@@ -92,41 +105,4 @@ function NLPSearch() {
 	);
 }
 
-class ApiTester extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			geoLocation: {},
-			geoError: null,
-			searchResults: [],
-		};
-	}
-
-	componentDidMount() {
-		navigator.geolocation.getCurrentPosition(
-			(e) => {
-				this.setState({
-					geoLocation: e.coords,
-				});
-			},
-			async (err) => {
-				this.setState({
-					geoError: err,
-				});
-			}
-		);
-	}
-
-	render() {
-		return (
-			<Box>
-				<Typography>API tester</Typography>
-				<NLPSearch />
-				<Typography>API tester</Typography>
-				<FoodSearch />
-			</Box>
-		);
-	}
-}
-
-export default ApiTester;
+export default FoodApi;

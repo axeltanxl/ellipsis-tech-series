@@ -5,7 +5,8 @@ import { Button } from "@mui/material";
 
 
 const FoodEntry = () => {
-  const { control, handleSubmit } = useForm({
+
+  const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       meal : "",
       location : "",
@@ -15,7 +16,7 @@ const FoodEntry = () => {
   
 
   const onSubmit = (data) => console.log("data", data);
-
+  const food = watch("foodEntry");
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -58,7 +59,7 @@ const FoodEntry = () => {
             <Controller
                 render={({ field }) => <TextFieldForm field={field} 
                 placeholder="eg. 1 bowl of cereal and 2 hard boiled eggs" 
-                label="What did you eat?" rows={10}
+                label="What did you eat?" rows={6}
                 fullwidth
                 />}
                 name={`foodEntry`}
@@ -67,6 +68,7 @@ const FoodEntry = () => {
             </div>
         </div>
         
+        <DisplaySodiumLevels/>
         <div className="w-full flex justify-end items-start my-8">
             <Button type="submit" variant="contained">Submit</Button>
         </div>
