@@ -6,10 +6,9 @@ const mongoose = require('mongoose');
 // For a user to create a meal
 const logMeal = async (req, res, next) => {
   try {
-    const { food, sodiumAmount, mealType, description } = req.body;
+    const { food, sodiumAmount, sugarAmount, mealType } = req.body;
 
-    const userId = req.user.user_id;
-    console.log(req.user);
+    const userId = req.user.id;
 
     // Get time
     const time = moment.tz('Asia/Singapore');
@@ -19,8 +18,8 @@ const logMeal = async (req, res, next) => {
       userId: userId,
       time: time,
       sodiumAmount: sodiumAmount,
-      mealType: mealType,
-      description: description
+      sugarAmount: sugarAmount,
+      mealType: mealType
     })
 
     await newMeal.save();
@@ -35,7 +34,7 @@ const logMeal = async (req, res, next) => {
 // For a user to look at all their meals in flip-chronological order
 const getMyMeals = async (req, res, next) => {
   try {
-    const userId = req.user.user_id;
+    const userId = req.user.id;
     const myMeals = await Meal.find({ userId: userId }).sort({ time: -1 });
 
     return res.status(200).json({ message: 'SUCCESS', data: myMeals });
@@ -60,7 +59,7 @@ const getMeal = async (req, res, next) => {
 // For a user to look at all the meals in that duration
 const getDurationMeals = async (req, res, next) => {
   try {
-    const userId = req.user.user_id;
+    const userId = req.user.id;
     const startDate = req.body.startDate;
     const endDate = req.body.endDate;
 
@@ -115,6 +114,6 @@ module.exports = {
   getMyMeals,
   getMeal,
   getDurationMeals,
-  removeMeal,
-  getCurrentSodiumLevel
+  getCurrentSodiumLevel,
+  removeMeal
 }

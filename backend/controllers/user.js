@@ -21,6 +21,21 @@ const register = async (req, res) => {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    // Calculate formula for sugar treshold
+    let activityMultiplier;
+    if (activityLevel === "Sedentary") {
+      activityMultiplier = 1.3;
+    } else if (activityLevel === "Light") {
+      activityMultiplier = 1.55;
+    } else if (activityLevel === "Moderate") {
+      activityMultiplier = 1.65;
+    } else if (activityLevel === "High") {
+      activityMultiplier = 1.8;
+    } else {
+      activityMultiplier = 1.0;
+    }
+    const sugarAmount = weight * 24 * activityMultiplier;
+
     //create entry
     const user = await User.create({
       name,
@@ -30,7 +45,8 @@ const register = async (req, res) => {
       height,
       weight,
       activityLevel,
-      isCKD
+      isCKD,
+      recommendedSugarIntake: sugarAmount
     })
     
     const userToSign = {
@@ -81,18 +97,17 @@ const login = async (req, res) => {
   }
 }
 
-// For user to update their recommended sodium intake lvl
-const updateUserRecSodiumIntake = async (req, res, next) => {
+const getProfile = async (req, res, next) => {
   try {
-    const newSodiumIntake = req.body.sodiumIntake;
-    let userData = await User.findById(req.user.user_id);
-    userData.recommendedSodiumIntake = newSodiumIntake;
-    await User.findByIdAndUpdate(req.user.user_id, userData);
+    const userId = req.user.id;
+    const userData = await User.findById(userId);
     return res.status(200).json({message: "SUCCESS", data: userData});
+
   } catch (err) {
     console.log(err);
     return res.status(500).json({error: err});
   }
+
 }
 
-module.exports = { register, login, updateUserRecSodiumIntake };
+module.exports = { register, login, getProfile };
