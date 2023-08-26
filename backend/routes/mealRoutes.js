@@ -8,7 +8,7 @@ router.get('/getMine', authenticateToken, mealController.getMyMeals);
 router.get('/mealLocations', authenticateToken, mealController.getMealLocations);
 router.post('/filterDateRange', authenticateToken, mealController.getDurationMeals);
 router.get('/sodiumIntakeLevel', authenticateToken, mealController.getCurrentSodiumLevel);
-router.get('/:mealId', authenticateToken, mealController.getMeal)
+router.get('/:mealId', authenticateToken, mealController.getMeal);
 router.delete('/:mealId', authenticateToken, mealController.removeMeal);
 
 module.exports = router;
