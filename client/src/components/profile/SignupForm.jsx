@@ -18,10 +18,11 @@ import { DevTool } from "@hookform/devtools";
 import CustomisedTextField from "../CustomisedTextField";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from "../login/validationSchema";
+import { useRegister } from "../../hooks/requests/userRoutes";
 const SignupForm = () => {
   const navigate = useNavigate();
   const [hasClickedNext, setHasClickedNext] = useState(false);
-
+  const { mutate : signUp } = useRegister();
   
   const defaultValues = {
     name: "",
@@ -30,13 +31,15 @@ const SignupForm = () => {
     age: "",
     height: "",
     weight: "",
-    isPatient: "",
+    activityLevel : "",
+    isCKD: "",
   };
 
   const methods = useForm({
     defaultValues: defaultValues,
     resolver : yupResolver(signUpSchema),
   });
+
   const {
     control,
     handleSubmit,
@@ -54,12 +57,15 @@ const SignupForm = () => {
 
  
   const handleSave = (data) => {
+    console.log(errors)
+
     console.log("Updated account settings:", data);
+    signUp(data)
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit(handleSave)} noValidate>
+      <form id='my-form' onSubmit={handleSubmit(handleSave)} noValidate>
         <div className={`flex flex-col ${hasClickedNext ? "hidden" : ""}`}>
           <Box display="flex" p="20px" pb="10px">
             <Grid
@@ -232,7 +238,7 @@ const SignupForm = () => {
                                   <MenuItem
                                     key={option}
                                     value={option}
-                                    InputProps={{ dense: true }}
+                                    // InputProps={{ dense: true }}
                                   >
                                     {option}
                                   </MenuItem>
@@ -250,7 +256,7 @@ const SignupForm = () => {
           <div className="flex flex-col justify-center mb-4">
             <Grid className="flex justify-center items-center" item={true}>
               <Controller
-                name={"isPatient"}
+                name={"isCKD"}
                 control={control}
                 render={({ field }) => (
                   <FormControlLabel
@@ -265,8 +271,10 @@ const SignupForm = () => {
           <Box className="flex flex-col justify-center items-center">
             <button
               className="py-2 w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
-              onClick={() => navigate("/")}
-            >
+              onClick={console.log(errors)}
+            // type="submit" form='my-form'
+                type="submit" form="my-form"
+>
               Submit
             </button>
             <button
