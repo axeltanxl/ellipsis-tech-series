@@ -31,8 +31,13 @@ export const signUpSchema = yup.object()
                 .matches(/[0-9]/, getCharacterValidationError("digit"))
                 .matches(/[a-z]/, getCharacterValidationError("lowercase"))
                 .matches(/[A-Z]/, getCharacterValidationError("uppercase")),
-            confirmPassword: yup.string()
-                .required("this field is required")
-                .oneOf([yup.ref('password'), null], 'Passwords must match')
+            age : yup.string()
+                .required("this field is required"),
+            height: yup.string()
+                .required("this field is required"),
+            weight: yup.string()
+                .required("this field is required"),
+            isPatient: yup.string()
+                .required("this field is required"),
         }
     ).required() 
