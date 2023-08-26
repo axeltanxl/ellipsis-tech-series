@@ -25,7 +25,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="mx-auto rounded-lg border border-gray-200 bg-gray-50 py-3 px-5 shadow dark:border-gray-700 dark:bg-gray-800">
+    <nav className="mx-auto rounded-lg border border-gray-200 bg-gray-50 py-3 px-5 shadow">
       <div className="mx-auto flex flex-wrap items-center justify-between gap-x-5 md:flex-nowrap">
         <div className="w-full flex-grow justify-between gap-x-2 md:flex">
           <div className="flex justify-between">
@@ -35,13 +35,13 @@ export default function Navbar() {
                 onClick={() => {
                   toast.success("Home page");
                 }}
-                className="block self-center whitespace-nowrap text-xl font-semibold text-blue-700 hover:cursor-alias dark:text-gray-50"
+                className="block self-center whitespace-nowrap text-xl font-semibold text-blue-700 hover:cursor-alias"
               >
                 LOGO
               </Link>
             </div>
             <button
-              className="block cursor-pointer rounded border border-solid border-transparent bg-transparent px-1 py-1 text-xl leading-none text-gray-700 outline-none hover:bg-gray-100 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700 md:hidden"
+              className="block cursor-pointer rounded border border-solid border-transparent bg-transparent px-1 py-1 text-xl leading-none text-gray-700 outline-none hover:bg-gray-100 focus:outline-none md:hidden"
               type="button"
               onClick={() => {
                 setNavbarOpen(!navbarOpen);
@@ -63,7 +63,7 @@ export default function Navbar() {
                     onClick={() => {
                       toast.success("Food tracking page");
                     }}
-                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 px-3 text-gray-700 hover:text-blue-700 dark:text-gray-400 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent md:dark:hover:text-white"
+                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 px-3 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Food
                   </Link>
@@ -74,7 +74,7 @@ export default function Navbar() {
                     onClick={() => {
                       toast.success("Nearby page");
                     }}
-                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 dark:text-gray-400 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent md:dark:hover:text-white"
+                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Nearby
                   </Link>
@@ -85,7 +85,7 @@ export default function Navbar() {
                     onClick={() => {
                       toast.success("Profile Page");
                     }}
-                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 dark:text-gray-400 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent md:dark:hover:text-white"
+                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Profile
                   </Link>
