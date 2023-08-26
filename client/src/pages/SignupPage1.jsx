@@ -1,7 +1,6 @@
 import { Divider, Typography } from "@mui/material";
 import Layout from "../components/Layout";
-import NameAvatar from "../components/profile/NameAvatar";
-import ProfileForm from "../components/profile/SignupForm";
+import SignupForm from "../components/profile/SignupFormPage1";
 
 const Signup = () => {
   return (
@@ -20,7 +19,7 @@ const Signup = () => {
                 variant="middle"
                 sx={{ bgcolor: "#000000", width: "100%" }}
               />
-              <ProfileForm />
+              <SignupForm />
             </div>
           </div>
         </div>

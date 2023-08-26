@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
 
-const ProfileForm = () => {
+const LoginForm = () => {
   const defaultValues = {
     name: "",
     age: "",
@@ -106,7 +106,7 @@ const ProfileForm = () => {
   );
 };
 
-export default ProfileForm;
+export default LoginForm;
 
 const inputs = [
   {
