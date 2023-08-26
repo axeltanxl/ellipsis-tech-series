@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const userRouter = require('./routes/userRoutes')
+const mealRouter = require('./routes/mealRoutes')
 const middleware = require('./utils/middleware')
 const mongoose = require('mongoose')
 
@@ -22,6 +23,11 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/users', userRouter)
+app.use('/api/meals', mealRouter)
+
+app.get('/', (req, res) => {
+    res.send("Base Connection Successful");
+});
 
 app.listen(config.PORT, () => {
   console.log(`Server running on port ${config.PORT}`)
