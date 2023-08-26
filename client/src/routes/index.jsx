@@ -6,17 +6,24 @@ import Signup1 from "../pages/SignupPage1";
 import Signup2 from "../pages/SignupPage2"
 import Login from "../pages/LoginPage";
 import FoodApi from "../pages/FoodApiPage";
+import Profile from "../pages/Profile"
 // import Profile from "../pages/ProfilePage";
-
+import { ProtectedRoute } from "./ProtectedRoute";
 const AppRoutes = () => (
   <Routes>
-    <Route exact path="/" element={<Home />} />
-    <Route exact path="/nearby" element={<Nearby />} />
-    <Route exact path="/food" element={<Food />} />
-    <Route exact path="/food" element={<FoodApi />} />
-    <Route exact path="/signup1" element={<Signup1 />} />
-    <Route exact path="/signup2" element={<Signup2 />} />
     <Route exact path="/login" element={<Login />} />
+
+    <Route element={<ProtectedRoute/>}>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/nearby" element={<Nearby />} />
+        <Route exact path="/food" element={<Food />} />
+        <Route exact path="/food" element={<FoodApi />} />
+        <Route exact path="/signup1" element={<Signup1 />} />
+        <Route exact path="/signup2" element={<Signup2 />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/profile" element={<Profile />} />
+        
+    </Route>
     {/* <Route exact path="/profile" element={<Profile />} /> */}
   </Routes>
 );
