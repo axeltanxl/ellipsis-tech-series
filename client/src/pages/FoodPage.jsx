@@ -2,8 +2,13 @@ import { Box, Typography } from "@mui/material";
 import Layout from "../components/Layout";
 import FoodEntry from "../components/foodPage/FoodEntry";
 import { SuccessModal } from "../components/foodPage/SuccessModal";
+import { useCreateMeal } from "../hooks/requests/mealRoutes";
+
 
 const Food = () => {
+    
+    const { mutate : createMeal } = useCreateMeal();
+    createMeal({food : "char kway teow", sodiumAmount : "65", mealType :  "breakfast"})
 
   return (
     <Layout>
