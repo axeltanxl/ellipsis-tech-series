@@ -1,6 +1,6 @@
 import { Divider, Typography } from "@mui/material";
 import Layout from "../components/Layout";
-import SignupForm from "../components/profile/SignupFormPage1";
+import SignupForm from "../components/profile/SignupForm";
 
 const Signup = () => {
   return (
