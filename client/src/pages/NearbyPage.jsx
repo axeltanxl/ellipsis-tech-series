@@ -14,6 +14,8 @@ const Nearby = () => {
 	const [searchQuery, setSearchQuery] = useState('');
 	const [markers, setMarkers] = useState([]);
 
+	const [restaurantResults, setRestaurantResults] = useState([]);
+
 	useEffect(() => {
 		if (geoLocation.latitude && geoLocation.longitude) {
 			const map = tt.map({
@@ -38,6 +40,7 @@ const Nearby = () => {
 			geoLocation.latitude,
 			geoLocation.longitude
 		);
+		setRestaurantResults(finalResult);
 		const locations = finalResult.restaurants.flatMap((restaurant) => restaurant.locations);
 
 		const newMarkers = locations.map((location) => {
@@ -51,7 +54,7 @@ const Nearby = () => {
 		setMarkers(newMarkers);
 	};
 
-	const handleSearch = () => {
+	const handleSearch = async () => {
 		// Update markers based on the search query
 		if (searchQuery) {
 			// Clear existing markers
@@ -66,7 +69,7 @@ const Nearby = () => {
 			});
 
 			// Add new markers based on the search query
-			addMarkers(map);
+			await addMarkers(map);
 		}
 	};
 
@@ -105,6 +108,28 @@ const Nearby = () => {
 					placeholder="Enter your query..."
 				/>
 				<button onClick={handleSearch}>Search</button>
+			</div>
+			<div>
+				{restaurantResults.map((restaurant, index) => (
+					<div key={index}>
+						<h3>{restaurant.restaurant_name}</h3>
+						<p>Location Count: {restaurant.locations.length}</p>
+						<h4>Locations:</h4>
+						<ul>
+							{restaurant.locations.map((location, locationIndex) => (
+								<li key={locationIndex}>
+									{location.poi.name} - {location.address.freeformAddress}
+								</li>
+							))}
+						</ul>
+						<h4>Food available</h4>
+						<ul>
+							{restaurant.available_options.map((food, foodIndex) => (
+								<li key={foodIndex}>{food.food_name}</li>
+							))}
+						</ul>
+					</div>
+				))}
 			</div>
 			<div
 				ref={mapElement}

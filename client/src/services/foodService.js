@@ -492,10 +492,7 @@ export const fuzzySearchFoodByLocation = async (query, lat, long, limit = 5, rad
 		groupedByBrand[food.brand_name].locations.push(...food.locations);
 	});
 
-	const finalResult = {
-		restaurants: Object.values(groupedByBrand),
-	};
-	console.log(finalResult);
+	console.log(Object.values(groupedByBrand));
 
-	return finalResult;
+	return Object.values(groupedByBrand);
 };
