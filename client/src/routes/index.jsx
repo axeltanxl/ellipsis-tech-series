@@ -27,6 +27,8 @@ const AppRoutes = () => (
 			path="/profile"
 			element={<Profile />}
 		/>
+
+		{/* /foodapi is a temporary route for us to avoid conflicts */}
 		<Route
 			exact
 			path="/foodapi"
