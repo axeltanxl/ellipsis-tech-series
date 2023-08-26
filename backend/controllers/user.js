@@ -1,3 +1,4 @@
+const user = require('../models/user');
 const User = require('../models/user');
 const config = require('../utils/config');
 const bcrypt = require('bcrypt');
@@ -7,7 +8,7 @@ const ACCESS_TOKEN_SECRET = config.ACCESS_TOKEN_SECRET;
 const EXPIRY = config.EXPIRY;
 
 const register = async (req, res) => {
-  const { name, email, password, confirmPassword, height, weight } = req.body;
+  const { name, email, password, confirmPassword, age, height, weight, activityLevel, isCKD } = req.body;
   
   try {
     //check if email already exists
@@ -29,8 +30,11 @@ const register = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      age,
       height,
-      weight
+      weight,
+      activityLevel,
+      isCKD
     })
     
     const userToSign = {
@@ -39,7 +43,7 @@ const register = async (req, res) => {
       email
     }
 
-    const accessToken = jwt.sign(userToSign, ACCESS_TOKEN_SECRET, { expiresIn: EXPIRY })
+    const accessToken = jwt.sign(userToSign, ACCESS_TOKEN_SECRET, { expiresIn: EXPIRY });
 
     return res.status(201).json({ user, accessToken });
 
@@ -50,7 +54,35 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-  //TODO
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(401).json({ message: "Your email/password is incorrect." });
+    }
+
+    // email valid -> compare password with bcrypt
+    if (!(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ message: "Your email/password is incorrect." });
+    }
+
+    const userToSign = {
+      user_id: user.toJSON().id,
+      name: user.name,
+      email
+    }
+
+    const accessToken = jwt.sign(userToSign, ACCESS_TOKEN_SECRET, { expiresIn: EXPIRY })
+
+    return res.status(200).json({
+      message: "Successfully logged in!", user, accessToken
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: err });
+  }
 }
 
 module.exports = { register, login };
