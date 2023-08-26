@@ -2,11 +2,12 @@ import { useForm, useFieldArray, Controller } from "react-hook-form";
 import TextFieldForm from "../TextFieldForm";
 import { DevTool } from "@hookform/devtools";
 import { Button } from "@mui/material";
-
+import { useDispatch } from "react-redux";
+import { setSuccessModal, setSodiumData } from "../../store/ExampleSlice";
 
 const FoodEntry = () => {
-
-  const { control, handleSubmit, watch } = useForm({
+  const dispatch = useDispatch();
+  const { control, handleSubmit, watch, reset } = useForm({
     defaultValues: {
       meal : "",
       location : "",
@@ -14,8 +15,12 @@ const FoodEntry = () => {
     }
   });
   
-
-  const onSubmit = (data) => console.log("data", data);
+  const onSubmit = (data) => {
+    dispatch(setSuccessModal(true));
+    dispatch(setSodiumData(data));
+    reset();
+    console.log("data", data);
+}
   const food = watch("foodEntry");
 
   return (
@@ -68,7 +73,6 @@ const FoodEntry = () => {
             </div>
         </div>
         
-        {/* <DisplaySodiumLevels query={food}/> */}
         <div className="w-full flex justify-end items-start my-8">
             <Button type="submit" variant="contained">Submit</Button>
         </div>

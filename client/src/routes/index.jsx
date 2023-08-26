@@ -11,6 +11,7 @@ import FoodApi from "../pages/FoodApiPage";
 const AppRoutes = () => (
   <Routes>
     <Route exact path="/" element={<Home />} />
+    <Route exact path="/login" element={<Login />} />
     <Route exact path="/nearby" element={<Nearby />} />
     <Route exact path="/food" element={<Food />} />
     <Route exact path="/food" element={<FoodApi />} />
