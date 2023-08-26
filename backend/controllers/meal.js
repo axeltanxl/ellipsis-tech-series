@@ -14,35 +14,15 @@ const logMeal = async (req, res, next) => {
     // Get time
     const time = moment.tz('Asia/Singapore');
 
-    let newMeal;
-    // Get information on location
-    if (description === 'RESTAURANT' || description === 'TAKEAWAY') {
-      const longitude = req.body.longitude;
-      const latitude = req.body.latitude;
-      const address = req.body.address;
-      newMeal = new Meal({
-        food: food,
-        userId: userId,
-        time: time,
-        sodiumAmount: sodiumAmount,
-        mealType: mealType,
-        description: description,
-        location: {
-          longitude: longitude,
-          latitude: latitude,
-          address: address
-        }
-      })
-    } else {
-      newMeal = new Meal({
-        food: food,
-        userId: userId,
-        time: time,
-        sodiumAmount: sodiumAmount,
-        mealType: mealType,
-        description: description
-      })
-    }
+    const newMeal = new Meal({
+      food: food,
+      userId: userId,
+      time: time,
+      sodiumAmount: sodiumAmount,
+      mealType: mealType,
+      description: description
+    })
+
     await newMeal.save();
     return res.status(200).json({ message: 'SUCCESS', data: newMeal });
   } catch (err) {
@@ -108,22 +88,6 @@ const removeMeal = async (req, res, next) => {
   }
 }
 
-// For a user to find all the meals that are not home-cooked (essentially bought from somewhere) 
-const getMealLocations = async (req, res, next) => {
-  try {
-    const userId = req.user.user_id;
-    const meals = await Meal.find({
-      userId: userId,
-      description: {
-        $regex: new RegExp(`(RESTAURANT|TAKEAWAY)`),
-      },
-    });
-    return res.status(200).json({message: 'SUCCESS', data: meals});
-  } catch (err) {
-    // console.log(err);
-    return res.status(500).json({error: err});
-  }
-}
 
 // Get current sodium intake level for a user for the day
 const getCurrentSodiumLevel = async (req, res) => {
@@ -151,7 +115,6 @@ module.exports = {
   getMyMeals,
   getMeal,
   getDurationMeals,
-  getMealLocations,
   removeMeal,
   getCurrentSodiumLevel
 }

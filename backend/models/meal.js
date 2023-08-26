@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 mongoose.set('strictQuery', false);
 
-const MEAL_TYPE = ['BREAKFAST', 'BRUNCH', 'LUNCH', 'TEA', 'DINNER', 'SUPPER', 'SNACK', 'DESSERT'];
-const PREPARATION_TYPE = ['HOME-COOKED', 'RESTAURANT', 'TAKEAWAY'];
+const MEAL_TYPE = ['BREAKFAST', 'LUNCH', 'DINNER', 'SNACK'];
 
 const mealSchema = new mongoose.Schema({
   food: {
@@ -27,21 +26,6 @@ const mealSchema = new mongoose.Schema({
     type: String,
     enum: MEAL_TYPE
   },
-  description: {
-    type: String,
-    enum: PREPARATION_TYPE
-  },
-  location: {
-    longitude: {
-      type: String
-    },
-    latitude: {
-      type: String
-    }, 
-    address: {
-      type: String
-    }
-  }
 })
 
 mealSchema.set('toJSON', {
