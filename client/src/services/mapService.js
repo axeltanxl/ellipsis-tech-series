@@ -9,8 +9,9 @@ export const getNearbyPlaces = async (query, lat, long, limit = 5, radius = 1000
 		let queryString = `limit=${limit}&lat=${lat}&lon=${long}&radius=${radius}&key=${
 			import.meta.env.VITE_TOMTOM_API_KEY
 		}`;
-		console.log(`${baseUrl}/${query}.json?${queryString}`);
-		let response = await axios.get(`${baseUrl}/${query}.json?${queryString}`);
+		const encodedQuery = encodeURIComponent(query);
+		console.log(`${baseUrl}/${encodedQuery}.json?${queryString}`);
+		let response = await axios.get(`${baseUrl}/${encodedQuery}.json?${queryString}`);
 		return response.data.results;
 	}
 };

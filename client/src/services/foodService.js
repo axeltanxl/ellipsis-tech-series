@@ -70,7 +70,6 @@ export const searchFood = async (query) => {
 
 // POST to search for food but with less than or equal threshold for sodium
 export const searchFoodWithSodiumThreshold = async (query, threshold = null) => {
-	console.log(import.meta.env.VITE_IS_DEVELOPMENT);
 	if (import.meta.env.VITE_IS_DEVELOPMENT === 'true') {
 		return searchFoodWithSodiumThresholdResult;
 	} else {
@@ -93,9 +92,10 @@ export const searchFoodWithSodiumThreshold = async (query, threshold = null) => 
 			method: 'post',
 			url: `https://trackapi.nutritionix.com/v2/search/instant`,
 			headers: {
-				'x-app-id': process.env.NUTRITIONIX_API_ID,
-				'x-app-key': process.env.NUTRITIONIX_API_KEY,
-				'Content-Type': 'application/json',
+				'x-app-id': import.meta.env.VITE_NUTRITIONIX_API_ID,
+				'x-app-key': import.meta.env.VITE_NUTRITIONIX_API_KEY,
+				'content-type': 'application/json',
+				accept: 'application/json',
 			},
 			data,
 		};
@@ -295,8 +295,8 @@ export const searchFoodWithNLP = async (query) => {
 		headers: {
 			'content-type': 'application/json',
 			accept: 'application/json',
-			'x-app-id': process.env.NUTRITIONIX_API_ID,
-			'x-app-key': process.env.NUTRITIONIX_API_KEY,
+			'x-app-id': import.meta.env.VITE_NUTRITIONIX_API_ID,
+			'x-app-key': import.meta.env.VITE_NUTRITIONIX_API_KEY,
 		},
 		data,
 	};
@@ -318,8 +318,8 @@ export const searchFoodByItem = async (query) => {
 			method: 'get',
 			url: `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${query}`,
 			headers: {
-				'x-app-id': process.env.NUTRITIONIX_API_ID,
-				'x-app-key': process.env.NUTRITIONIX_API_KEY,
+				'x-app-id': import.meta.env.VITE_NUTRITIONIX_API_ID,
+				'x-app-key': import.meta.env.VITE_NUTRITIONIX_API_KEY,
 			},
 		};
 
@@ -441,14 +441,17 @@ export const fuzzySearchFoodByLocation = async (query, lat, long, limit = 5, rad
 
 	for (const element of restaurantOptions) {
 		const foodResult = await searchFoodByItem(element.nix_item_id);
+		console.log('food result', foodResult);
 
 		if (foodResult.foods) {
 			const currentFood = foodResult.foods[0];
 			const brandName = currentFood.nix_brand_name;
-			const nearbyPlacesResponse = await getNearbyPlaces(brandName);
-			const filteredLocations = nearbyPlacesResponse.results.filter((location) =>
+			const nearbyPlacesResponse = await getNearbyPlaces(brandName, lat, long);
+			console.log('nearby', nearbyPlacesResponse);
+			const filteredLocations = nearbyPlacesResponse.filter((location) =>
 				location.poi.brands.some((brand) => brand.name === brandName)
 			);
+			console.log('filtered locations', filteredLocations);
 
 			const uniqueLocations = filteredLocations.filter(
 				(location) =>

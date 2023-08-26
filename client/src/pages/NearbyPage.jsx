@@ -35,8 +35,8 @@ const Nearby = () => {
 	const addMarkers = async (map) => {
 		let finalResult = await fuzzySearchFoodByLocation(
 			searchQuery,
-			geoLocation.longitude,
-			geoLocation.latitude
+			geoLocation.latitude,
+			geoLocation.longitude
 		);
 		const locations = finalResult.restaurants.flatMap((restaurant) => restaurant.locations);
 
@@ -58,8 +58,15 @@ const Nearby = () => {
 			markers.forEach((marker) => marker.remove());
 			setMarkers([]);
 
+			const map = tt.map({
+				key: import.meta.env.VITE_TOMTOM_API_KEY, // Use your API key
+				container: mapElement.current,
+				center: [geoLocation.longitude, geoLocation.latitude],
+				zoom: 13,
+			});
+
 			// Add new markers based on the search query
-			addMarkers(mapElement.current.getMap());
+			addMarkers(map);
 		}
 	};
 

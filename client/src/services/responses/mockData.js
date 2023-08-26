@@ -11273,170 +11273,154 @@ export const searchFoodWithSodiumThresholdResult = {
 	],
 };
 
-export const getNearbyPlacesResult = {
-	summary: {
-		query: 'mcdonalds',
-		queryType: 'NON_NEAR',
-		queryTime: 46,
-		numResults: 2,
-		offset: 0,
-		totalResults: 2,
-		fuzzyLevel: 1,
-		geoBias: {
-			lat: 1.297564,
-			lon: 103.849399,
+export const getNearbyPlacesResult = [
+	{
+		type: 'POI',
+		id: 'Vn25aFMnFJML4qgcA94bew',
+		score: 2.738431227,
+		dist: 344.663375,
+		info: 'search:ta:702009002621456-SG',
+		poi: {
+			name: "McDonald's Parklane",
+			phone: '+65 6333 9095',
+			brands: [
+				{
+					name: "McDonald's",
+				},
+			],
+			categorySet: [
+				{
+					id: 7315015,
+				},
+			],
+			url: 'www.mcdonalds.com.sg',
+			categories: ['fast food', 'restaurant'],
+			classifications: [
+				{
+					code: 'RESTAURANT',
+					names: [
+						{
+							nameLocale: 'en-US',
+							name: 'restaurant',
+						},
+						{
+							nameLocale: 'en-US',
+							name: 'fast food',
+						},
+					],
+				},
+			],
 		},
-		geobiasCountry: 'SG',
+		address: {
+			streetNumber: '35',
+			streetName: 'Selegie Road',
+			municipalitySubdivision: 'Rochor',
+			municipality: 'Singapore',
+			postalCode: '18',
+			extendedPostalCode: '188306',
+			countryCode: 'SG',
+			country: 'Singapore',
+			countryCodeISO3: 'SGP',
+			freeformAddress: '35 Selegie Road, Singapore, 188306',
+			localName: 'Singapore',
+		},
+		position: {
+			lat: 1.300663,
+			lon: 103.849431,
+		},
+		viewport: {
+			topLeftPoint: {
+				lat: 1.30156,
+				lon: 103.84853,
+			},
+			btmRightPoint: {
+				lat: 1.29976,
+				lon: 103.85033,
+			},
+		},
+		entryPoints: [
+			{
+				type: 'main',
+				position: {
+					lat: 1.30095,
+					lon: 103.84921,
+				},
+			},
+		],
 	},
-	results: [
-		{
-			type: 'POI',
-			id: 'Vn25aFMnFJML4qgcA94bew',
-			score: 2.738431227,
-			dist: 344.663375,
-			info: 'search:ta:702009002621456-SG',
-			poi: {
-				name: "McDonald's Parklane",
-				phone: '+65 6333 9095',
-				brands: [
-					{
-						name: "McDonald's",
-					},
-				],
-				categorySet: [
-					{
-						id: 7315015,
-					},
-				],
-				url: 'www.mcdonalds.com.sg',
-				categories: ['fast food', 'restaurant'],
-				classifications: [
-					{
-						code: 'RESTAURANT',
-						names: [
-							{
-								nameLocale: 'en-US',
-								name: 'restaurant',
-							},
-							{
-								nameLocale: 'en-US',
-								name: 'fast food',
-							},
-						],
-					},
-				],
-			},
-			address: {
-				streetNumber: '35',
-				streetName: 'Selegie Road',
-				municipalitySubdivision: 'Rochor',
-				municipality: 'Singapore',
-				postalCode: '18',
-				extendedPostalCode: '188306',
-				countryCode: 'SG',
-				country: 'Singapore',
-				countryCodeISO3: 'SGP',
-				freeformAddress: '35 Selegie Road, Singapore, 188306',
-				localName: 'Singapore',
-			},
-			position: {
-				lat: 1.300663,
-				lon: 103.849431,
-			},
-			viewport: {
-				topLeftPoint: {
-					lat: 1.30156,
-					lon: 103.84853,
-				},
-				btmRightPoint: {
-					lat: 1.29976,
-					lon: 103.85033,
-				},
-			},
-			entryPoints: [
+	{
+		type: 'POI',
+		id: '8Jmh1Dz4FKLNEBckgsxlSw',
+		score: 2.7383895275,
+		dist: 490.65972,
+		info: 'search:ta:702009002654201-SG',
+		poi: {
+			name: "McDonald's",
+			phone: '+65 6338 3769',
+			brands: [
 				{
-					type: 'main',
-					position: {
-						lat: 1.30095,
-						lon: 103.84921,
-					},
+					name: "McDonald's",
+				},
+			],
+			categorySet: [
+				{
+					id: 7315015,
+				},
+			],
+			url: 'www.mcdonalds.com.sg',
+			categories: ['fast food', 'restaurant'],
+			classifications: [
+				{
+					code: 'RESTAURANT',
+					names: [
+						{
+							nameLocale: 'en-US',
+							name: 'restaurant',
+						},
+						{
+							nameLocale: 'en-US',
+							name: 'fast food',
+						},
+					],
 				},
 			],
 		},
-		{
-			type: 'POI',
-			id: '8Jmh1Dz4FKLNEBckgsxlSw',
-			score: 2.7383895275,
-			dist: 490.65972,
-			info: 'search:ta:702009002654201-SG',
-			poi: {
-				name: "McDonald's",
-				phone: '+65 6338 3769',
-				brands: [
-					{
-						name: "McDonald's",
-					},
-				],
-				categorySet: [
-					{
-						id: 7315015,
-					},
-				],
-				url: 'www.mcdonalds.com.sg',
-				categories: ['fast food', 'restaurant'],
-				classifications: [
-					{
-						code: 'RESTAURANT',
-						names: [
-							{
-								nameLocale: 'en-US',
-								name: 'restaurant',
-							},
-							{
-								nameLocale: 'en-US',
-								name: 'fast food',
-							},
-						],
-					},
-				],
-			},
-			address: {
-				streetName: 'Cashin Street',
-				municipalitySubdivision: 'Downtown Core',
-				municipality: 'Singapore',
-				postalCode: '18',
-				countryCode: 'SG',
-				country: 'Singapore',
-				countryCodeISO3: 'SGP',
-				freeformAddress: 'Cashin Street, Singapore, 18',
-				localName: 'Singapore',
-			},
-			position: {
-				lat: 1.29615,
-				lon: 103.85358,
-			},
-			viewport: {
-				topLeftPoint: {
-					lat: 1.29705,
-					lon: 103.85268,
-				},
-				btmRightPoint: {
-					lat: 1.29525,
-					lon: 103.85448,
-				},
-			},
-			entryPoints: [
-				{
-					type: 'main',
-					position: {
-						lat: 1.29629,
-						lon: 103.85368,
-					},
-				},
-			],
+		address: {
+			streetName: 'Cashin Street',
+			municipalitySubdivision: 'Downtown Core',
+			municipality: 'Singapore',
+			postalCode: '18',
+			countryCode: 'SG',
+			country: 'Singapore',
+			countryCodeISO3: 'SGP',
+			freeformAddress: 'Cashin Street, Singapore, 18',
+			localName: 'Singapore',
 		},
-	],
-};
+		position: {
+			lat: 1.29615,
+			lon: 103.85358,
+		},
+		viewport: {
+			topLeftPoint: {
+				lat: 1.29705,
+				lon: 103.85268,
+			},
+			btmRightPoint: {
+				lat: 1.29525,
+				lon: 103.85448,
+			},
+		},
+		entryPoints: [
+			{
+				type: 'main',
+				position: {
+					lat: 1.29629,
+					lon: 103.85368,
+				},
+			},
+		],
+	},
+];
 
 export const searchFoodByItemResult = {
 	foods: [
