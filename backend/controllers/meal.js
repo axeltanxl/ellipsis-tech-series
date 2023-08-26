@@ -43,7 +43,7 @@ const logMeal = async (req, res, next) => {
       })
     }
     await newMeal.save();
-    return res.status(201).json({ message: 'SUCCESS', data: newMeal });
+    return res.status(200).json({ message: 'SUCCESS', data: newMeal });
   } catch (err) {
     // console.log(err);
     return res.status(500).json({ error: err });
