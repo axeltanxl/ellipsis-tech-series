@@ -40,5 +40,6 @@ export const createMeal = async (meal) => {
         data: meal
     })
     console.log(res);
-    return ( res.data )
+    return (res.data)
 }
+

@@ -8,7 +8,7 @@ const DisplayAnalysis = () => {
     const dispatch = useDispatch()
     const sodiumData = useSelector((state) => state.example.sodiumData)
     const query = sodiumData.foodEntry;
-    const {error, isError, isLoading, isSuccess, data} = useNLPS("char kway teow");
+    const {error, isError, isLoading, isSuccess, data} = useNLPS(query);
     const { mutate : createMeal } = useCreateMeal();
 
         if(isError){
@@ -26,7 +26,7 @@ const DisplayAnalysis = () => {
         if(isSuccess){
 
             // SHOULD WORK IN THIS FORMAT
-            createMeal({food : "char kway teow", sodiumAmount : 65, sugarAmount : 66 , mealType :  "BREAKFAST"})
+            // createMeal({food : "char kway teow", sodiumAmount : 65, sugarAmount : 66 , mealType :  "BREAKFAST"})
             //_____
 
             console.log(data);

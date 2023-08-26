@@ -119,8 +119,8 @@ const Food = () => {
           </table>
         </div>
       </div>
-
-      <div>{/* <FoodEntry /> */}</div>
+      <SuccessModal />
+      <div><FoodEntry /></div>
     </Layout>
   );
 };
