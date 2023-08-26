@@ -22,6 +22,10 @@ const mealSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  sugarAmount: {
+    type: Number,
+    required: true
+  },
   mealType: {
     type: String,
     enum: MEAL_TYPE
