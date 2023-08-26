@@ -1,40 +1,18 @@
-import { Route, Routes } from 'react-router-dom';
-import App from '../App';
-import Nearby from '../pages/NearbyPage';
-import Food from '../pages/FoodPage';
-import Profile from '../pages/ProfilePage';
+import { Route, Routes } from "react-router-dom";
+import Home from "../pages/HomePage";
+import Nearby from "../pages/NearbyPage";
+import Food from "../pages/FoodPage";
+import Profile from "../pages/ProfilePage";
 import FoodApi from '../pages/FoodApiPage';
 
 const AppRoutes = () => (
-	<Routes>
-		<Route
-			exact
-			path="/"
-			element={<App />}
-		/>
-		<Route
-			exact
-			path="/nearby"
-			element={<Nearby />}
-		/>
-		<Route
-			exact
-			path="/food"
-			element={<Food />}
-		/>
-		<Route
-			exact
-			path="/profile"
-			element={<Profile />}
-		/>
-
-		{/* /foodapi is a temporary route for us to avoid conflicts */}
-		<Route
-			exact
-			path="/foodapi"
-			element={<FoodApi />}
-		/>
-	</Routes>
+  <Routes>
+    <Route exact path="/" element={<Home />} />
+    <Route exact path="/nearby" element={<Nearby />} />
+    <Route exact path="/food" element={<Food />} />
+    <Route exact path="/food" element={<FoodApi />} />
+    <Route exact path="/profile" element={<Profile />} />
+  </Routes>
 );
 
 export default AppRoutes;
