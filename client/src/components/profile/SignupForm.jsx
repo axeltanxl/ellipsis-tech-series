@@ -16,28 +16,28 @@ import {
 } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
 import CustomisedTextField from "../CustomisedTextField";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpSchema } from "../login/validationSchema";
 import { useRegister } from "../../hooks/requests/userRoutes";
 const SignupForm = () => {
   const navigate = useNavigate();
   const [hasClickedNext, setHasClickedNext] = useState(false);
-  const { mutate : signUp } = useRegister();
-  
+  const { mutate: signUp } = useRegister();
+
   const defaultValues = {
     name: "",
-    email : "",
-    password : "",
+    email: "",
+    password: "",
     age: "",
     height: "",
     weight: "",
-    activityLevel : "",
+    activityLevel: "",
     isCKD: "",
   };
 
   const methods = useForm({
     defaultValues: defaultValues,
-    resolver : yupResolver(signUpSchema),
+    resolver: yupResolver(signUpSchema),
   });
 
   const {
@@ -45,27 +45,26 @@ const SignupForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    trigger
+    trigger,
   } = methods;
 
   async function handleButtonClick() {
-    const result = await trigger(["name", "email", "password"])
-    if(result){
-        setHasClickedNext(!hasClickedNext);
+    const result = await trigger(["name", "email", "password"]);
+    if (result) {
+      setHasClickedNext(!hasClickedNext);
     }
   }
 
- 
   const handleSave = (data) => {
-    console.log(errors)
+    console.log(errors);
 
     console.log("Updated account settings:", data);
-    signUp(data)
+    signUp(data);
   };
 
   return (
     <>
-      <form id='my-form' onSubmit={handleSubmit(handleSave)} noValidate>
+      <form id="my-form" onSubmit={handleSubmit(handleSave)} noValidate>
         <div className={`flex flex-col ${hasClickedNext ? "hidden" : ""}`}>
           <Box display="flex" p="20px" pb="10px">
             <Grid
@@ -92,61 +91,22 @@ const SignupForm = () => {
                       control={control}
                       render={({ field }) =>
                         item.name !== "password" ? (
-                        //   <TextField
-                        //     {...field}
-                        //     variant="outlined"
-                        //     size="small"
-                        //     sx={{
-                        //       "& .MuiOutlinedInput-root": {
-                        //         "&.Mui-focused fieldset": {
-                        //           borderColor: "primary.main",
-                        //         },
-                        //       },
-                        //     }}
-                        //     InputProps={{
-                        //       endAdornment: (
-                        //         <InputAdornment position="end">
-                        //           {item.adornment}
-                        //         </InputAdornment>
-                        //       ),
-                        //     }}
-                        //   />
-                        <CustomisedTextField
-                        field={field}
-                        errors={errors}
-                        name={item.name}
-                        label={item.label}
-                        adornment={item.adornment}
-                        />
+                          <CustomisedTextField
+                            field={field}
+                            errors={errors}
+                            name={item.name}
+                            label={item.label}
+                            adornment={item.adornment}
+                          />
                         ) : (
-                        //   <TextField
-                        //     {...field}
-                        //     variant="outlined"
-                        //     size="small"
-                        //     type="password"
-                        //     sx={{
-                        //       "& .MuiOutlinedInput-root": {
-                        //         "&.Mui-focused fieldset": {
-                        //           borderColor: "primary.main",
-                        //         },
-                        //       },
-                        //     }}
-                        //     InputProps={{
-                        //       endAdornment: (
-                        //         <InputAdornment position="end">
-                        //           {item.adornment}
-                        //         </InputAdornment>
-                        //       ),
-                        //     }}
-                        //   />
-                        <CustomisedTextField
-                        field={field}
-                        errors={errors}
-                        name={item.name}
-                        label={item.label}
-                        adornment={item.adornment}
-                        type="password"
-                        />
+                          <CustomisedTextField
+                            field={field}
+                            errors={errors}
+                            name={item.name}
+                            label={item.label}
+                            adornment={item.adornment}
+                            type="password"
+                          />
                         )
                       }
                     />
@@ -203,32 +163,32 @@ const SignupForm = () => {
                       control={control}
                       render={({ field }) =>
                         item.name !== "activityLevel" ? (
-                        //   <TextField
-                        //     {...field}
-                        //     variant="outlined"
-                        //     size="small"
-                        //     sx={{
-                        //       "& .MuiOutlinedInput-root": {
-                        //         "&.Mui-focused fieldset": {
-                        //           borderColor: "primary.main",
-                        //         },
-                        //       },
-                        //     }}
-                        //     InputProps={{
-                        //       endAdornment: (
-                        //         <InputAdornment position="end">
-                        //           {item.adornment}
-                        //         </InputAdornment>
-                        //       ),
-                        //     }}
-                        //   />
-                        <CustomisedTextField
-                        field={field}
-                        errors={errors}
-                        name={item.name}
-                        label={item.label}
-                        adornment={item.adornment}
-                        />
+                          //   <TextField
+                          //     {...field}
+                          //     variant="outlined"
+                          //     size="small"
+                          //     sx={{
+                          //       "& .MuiOutlinedInput-root": {
+                          //         "&.Mui-focused fieldset": {
+                          //           borderColor: "primary.main",
+                          //         },
+                          //       },
+                          //     }}
+                          //     InputProps={{
+                          //       endAdornment: (
+                          //         <InputAdornment position="end">
+                          //           {item.adornment}
+                          //         </InputAdornment>
+                          //       ),
+                          //     }}
+                          //   />
+                          <CustomisedTextField
+                            field={field}
+                            errors={errors}
+                            name={item.name}
+                            label={item.label}
+                            adornment={item.adornment}
+                          />
                         ) : (
                           <FormControl>
                             <Select {...field}>
@@ -272,9 +232,10 @@ const SignupForm = () => {
             <button
               className="py-2 w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
               onClick={console.log(errors)}
-            // type="submit" form='my-form'
-                type="submit" form="my-form"
->
+              // type="submit" form='my-form'
+              type="submit"
+              form="my-form"
+            >
               Submit
             </button>
             <button
