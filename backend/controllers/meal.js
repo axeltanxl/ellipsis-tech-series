@@ -125,6 +125,26 @@ const getMealLocations = async (req, res, next) => {
   }
 }
 
+// Get current sodium intake level for a user for the day
+const getCurrentSodiumLevel = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const startDate = new Date();
+    startDate.setHours(0, 0, 0, 0);
+    const endDate = new Date(startDate);
+    endDate.setHours(23, 59, 59, 999);
+
+    const thisDurationMeals = await Meal.find({
+      userId: userId,
+      time: { $gte: startDate, $lte: endDate }
+    });
+
+    console.log(thisDurationMeals);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 // Exports
 module.exports = {
   logMeal,
@@ -132,5 +152,6 @@ module.exports = {
   getMeal,
   getDurationMeals,
   getMealLocations,
-  removeMeal
+  removeMeal,
+  getCurrentSodiumLevel
 }
