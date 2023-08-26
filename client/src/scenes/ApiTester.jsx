@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Component } from 'react';
 import { searchFood, searchNutritionByFoodName, searchFoodWithNLP } from '../services/foodService';
 
 function FoodSearch() {
@@ -8,7 +8,7 @@ function FoodSearch() {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const nutritionData = await searchFood('jollibee');
+				const nutritionData = await searchFood('kaya toast');
 				console.log(JSON.stringify(nutritionData));
 				const commonFoods = nutritionData.common || [];
 				const brandedFoods = nutritionData.branded || [];
@@ -92,15 +92,41 @@ function NLPSearch() {
 	);
 }
 
-const ApiTester = () => {
-	return (
-		<Box>
-			<Typography>API tester</Typography>
-			<NLPSearch />
-			<Typography>API tester</Typography>
-			<FoodSearch />
-		</Box>
-	);
-};
+class ApiTester extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			geoLocation: {},
+			geoError: null,
+			searchResults: [],
+		};
+	}
+
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition(
+			(e) => {
+				this.setState({
+					geoLocation: e.coords,
+				});
+			},
+			async (err) => {
+				this.setState({
+					geoError: err,
+				});
+			}
+		);
+	}
+
+	render() {
+		return (
+			<Box>
+				<Typography>API tester</Typography>
+				<NLPSearch />
+				<Typography>API tester</Typography>
+				<FoodSearch />
+			</Box>
+		);
+	}
+}
 
 export default ApiTester;

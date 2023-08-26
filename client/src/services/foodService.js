@@ -37,7 +37,6 @@ export const searchNutritionByFoodName = async (query) => {
 
 	try {
 		const response = await axios.request(config);
-		console.log(response);
 		return response.data;
 	} catch (error) {
 		console.log(error);
