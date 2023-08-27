@@ -8,7 +8,6 @@ import tt from '@tomtom-international/web-sdk-maps';
 
 const Nearby = () => {
 	const mapElement = useRef(null);
-	const [map, setMap] = useState(null);
 	const [markers, setMarkers] = useState([]);
 
 	const [geoLocation, setGeoLocation] = useState({ latitude: 1.296568, longitude: 103.852119 });
@@ -26,14 +25,11 @@ const Nearby = () => {
 				zoom: 13,
 			});
 
-			setMap(map);
 			setMarkers([]);
-
 			addMarkers(map);
 
 			return () => {
 				map.remove();
-				setMap(null);
 			};
 		}
 	}, [geoLocation]);
@@ -71,7 +67,6 @@ const Nearby = () => {
 				center: [geoLocation.longitude, geoLocation.latitude],
 				zoom: 13,
 			});
-			setMap(map);
 
 			// Add new markers based on the search query
 			await addMarkers(map);
