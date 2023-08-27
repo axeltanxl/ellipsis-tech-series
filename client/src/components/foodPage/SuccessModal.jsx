@@ -8,7 +8,7 @@ export const SuccessModal = () => {
 
 
         return (
-        <Dialog open={openDialog} onClose={() => dispatch(setSuccessModal(false))}>
+        <Dialog open={openDialog} onClose={() => {dispatch(setSuccessModal(false)); window.location.reload();}}>
             {!!open && <DisplayAnalysis/>}
         </Dialog>);
     }
