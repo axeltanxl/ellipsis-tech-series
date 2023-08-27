@@ -128,44 +128,46 @@ console.log(formatMeals(meals))
         />
       </div> */}
 
-      <div className="flex flex-col my-10 bg-white rounded-lg shadow-lg p-6">
-        <div className="flex flex-row justify-between items-center mb-4">
-          <div className="text-xl font-semibold worksans">Food Diary</div>
-          <button
-            className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm"
-            onClick={() => {
-              setOpenFoodEntry(true);
-              console.log("open:", openFoodEntry);
-            }}
-          >
-            Log Food
-          </button>
-        </div>
-        <div className="flex justify-center text-base md:text-lg lg:text-xl w-70 gap-1 items-center mb-4">
-          <div
-            className="p-2 w-10 text-center text-black bg-indigo-300 hover:bg-indigo-400 rounded-l cursor-pointer"
-            onClick={() => handleDateChange(-1)}
-          >
-            <i className="flex justify-center items-center fa-solid fa-caret-left">
-              <ArrowBackIosIcon />
-            </i>
+      <div className="mx-auto w-[95%]">
+        <div className="flex flex-col my-8 bg-white rounded-lg shadow-lg p-6">
+          <div className="flex flex-row justify-between items-center">
+            <div className="text-xl font-semibold worksans">Food Diary</div>
+            <button
+              className="px-3 py-1 rounded-lg bg-gray-100 border-0 hover:bg-indigo-200 text-sm"
+              onClick={() => {
+                setOpenFoodEntry(true);
+                console.log("open:", openFoodEntry);
+              }}
+            >
+              Log Food
+            </button>
           </div>
-          <div className="p-2 text-center text-base font-bold text-black bg-indigo-300 rounded">
-            {formattedDisplayedDate}
+          <div className="flex justify-center text-base md:text-lg lg:text-xl w-70 gap-1 items-center mb-4">
+            <div
+              className="p-2 w-10 text-center text-black bg-indigo-300 hover:bg-indigo-400 rounded-l cursor-pointer"
+              onClick={() => handleDateChange(-1)}
+            >
+              <i className="flex justify-center items-center fa-solid fa-caret-left">
+                <ArrowBackIosIcon />
+              </i>
+            </div>
+            <div className="p-2 text-center text-base font-bold text-black bg-indigo-300 rounded">
+              {formattedDisplayedDate}
+            </div>
+            <div
+              className="p-2 w-10 text-center text-black bg-indigo-300 hover:bg-indigo-400 rounded-r cursor-pointer"
+              onClick={() => handleDateChange(1)}
+            >
+              <i className="flex justify-center items-center fa-solid fa-caret-right">
+                <ArrowForwardIosIcon />
+              </i>
+            </div>
+            <div className="w-15 text-center text-2xl text-gray-600">
+              <i className="fa-solid fa-calendar-days"></i>
+            </div>
           </div>
-          <div
-            className="p-2 w-10 text-center text-black bg-indigo-300 hover:bg-indigo-400 rounded-r cursor-pointer"
-            onClick={() => handleDateChange(1)}
-          >
-            <i className="flex justify-center items-center fa-solid fa-caret-right">
-              <ArrowForwardIosIcon />
-            </i>
-          </div>
-          <div className="w-15 text-center text-2xl text-gray-600">
-            <i className="fa-solid fa-calendar-days"></i>
-          </div>
-        </div>
 
+<<<<<<< Updated upstream
         <div className="max-h-[300px] overflow-y-scroll">
           <table className="table-auto w-full">
             <thead className="sticky top-0 bg-white">
@@ -208,34 +210,80 @@ console.log(formatMeals(meals))
               ))}
             </tbody>
           </table>
+=======
+          <div className="max-h-[270px] overflow-y-scroll">
+            <table className="table-auto w-full">
+              <thead className="sticky top-0 bg-white">
+                <tr className="border-b border-gray-300">
+                  <th className="py-2">Food</th>
+                  <th className="py-2">Sodium</th>
+                  <th className="py-2">Sugar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mealCategories.map((category, index) => (
+                  <React.Fragment key={index}>
+                    <tr className="bg-indigo-100">
+                      <td className="p-3 font-bold">{category}</td>
+                      <td className="p-3 font-bold">
+                        {sumTotalSodium(
+                          filteredMeals.find((meal) => meal.name === category)
+                            ?.items || []
+                        )}
+                      </td>
+                      <td className="p-3 font-bold">
+                        {sumTotalSugar(
+                          filteredMeals.find((meal) => meal.name === category)
+                            ?.items || []
+                        )}
+                      </td>
+                    </tr>
+                    {filteredMeals
+                      .filter((meal) => meal.name === category)
+                      .map((meal, mealIndex) =>
+                        meal.items.map((item, itemIndex) => (
+                          <tr key={itemIndex} className="bg-gray-100">
+                            <td className="py-2 pl-6">{item.food}</td>
+                            <td className="py-2 pl-6">{item.sodium}</td>
+                            <td className="py-2 pl-6">{item.sugar}</td>
+                          </tr>
+                        ))
+                      )}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
+          </div>
+>>>>>>> Stashed changes
         </div>
+        <div className="flex flex-col my-8 bg-white rounded-lg shadow-lg pt-6 px-6">
+          <div className="flex flex-row justify-between items-center mb-2 w-1/2">
+            <div className="text-xl font-semibold worksans ">Analytics</div>
+            <div className="text-base pr-4">Jan - Jun 2023</div>
+          </div>
+          <div className="flex flex-row items-center mb-2">
+            <img
+              src="./src/assets/analytics.png"
+              alt="Chart"
+              className="object-cover object-left-top w-1/2 rounded-2xl mb-2"
+            />
+            <ul className="flex flex-col items-start pl-8 -mt-6 xs:text-sm md:text-base lg:text-lg">
+              <li className="text-green-700 py-2">
+                Your sodium and sugar consumption is within recommended levels
+              </li>
+              <li className="py-2">
+                Your sodium and sugar consumption was higher in April than other
+                months but is going down
+              </li>
+              <li className="py-2">
+                You can continue to manage your kidney healthy by eating healthy
+                and keeping active
+              </li>
+            </ul>
+          </div>
+        </div>
+        <SuccessModal />
       </div>
-      <div className="flex flex-col my-10 bg-white rounded-lg shadow-lg p-6">
-        <div className="flex flex-row justify-between items-center mb-2 w-1/2">
-          <div className="text-xl font-semibold worksans ">Analytics</div>
-          <div className="text-base">Jan - Jun 2023</div>
-        </div>
-        <div className="flex flex-row items-center mb-2">
-          <img
-            src="./src/assets/analytics.png"
-            alt="Chart"
-            className="object-cover object-left-top w-1/2 rounded-2xl mb-2"
-          />
-          <ul className="flex flex-col items-start pl-8 xs:text-sm md:text-base lg:text-lg">
-          <li className="text-green-700 py-2">
-              Your sodium and sugar consumption is within recommended levels
-            </li>
-            <li className="py-2">
-              Your sodium and sugar consumption was higher in April than other
-              months but is going down
-            </li>
-            <li className="py-2">
-              You can continue to manage your kidney healthy by eating healthy and keeping active
-            </li>
-          </ul>
-        </div>
-      </div>
-      <SuccessModal />
       <div>
         <FoodEntry open={openFoodEntry} setOpenFoodEntry={setOpenFoodEntry} />
       </div>
