@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Box, Typography } from "@mui/material";
-import Layout from "../components/Layout";
-import FoodEntry from "../components/foodPage/FoodEntry";
+import React, { useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import Layout from '../components/Layout';
+import FoodEntry from '../components/foodPage/FoodEntry';
 // import Table from "../components/foodPage/FoodTable";
 import { SuccessModal } from "../components/foodPage/SuccessModal";
 import { useCreateMeal } from "../hooks/requests/mealRoutes";
