@@ -87,6 +87,18 @@ const Nearby = () => {
 		);
 	}, []);
 
+	const onSearchChange = async (query) => {
+		if (query.length > 0) {
+			let results = await getNearbyPlaces(query, geoLocation.latitude, geoLocation.longitude);
+			setSearchResults(results);
+		}
+	};
+
+	const setPlace = (key) => {
+		let place = searchResults.find((p) => p.id === key);
+		setSelectedPlace(place);
+	};
+
 	return (
 		<Layout>
 			<Banner
