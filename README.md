@@ -13,7 +13,7 @@ Done by:
 
 Project Website: https://main.d2l4da9kol2mb2.amplifyapp.com/
 
-Pitch video: \<to add\>
+Pitch video: https://youtu.be/O9oCpB2nigk
 
 ## Project Introduction
 
