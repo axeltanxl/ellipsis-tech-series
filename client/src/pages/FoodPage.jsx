@@ -7,7 +7,7 @@ import { SuccessModal } from "../components/foodPage/SuccessModal";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import moment from 'moment';
-import { getFilteredMeals } from '../services/mealServices';
+import { useGetFilteredMeals } from '../hooks/requests/mealRoutes';
 
 const Food = () => {
     
