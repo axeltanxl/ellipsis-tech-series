@@ -55,7 +55,7 @@ const Food = () => {
         { food: "Banana", sodium: 150, sugar: 150 },
         { food: "Banana", sodium: 150, sugar: 150 },
       ],
-      date: "2023-08-27",
+      date: "2023-8-27",
     },
     {
       name: "Breakfast",
@@ -67,7 +67,7 @@ const Food = () => {
         { food: "Banana", sodium: 150, sugar: 150 },
         { food: "Banana", sodium: 150, sugar: 150 },
       ],
-      date: "2023-08-26",
+      date: "2023-08-27",
     },
     {
       name: "Lunch",
@@ -95,20 +95,8 @@ const Food = () => {
     },
   ];
 
-  const [todayDate, setTodayDate] = useState("");
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
-  let date = today.toDateString();
-  // to return the date number(1-31) for the specified date
-
-  //returns the tomorrow date
-  // console.log("tomorrow => ",tomorrow.toDateString())
-
-  // const handleTomorrowDate = () => {
-  //   let tomorrow = new Date();
-  //   tomorrow.setDate(today.getDate() + 1);
-  //   date = tomorrow.toDateString();
-  // };
 
   const [displayedDate, setDisplayedDate] = useState(today);
 
@@ -116,14 +104,20 @@ const Food = () => {
     const newDate = new Date(displayedDate);
     newDate.setDate(displayedDate.getDate() + nextDay);
     setDisplayedDate(newDate);
-    console.log(
-      newDate.getFullYear() + "-" + newDate.getMonth() + "-" + newDate.getDate()
-    );
   };
+
+  function formatDate(date) {
+    if (date[0] < 10) {
+      return date[2] + "-" + "0" + date[0] + "-" + date[1];
+    }
+
+    return date[2] + "-" + date[0] + "-" + date[1];
+  }
 
   const formattedDisplayedDate = displayedDate.toDateString();
   const filteredMeals = meals.filter(
-    (meal) => meal.date === displayedDate.toISOString().split("T")[0]
+    (meal) =>
+      meal.date === formatDate(displayedDate.toLocaleDateString().split("/"))
   );
 
   return (
