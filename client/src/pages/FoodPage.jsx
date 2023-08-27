@@ -5,11 +5,10 @@ import FoodEntry from "../components/foodPage/FoodEntry";
 // import Table from "../components/foodPage/FoodTable";
 import { SuccessModal } from "../components/foodPage/SuccessModal";
 import { useCreateMeal } from "../hooks/requests/mealRoutes";
-
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const Food = () => {
-    
-
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
@@ -118,19 +117,23 @@ const Food = () => {
       <div className="flex flex-col my-10 bg-white rounded-lg shadow-lg p-6">
         <div className="flex justify-center text-base md:text-lg lg:text-xl w-70 gap-1 items-center">
           <div
-            className="p-2 w-10 text-center text-black bg-light_green rounded-l cursor-pointer"
+            className="p-2 w-10 text-center text-black bg-indigo-300 hover:bg-indigo-400 rounded-l cursor-pointer"
             onClick={() => handleDateChange(-1)}
           >
-            <i className="fa-solid fa-caret-left"></i>
+            <i className="flex justify-center items-center fa-solid fa-caret-left">
+              <ArrowBackIosIcon />
+            </i>
           </div>
-          <div className="p-2 w-70 text-center text-lg font-bold text-black bg-light_green rounded">
+          <div className="p-2 text-center text-base font-bold text-black bg-indigo-300 rounded">
             {formattedDisplayedDate}
           </div>
           <div
-            className="p-2 w-10 text-center text-black bg-light_green rounded-r cursor-pointer"
+            className="p-2 w-10 text-center text-black bg-indigo-300 hover:bg-indigo-400 rounded-r cursor-pointer"
             onClick={() => handleDateChange(1)}
           >
-            <i className="fa-solid fa-caret-right"></i>
+            <i className="flex justify-center items-center fa-solid fa-caret-right">
+              <ArrowForwardIosIcon />
+            </i>
           </div>
           <div className="w-15 text-center text-2xl text-gray-600">
             <i className="fa-solid fa-calendar-days"></i>
@@ -155,7 +158,7 @@ const Food = () => {
             <tbody>
               {mealCategories.map((category, index) => (
                 <React.Fragment key={index}>
-                  <tr className="bg-light_purple">
+                  <tr className="bg-indigo-100">
                     <td className="p-3 font-bold">{category}</td>
                     <td className="p-3 font-bold">
                       {sumTotalSodium(
@@ -188,7 +191,9 @@ const Food = () => {
         </div>
       </div>
       <SuccessModal />
-      <div><FoodEntry /></div>
+      <div>
+        <FoodEntry />
+      </div>
     </Layout>
   );
 };
