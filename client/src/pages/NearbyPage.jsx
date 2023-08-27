@@ -127,87 +127,8 @@ const Nearby = () => {
     setSelectedPlace(place);
   };
 
-<<<<<<< Updated upstream
-	return (
-		<Layout>
-			{/* <Banner
-				geoLocation={geoLocation}
-				geoError={geoError}
-			/> */}
-			<div className="flex flex-col-reverse lg:flex-row pt-4">
-				<div className="lg:w-1/2 pt-4">
-					{/* Search bar */}
-					<div className="mb-4 flex items-center">
-						<input
-							type="text"
-							value={searchQuery}
-							onChange={(e) => setSearchQuery(e.target.value)}
-							placeholder="Enter your query..."
-							className="px-3 py-2 border rounded-md w-full"
-						/>
-						<button
-							onClick={handleSearch}
-							className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md"
-						>
-							Search
-						</button>
-					</div>
-
-					{/* Restaurant results */}
-					<div>
-						{restaurantResults.map((restaurant, index) => (
-							// give it a different colour backoground or smth
-							<div
-								key={index}
-								className="mb-4"
-							>
-								<h3 className="text-lg font-semibold">
-									{restaurant.restaurant_name}
-								</h3>
-								<p className="mb-2">
-									Location Count: {restaurant.locations.length}
-								</p>
-								<h4 className="font-semibold">Locations:</h4>
-								<ul className="pl-4 mb-2">
-									{restaurant.locations.map((location, locationIndex) => (
-										<li
-											key={locationIndex}
-											className="list-disc"
-										>
-											{location.poi.name} - {location.address.freeformAddress}
-										</li>
-									))}
-								</ul>
-								<h4 className="font-semibold">Food available</h4>
-								<ul className="pl-4">
-									{restaurant.available_options.map((food, foodIndex) => (
-										<li
-											key={foodIndex}
-											className="list-disc"
-										>
-											{food.food_name} - Sodium Intake (mg):{food.sodium_mg} -
-											Sugar Intake (g): {food.sugar_mg}
-										</li>
-									))}
-								</ul>
-							</div>
-						))}
-					</div>
-				</div>
-				<div className="lg:w-1/2">
-					{/* Map */}
-					<div
-						ref={mapElement}
-						className="w-full h-96"
-					></div>
-				</div>
-			</div>
-		</Layout>
-	);
-=======
   return (
     <Layout>
-      {/* <Banner geoLocation={geoLocation} geoError={geoError} /> */}
       <div className="flex flex-col w-[95%] mx-auto">
         <div className="w-full mt-8">
           {/* Map */}
@@ -269,7 +190,6 @@ const Nearby = () => {
       </div>
     </Layout>
   );
->>>>>>> Stashed changes
 };
 
 export default Nearby;
