@@ -23,6 +23,7 @@ const Food = () => {
         
     //     getFilteredMeals()
     // })
+    const [openFoodEntry, setOpenFoodEntry] = useState(false); 
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
@@ -150,7 +151,9 @@ const Food = () => {
 
         <div className="flex flex-row justify-between items-center mb-4">
           <div className="text-xl font-semibold">Food Diary</div>
-          <button className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm">
+          <button className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm"
+          onClick={() => {setOpenFoodEntry(true);console.log("open:" ,openFoodEntry);}}
+          >
             Log Food
           </button>
         </div>
@@ -199,8 +202,8 @@ const Food = () => {
         </div>
       </div>
       <SuccessModal />
-      <div>
-        <FoodEntry />
+      <div >
+        <FoodEntry open={openFoodEntry} setOpenFoodEntry={setOpenFoodEntry}/>
       </div>
     </Layout>
   );

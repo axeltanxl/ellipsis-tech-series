@@ -4,7 +4,7 @@ import { setSuccessModal } from "../../store/ExampleSlice";
 import DisplayAnalysis from "./DisplayAnalysis";
 export const SuccessModal = () => {
     const openDialog = useSelector((state) => state.example.successModal)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
 
         return (
