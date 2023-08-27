@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm, FormProvider, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -15,38 +15,56 @@ import {
   InputLabel,
 } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
-
+import CustomisedTextField from "../CustomisedTextField";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signUpSchema } from "../login/validationSchema";
+import { useRegister } from "../../hooks/requests/userRoutes";
 const SignupForm = () => {
   const navigate = useNavigate();
   const [hasClickedNext, setHasClickedNext] = useState(false);
-
-  function handleButtonClick() {
-    setHasClickedNext(!hasClickedNext);
-  }
+  const { mutate: signUp } = useRegister();
 
   const defaultValues = {
     name: "",
+    email: "",
+    password: "",
     age: "",
     height: "",
     weight: "",
-    isPatient: "",
+    activityLevel: "",
+    isCKD: "",
   };
+
+  const methods = useForm({
+    defaultValues: defaultValues,
+    resolver: yupResolver(signUpSchema),
+  });
+
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
-    defaultValues: defaultValues,
-  });
+    trigger,
+  } = methods;
+
+  async function handleButtonClick() {
+    const result = await trigger(["name", "email", "password"]);
+    if (result) {
+      setHasClickedNext(!hasClickedNext);
+    }
+  }
 
   const handleSave = (data) => {
+    console.log(errors);
+
     console.log("Updated account settings:", data);
+    signUp(data);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit(handleSave)} noValidate>
+      <form id="my-form" onSubmit={handleSubmit(handleSave)} noValidate>
         <div className={`flex flex-col ${hasClickedNext ? "hidden" : ""}`}>
           <Box display="flex" p="20px" pb="10px">
             <Grid
@@ -67,51 +85,27 @@ const SignupForm = () => {
                     key={index}
                     item={true}
                   >
-                    <label>{item.label}</label>
+                    {/* <label>{item.label}</label> */}
                     <Controller
                       name={item.name}
                       control={control}
                       render={({ field }) =>
                         item.name !== "password" ? (
-                          <TextField
-                            {...field}
-                            variant="outlined"
-                            size="small"
-                            sx={{
-                              "& .MuiOutlinedInput-root": {
-                                "&.Mui-focused fieldset": {
-                                  borderColor: "primary.main",
-                                },
-                              },
-                            }}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  {item.adornment}
-                                </InputAdornment>
-                              ),
-                            }}
+                          <CustomisedTextField
+                            field={field}
+                            errors={errors}
+                            name={item.name}
+                            label={item.label}
+                            adornment={item.adornment}
                           />
                         ) : (
-                          <TextField
-                            {...field}
-                            variant="outlined"
-                            size="small"
+                          <CustomisedTextField
+                            field={field}
+                            errors={errors}
+                            name={item.name}
+                            label={item.label}
+                            adornment={item.adornment}
                             type="password"
-                            sx={{
-                              "& .MuiOutlinedInput-root": {
-                                "&.Mui-focused fieldset": {
-                                  borderColor: "primary.main",
-                                },
-                              },
-                            }}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  {item.adornment}
-                                </InputAdornment>
-                              ),
-                            }}
                           />
                         )
                       }
@@ -163,30 +157,37 @@ const SignupForm = () => {
                     item={true}
                     className="xs:w-[350px]"
                   >
-                    <label>{item.label}</label>
+                    {/* <label>{item.label}</label> */}
                     <Controller
                       name={item.name}
                       control={control}
                       render={({ field }) =>
                         item.name !== "activityLevel" ? (
-                          <TextField
-                            {...field}
-                            variant="outlined"
-                            size="small"
-                            sx={{
-                              "& .MuiOutlinedInput-root": {
-                                "&.Mui-focused fieldset": {
-                                  borderColor: "primary.main",
-                                },
-                              },
-                            }}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  {item.adornment}
-                                </InputAdornment>
-                              ),
-                            }}
+                          //   <TextField
+                          //     {...field}
+                          //     variant="outlined"
+                          //     size="small"
+                          //     sx={{
+                          //       "& .MuiOutlinedInput-root": {
+                          //         "&.Mui-focused fieldset": {
+                          //           borderColor: "primary.main",
+                          //         },
+                          //       },
+                          //     }}
+                          //     InputProps={{
+                          //       endAdornment: (
+                          //         <InputAdornment position="end">
+                          //           {item.adornment}
+                          //         </InputAdornment>
+                          //       ),
+                          //     }}
+                          //   />
+                          <CustomisedTextField
+                            field={field}
+                            errors={errors}
+                            name={item.name}
+                            label={item.label}
+                            adornment={item.adornment}
                           />
                         ) : (
                           <FormControl>
@@ -197,7 +198,7 @@ const SignupForm = () => {
                                   <MenuItem
                                     key={option}
                                     value={option}
-                                    InputProps={{ dense: true }}
+                                    // InputProps={{ dense: true }}
                                   >
                                     {option}
                                   </MenuItem>
@@ -215,7 +216,7 @@ const SignupForm = () => {
           <div className="flex flex-col justify-center mb-4">
             <Grid className="flex justify-center items-center" item={true}>
               <Controller
-                name={"isPatient"}
+                name={"isCKD"}
                 control={control}
                 render={({ field }) => (
                   <FormControlLabel
@@ -230,7 +231,10 @@ const SignupForm = () => {
           <Box className="flex flex-col justify-center items-center">
             <button
               className="py-2 w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
-              onClick={() => navigate("/")}
+              onClick={console.log(errors)}
+              // type="submit" form='my-form'
+              type="submit"
+              form="my-form"
             >
               Submit
             </button>

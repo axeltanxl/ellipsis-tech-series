@@ -1,0 +1,360 @@
+{
+    "summary": {
+        "query": "soup and rice",
+        "queryType": "NON_NEAR",
+        "queryTime": 57,
+        "numResults": 5,
+        "offset": 0,
+        "totalResults": 5,
+        "fuzzyLevel": 1
+    },
+    "results": [
+        {
+            "type": "POI",
+            "id": "LbrfZHhx3oOD0o_DbIdsqw",
+            "score": 4.0281567574,
+            "info": "search:ta:036009005698779-AU",
+            "poi": {
+                "name": "Rice Kitchen",
+                "categorySet": [
+                    {
+                        "id": 7315140
+                    }
+                ],
+                "url": "www.ricekitchen.com.au",
+                "categories": [
+                    "restaurant",
+                    "soup"
+                ],
+                "classifications": [
+                    {
+                        "code": "RESTAURANT",
+                        "names": [
+                            {
+                                "nameLocale": "en-US",
+                                "name": "restaurant"
+                            },
+                            {
+                                "nameLocale": "en-US",
+                                "name": "soup"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "address": {
+                "streetNumber": "212",
+                "streetName": "Clarendon Street",
+                "municipalitySubdivision": "South Melbourne",
+                "municipality": "Melbourne",
+                "countrySecondarySubdivision": "Melbourne",
+                "countrySubdivision": "Victoria",
+                "postalCode": "3205",
+                "countryCode": "AU",
+                "country": "Australia",
+                "countryCodeISO3": "AUS",
+                "freeformAddress": "212 Clarendon Street, South Melbourne, Victoria, 3205",
+                "localName": "South Melbourne"
+            },
+            "position": {
+                "lat": -37.831089,
+                "lon": 144.959412
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": -37.83019,
+                    "lon": 144.95827
+                },
+                "btmRightPoint": {
+                    "lat": -37.83199,
+                    "lon": 144.96055
+                }
+            },
+            "entryPoints": [
+                {
+                    "type": "main",
+                    "position": {
+                        "lat": -37.83125,
+                        "lon": 144.95971
+                    }
+                }
+            ]
+        },
+        {
+            "type": "POI",
+            "id": "Z_2NjWlXtXmO04O9yr6B_w",
+            "score": 4.0281567574,
+            "info": "search:ta:124489002993773-CA",
+            "poi": {
+                "name": "Pho & Rice",
+                "phone": "+1 403-782-7366",
+                "categorySet": [
+                    {
+                        "id": 7315140
+                    }
+                ],
+                "url": "pho-rice-restaurant.business.site/",
+                "categories": [
+                    "restaurant",
+                    "soup"
+                ],
+                "classifications": [
+                    {
+                        "code": "RESTAURANT",
+                        "names": [
+                            {
+                                "nameLocale": "en-US",
+                                "name": "restaurant"
+                            },
+                            {
+                                "nameLocale": "en-US",
+                                "name": "soup"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "address": {
+                "streetNumber": "5830",
+                "streetName": "Highway 2 A",
+                "municipality": "Lacombe",
+                "countrySubdivision": "AB",
+                "countrySubdivisionName": "Alberta",
+                "postalCode": "T4L",
+                "extendedPostalCode": "T4L 2G5",
+                "countryCode": "CA",
+                "country": "Canada",
+                "countryCodeISO3": "CAN",
+                "freeformAddress": "5830 Highway 2 A, Lacombe AB T4L 2G5",
+                "localName": "Lacombe"
+            },
+            "position": {
+                "lat": 52.473834,
+                "lon": -113.718042
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 52.47473,
+                    "lon": -113.71952
+                },
+                "btmRightPoint": {
+                    "lat": 52.47293,
+                    "lon": -113.71657
+                }
+            },
+            "entryPoints": [
+                {
+                    "type": "main",
+                    "position": {
+                        "lat": 52.47467,
+                        "lon": -113.71714
+                    }
+                }
+            ]
+        },
+        {
+            "type": "POI",
+            "id": "W9lj3dkiNA0Rn2508EI4vg",
+            "score": 4.0281567574,
+            "info": "search:ta:344009000352175-HK",
+            "poi": {
+                "name": "Soup & Rice",
+                "categorySet": [
+                    {
+                        "id": 7315140
+                    }
+                ],
+                "categories": [
+                    "restaurant",
+                    "soup"
+                ],
+                "classifications": [
+                    {
+                        "code": "RESTAURANT",
+                        "names": [
+                            {
+                                "nameLocale": "en-US",
+                                "name": "restaurant"
+                            },
+                            {
+                                "nameLocale": "en-US",
+                                "name": "soup"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "address": {
+                "streetNumber": "104",
+                "streetName": "Soy Street",
+                "municipalitySubdivision": "Mong Kok",
+                "municipality": "Hong Kong",
+                "countrySubdivision": "Hong Kong",
+                "countryCode": "HK",
+                "country": "Hong Kong SAR",
+                "countryCodeISO3": "HKG",
+                "freeformAddress": "104, Soy Street, Mong Kok, Yau Tsim Mong District, Hong Kong",
+                "localName": "Yau Tsim Mong District"
+            },
+            "position": {
+                "lat": 22.316289,
+                "lon": 114.168814
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 22.31719,
+                    "lon": 114.16784
+                },
+                "btmRightPoint": {
+                    "lat": 22.31539,
+                    "lon": 114.16979
+                }
+            },
+            "entryPoints": [
+                {
+                    "type": "main",
+                    "position": {
+                        "lat": 22.31636,
+                        "lon": 114.1687
+                    }
+                }
+            ]
+        },
+        {
+            "type": "POI",
+            "id": "6MLTJ0DcxKYwO-2pY1o5mA",
+            "score": 4.0281567574,
+            "info": "search:ta:344009000459948-HK",
+            "poi": {
+                "name": "Soup & Rice",
+                "categorySet": [
+                    {
+                        "id": 7315140
+                    }
+                ],
+                "categories": [
+                    "restaurant",
+                    "soup"
+                ],
+                "classifications": [
+                    {
+                        "code": "RESTAURANT",
+                        "names": [
+                            {
+                                "nameLocale": "en-US",
+                                "name": "restaurant"
+                            },
+                            {
+                                "nameLocale": "en-US",
+                                "name": "soup"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "address": {
+                "streetName": "Soy Street",
+                "municipalitySubdivision": "Mong Kok",
+                "municipality": "Hong Kong",
+                "countrySubdivision": "Hong Kong",
+                "countryCode": "HK",
+                "country": "Hong Kong SAR",
+                "countryCodeISO3": "HKG",
+                "freeformAddress": "Soy Street, Mong Kok, Yau Tsim Mong District, Hong Kong",
+                "localName": "Yau Tsim Mong District"
+            },
+            "position": {
+                "lat": 22.316964,
+                "lon": 114.172628
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 22.31786,
+                    "lon": 114.17166
+                },
+                "btmRightPoint": {
+                    "lat": 22.31606,
+                    "lon": 114.1736
+                }
+            },
+            "entryPoints": [
+                {
+                    "type": "main",
+                    "position": {
+                        "lat": 22.31706,
+                        "lon": 114.17264
+                    }
+                }
+            ]
+        },
+        {
+            "type": "POI",
+            "id": "xHIrXgj0tp3XqwJpiZFthg",
+            "score": 4.0281567574,
+            "info": "search:ta:356007000304112-IN",
+            "poi": {
+                "name": "Rice Bowl",
+                "categorySet": [
+                    {
+                        "id": 7315140
+                    }
+                ],
+                "categories": [
+                    "restaurant",
+                    "soup"
+                ],
+                "classifications": [
+                    {
+                        "code": "RESTAURANT",
+                        "names": [
+                            {
+                                "nameLocale": "en-US",
+                                "name": "restaurant"
+                            },
+                            {
+                                "nameLocale": "en-US",
+                                "name": "soup"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "address": {
+                "streetName": "Kumily Thekkady Road",
+                "municipalitySubdivision": "Kumily",
+                "municipality": "Peerumade",
+                "countrySecondarySubdivision": "Idukki",
+                "countrySubdivision": "Kerala",
+                "postalCode": "685509",
+                "countryCode": "IN",
+                "country": "India",
+                "countryCodeISO3": "IND",
+                "freeformAddress": "Kumily Thekkady Road, Kumily, Peerumade 685509, Kerala",
+                "localName": "Peerumade"
+            },
+            "position": {
+                "lat": 9.606083,
+                "lon": 77.166832
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 9.60698,
+                    "lon": 77.16592
+                },
+                "btmRightPoint": {
+                    "lat": 9.60518,
+                    "lon": 77.16774
+                }
+            },
+            "entryPoints": [
+                {
+                    "type": "main",
+                    "position": {
+                        "lat": 9.60604,
+                        "lon": 77.16733
+                    }
+                }
+            ]
+        }
+    ]
+}

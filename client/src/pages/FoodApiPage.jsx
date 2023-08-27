@@ -1,22 +1,31 @@
 import Layout from '../components/Layout';
 import { useEffect, useState } from 'react';
-import { searchFood, searchNutritionByFoodName, searchFoodWithNLP } from '../services/foodService';
+import {
+	searchFood,
+	searchNutritionByFoodName,
+	searchFoodWithNLP,
+	fuzzySearchFoodByLocation,
+} from '../services/foodService';
 
 const FoodApi = () => {
 	return (
 		<Layout>
-			<h1>NLP search</h1>
-			<NLPSearch />
-			<h1>Food or restaurant search</h1>
-			<FoodSearch />
+			<FoodLocationSearch />
 		</Layout>
 	);
+};
+
+const FoodLocationSearch = async () => {
+	await fuzzySearchFoodByLocation('burger');
+	// return <p>hi</p>;
 };
 
 function FoodSearch() {
 	const [foods, setFoods] = useState([]);
 	const [restaurants, setRestaurants] = useState([]);
-	useEffect(() => {
+
+	const firstUpdate = useRef(true);
+	useLayoutEffect(() => {
 		async function fetchData() {
 			try {
 				const nutritionData = await searchFood('kaya toast');
@@ -31,7 +40,12 @@ function FoodSearch() {
 			}
 		}
 
-		fetchData();
+		if (firstUpdate.current) {
+			firstUpdate.current = false;
+			fetchData();
+		}
+
+		return;
 	}, []);
 
 	return (
@@ -69,7 +83,9 @@ function FoodSearch() {
 
 function NLPSearch() {
 	const [foods, setFoods] = useState([]);
-	useEffect(() => {
+
+	const firstUpdate = useRef(true);
+	useLayoutEffect(() => {
 		async function fetchData() {
 			try {
 				const nutritionData = await searchFoodWithNLP('2 eggs and 1 bacon');
@@ -82,7 +98,11 @@ function NLPSearch() {
 			}
 		}
 
-		fetchData();
+		if (firstUpdate.current) {
+			firstUpdate.current = false;
+			fetchData();
+		}
+		return;
 	}, []);
 
 	return (

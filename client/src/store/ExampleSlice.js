@@ -14,6 +14,8 @@ const initialState = {
         location : "",
         foodEntry: ""
     },
+    mealData : [],
+
 }
 
 
@@ -27,12 +29,15 @@ export const generalSlice = createSlice({
         setSodiumData : (state, action) => {
             state.sodiumData = {...action.payload}
         },
+        setMealData : (state, action) => {
+            state.mealData = [...action.payload]
+        },
     }
 })
 
 
 export const {
-   setSuccessModal, setSodiumData
+   setSuccessModal, setSodiumData, setMealData
 } = generalSlice.actions;
 
 

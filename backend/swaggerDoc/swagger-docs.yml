@@ -137,28 +137,9 @@ paths:
                   type: string
                   enum:
                     - "BREAKFAST"
-                    - "BRUNCH"
                     - "LUNCH"
-                    - "TEA"
                     - "DINNER"
-                    - "SUPPER"
                     - "SNACK"
-                    - "DESSERT"
-                description:
-                  type: string
-                  enum:
-                    - HOME-COOKED
-                    - RESTAURANT
-                    - TAKEAWAY
-                location:
-                  type: object
-                  properties:
-                    longitude:
-                      type: string
-                    latitude:
-                      type: string
-                    address:
-                      type: string
       responses:
         '200': 
           description: When a user successfully logs a meal
@@ -188,28 +169,9 @@ paths:
                         type: string
                         enum:
                           - "BREAKFAST"
-                          - "BRUNCH"
                           - "LUNCH"
-                          - "TEA"
                           - "DINNER"
-                          - "SUPPER"
                           - "SNACK"
-                          - "DESSERT"
-                      description:
-                        type: string
-                        enum:
-                          - HOME-COOKED
-                          - RESTAURANT
-                          - TAKEAWAY
-                      location:
-                        type: object
-                        properties:
-                          longitude:
-                            type: string
-                          latitude:
-                            type: string
-                          address:
-                            type: string
                         id:
                           type: string
                           format: mongoose.Types.ObjectId
@@ -253,96 +215,12 @@ paths:
                         type: string
                         enum:
                           - "BREAKFAST"
-                          - "BRUNCH"
                           - "LUNCH"
-                          - "TEA"
                           - "DINNER"
-                          - "SUPPER"
                           - "SNACK"
-                          - "DESSERT"
-                      description:
-                        type: string
-                        enum:
-                          - HOME-COOKED
-                          - RESTAURANT
-                          - TAKEAWAY
-                      location:
-                        type: object
-                        properties:
-                          longitude:
-                            type: string
-                          latitude:
-                            type: string
-                          address:
-                            type: string
-                        id:
-                          type: string
-                          format: mongoose.Types.ObjectId
-        '500': 
-          description: Any form of server error if the data was not able to write into database successfully
-      security:
-        - bearerAuth: []
-  /api/meals/mealLocations:
-    get:
-      tags:
-        - meal
-      summary: To get the locations of all meals
-      description: Logged-in users can access all the meals of theirs that were not home-cooked, and from there determine the locations
-      operationId: getAllUserMealsWLocations
-      responses:
-        '200': 
-          description: When a user successfully gets the information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: "SUCCESS"
-                  data:
-                    type: object
-                    properties:
-                      food:
-                        type: string
-                      userId: 
+                      id:
                         type: string
                         format: mongoose.Types.ObjectId
-                      time: 
-                        type: string
-                        format: date
-                      sodiumAmount:
-                        type: integer
-                        format: int64
-                      mealType:
-                        type: string
-                        enum:
-                          - "BREAKFAST"
-                          - "BRUNCH"
-                          - "LUNCH"
-                          - "TEA"
-                          - "DINNER"
-                          - "SUPPER"
-                          - "SNACK"
-                          - "DESSERT"
-                      description:
-                        type: string
-                        enum:
-                          - HOME-COOKED
-                          - RESTAURANT
-                          - TAKEAWAY
-                      location:
-                        type: object
-                        properties:
-                          longitude:
-                            type: string
-                          latitude:
-                            type: string
-                          address:
-                            type: string
-                        id:
-                          type: string
-                          format: mongoose.Types.ObjectId
         '500': 
           description: Any form of server error if the data was not able to write into database successfully
       security:
@@ -396,31 +274,12 @@ paths:
                         type: string
                         enum:
                           - "BREAKFAST"
-                          - "BRUNCH"
                           - "LUNCH"
-                          - "TEA"
                           - "DINNER"
-                          - "SUPPER"
                           - "SNACK"
-                          - "DESSERT"
-                      description:
+                      id:
                         type: string
-                        enum:
-                          - HOME-COOKED
-                          - RESTAURANT
-                          - TAKEAWAY
-                      location:
-                        type: object
-                        properties:
-                          longitude:
-                            type: string
-                          latitude:
-                            type: string
-                          address:
-                            type: string
-                        id:
-                          type: string
-                          format: mongoose.Types.ObjectId
+                        format: mongoose.Types.ObjectId
         '500': 
           description: Any form of server error if the data was not able to write into database successfully
       security:
@@ -461,28 +320,9 @@ paths:
                         type: string
                         enum:
                           - "BREAKFAST"
-                          - "BRUNCH"
                           - "LUNCH"
-                          - "TEA"
                           - "DINNER"
-                          - "SUPPER"
                           - "SNACK"
-                          - "DESSERT"
-                      description:
-                        type: string
-                        enum:
-                          - HOME-COOKED
-                          - RESTAURANT
-                          - TAKEAWAY
-                      location:
-                        type: object
-                        properties:
-                          longitude:
-                            type: string
-                          latitude:
-                            type: string
-                          address:
-                            type: string
                         id:
                           type: string
                           format: mongoose.Types.ObjectId

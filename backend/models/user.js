@@ -38,6 +38,9 @@ const userSchema = new mongoose.Schema({
   recommendedSodiumIntake: {
     type: Number,
     default: 1500
+  },
+  recommendedSugarIntake: {
+    type: Number
   }
 })
 
