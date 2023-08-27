@@ -65,7 +65,7 @@ const DisplayAnalysis = () => {
         <DialogTitle>Food: {food}</DialogTitle>
         <DialogTitle>Estimated Sodium Consumption: {sodiumLevel}</DialogTitle>
         <DialogTitle>Estimated Sugar Consumption: {sugarLevel}</DialogTitle>
-        <DialogActions>
+        {/* <DialogActions>
           <Button
             onClick={() => {
               dispatch(setSuccessModal(false));
@@ -74,7 +74,7 @@ const DisplayAnalysis = () => {
           >
             OK
           </Button>
-        </DialogActions>
+        </DialogActions> */}
       </div>
     );
   }

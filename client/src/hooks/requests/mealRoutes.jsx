@@ -10,7 +10,7 @@ export const useCreateMeal = () => {
     return useMutation(createMeal, {
         onSuccess : (data) => {
             console.log(data)
-            window.location.reload()
+            setTimeout(() => window.location.reload(), 1000)
         },
         onError : (err)=> {
             const errorMessage = err.response.data.message 
@@ -42,7 +42,7 @@ export const useGetFilteredMeals = () => {
     const dispatch = useDispatch()
     return useMutation(getFilteredMeals, {
         onSuccess : (data) => {
-            console.log(data)
+            console.log(data);
             dispatch(setMealFiltered(data))
         },
         onError : (err)=> {

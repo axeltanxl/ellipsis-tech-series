@@ -112,7 +112,7 @@ console.log(formatMeals(meals))
     (meal) =>
       meal.date ===
       formatDate(displayedDate.toLocaleDateString("en-US").split("/"))
-  );
+  ).reverse();
 
   return (
     <Layout>
