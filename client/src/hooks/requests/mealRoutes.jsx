@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { getUserMeals, createMeal, getSingleMeal, getFilteredMeals } from "../../services/mealServices"
-
+import { useDispatch } from "react-redux"
+import { setMealFiltered } from "../../store/ExampleSlice"
 export const useGetUserMeals = () => {
     return useQuery(["All Meals"], getUserMeals)
 }
@@ -37,9 +38,11 @@ export const useGetSingleMeal = (id) => {
 
 
 export const useGetFilteredMeals = () => {
+    const dispatch = useDispatch()
     return useMutation(getFilteredMeals, {
         onSuccess : (data) => {
             console.log(data)
+            dispatch(setMealFiltered(data))
         },
         onError : (err)=> {
             const errorMessage = err.response.data.message 

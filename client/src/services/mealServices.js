@@ -29,7 +29,7 @@ export const getFilteredMeals = async (dateRange) => {
         data: dateRange
     })
     console.log(res);
-    return res.data;
+    return res.data.data;
 }
 
 export const createMeal = async (meal) => {

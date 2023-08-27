@@ -37,7 +37,7 @@ const FoodEntry = ({ open, setOpenFoodEntry }) => {
   return (
     <Modal
       open={open}
-      onClose={() => setOpenFoodEntry(false)}
+      onClose={() => {setOpenFoodEntry(false);}}
       sx={{
         width: "100%",
         height: "100%",

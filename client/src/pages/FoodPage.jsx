@@ -8,21 +8,42 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // import moment from 'moment';
 import { useGetFilteredMeals } from "../hooks/requests/mealRoutes";
+import { useSelector } from "react-redux";
 
 const Food = () => {
-  // let tdy = moment();
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    const mealCategories = ["Breakfast", "Lunch", "Dinner", "Snack"];
+    
+    const [displayedDate, setDisplayedDate] = useState(today);
+    const [openFoodEntry, setOpenFoodEntry] = useState(false);
+    const { mutate : getFilteredMeals } = useGetFilteredMeals();
 
-  // let tmr  = moment().add(1, 'days');
 
-  // console.log(tdy.format("DD-MM-YYYY"));
-  // console.log(tmr.format("DD-MM-YYYY"));
-  // const {mutate : getFilteredMeals} = useGetFilteredMeals();
+    const handleDateChange = (nextDay) => {
+        const newDate = new Date(displayedDate);
+        newDate.setDate(displayedDate.getDate() + nextDay);
+        setDisplayedDate(newDate);
+        console.log(displayedDate.toLocaleDateString("en-US"));
+      };
 
-  // useEffect(()=>{
+      useEffect(() => {
+          let tdy = today.toISOString().split('T')[0]
+          const temp = new Date(today)
+          temp.setDate(temp.getDate() + 1)
+          let tmr =  temp.toISOString().split('T')[0]
+          console.log(tdy)
+          console.log(tmr)
+        const x = getFilteredMeals({startDate : tdy, endDate : tmr})
+        console.log(x)
+      }, [displayedDate])
 
-  //     getFilteredMeals()
-  // })
-  const [openFoodEntry, setOpenFoodEntry] = useState(false);
+    
+    // let filteredMeals = getFilteredMeals()
+//     getFilteredMeals({
+//         startDate: "2023-08-26",
+//         endDate: "2023-08-27"})
+
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
@@ -39,72 +60,43 @@ const Food = () => {
     }
 
     return result;
-  }
+}
 
-  const mealCategories = ["Breakfast", "Lunch", "Dinner", "Snack"];
+  
 
-  const meals = [
-    {
-      name: "Breakfast",
-      items: [
-        { food: "Oatmeal", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-      ],
-      date: "2023-08-27",
-    },
-    {
-      name: "Breakfast",
-      items: [
-        { food: "Oatmeal", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-      ],
-      date: "2023-08-27",
-    },
-    {
-      name: "Lunch",
-      items: [
-        { food: "Grilled Chicken", sodium: 150, sugar: 150 },
-        { food: "Salad", sodium: 150, sugar: 150 },
-      ],
-      date: "2023-08-26",
-    },
-    {
-      name: "Dinner",
-      items: [
-        { food: "Oatmeal", sodium: 150, sugar: 150 },
-        { food: "Banana", sodium: 150, sugar: 150 },
-      ],
-      date: "2023-08-26",
-    },
-    {
-      name: "Snack",
-      items: [
-        { food: "Grilled Chicken", sodium: 150, sugar: 150 },
-        { food: "Salad", sodium: 150, sugar: 150 },
-      ],
-      date: "2023-08-26",
-    },
-  ];
 
-  const timeElapsed = Date.now();
-  const today = new Date(timeElapsed);
+  const meals = useSelector((state) => state.example.mealFiltered);
+  console.log(meals)
+//   const x = meals.filter(
+//     (meal) =>
+//       meal.date ===
+//       formatDate(displayedDate.toLocaleDateString("en-US").split("/"))
+//   );
+//   console.log(x)
 
-  const [displayedDate, setDisplayedDate] = useState(today);
+const formatMeals = (meals) => {
+    return (meals.map((meal) => {
+        // console.log(meal.time)
+        const { food, mealType, time, sodiumAmount, sugarAmount} = meal
+        return {name : mealType, date : time.split('T')[0], items : [{food : food, sodium : sodiumAmount, sugar : sugarAmount}]};
+    }))
+}
 
-  const handleDateChange = (nextDay) => {
-    const newDate = new Date(displayedDate);
-    newDate.setDate(displayedDate.getDate() + nextDay);
-    setDisplayedDate(newDate);
-    console.log(displayedDate.toLocaleDateString("en-US"));
-  };
+const formattedMeals = formatMeals(meals)
+console.log(formatMeals(meals))
+// {
+    //       name: "Breakfast",
+    //       items: [
+    //         { food: "Oatmeal", sodium: 150, sugar: 150 },
+    //         { food: "Banana", sodium: 150, sugar: 150 },
+    //         { food: "Banana", sodium: 150, sugar: 150 },
+    //         { food: "Banana", sodium: 150, sugar: 150 },
+    //         { food: "Banana", sodium: 150, sugar: 150 },
+    //         { food: "Banana", sodium: 150, sugar: 150 },
+    //       ],
+    //       date: "2023-08-27",
+    //     },
+
 
   function formatDate(date) {
     if (date[0].length === 1) {
@@ -115,7 +107,7 @@ const Food = () => {
   }
 
   const formattedDisplayedDate = displayedDate.toDateString();
-  const filteredMeals = meals.filter(
+  const filteredMeals = formattedMeals.filter(
     (meal) =>
       meal.date ===
       formatDate(displayedDate.toLocaleDateString("en-US").split("/"))
@@ -189,19 +181,19 @@ const Food = () => {
                     <td className="p-3 font-bold">{category}</td>
                     <td className="p-3 font-bold">
                       {sumTotalSodium(
-                        filteredMeals.find((meal) => meal.name === category)
+                        filteredMeals.find((meal) => meal.name === category.toUpperCase())
                           ?.items || []
                       )}
                     </td>
                     <td className="p-3 font-bold">
                       {sumTotalSugar(
-                        filteredMeals.find((meal) => meal.name === category)
+                        filteredMeals.find((meal) => meal.name === category.toUpperCase())
                           ?.items || []
                       )}
                     </td>
                   </tr>
                   {filteredMeals
-                    .filter((meal) => meal.name === category)
+                    .filter((meal) => meal.name === category.toUpperCase())
                     .map((meal, mealIndex) =>
                       meal.items.map((item, itemIndex) => (
                         <tr key={itemIndex} className="bg-gray-100">
@@ -251,3 +243,68 @@ const Food = () => {
 };
 
 export default Food;
+
+// const meals = [
+//     {
+//       name: "Breakfast",
+//       items: [
+//         { food: "Oatmeal", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//       ],
+//       date: "2023-08-27",
+//     },
+//     {
+//       name: "Breakfast",
+//       items: [
+//         { food: "Oatmeal", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//       ],
+//       date: "2023-08-27",
+//     },
+//     {
+//       name: "Lunch",
+//       items: [
+//         { food: "Grilled Chicken", sodium: 150, sugar: 150 },
+//         { food: "Salad", sodium: 150, sugar: 150 },
+//       ],
+//       date: "2023-08-26",
+//     },
+//     {
+//       name: "Dinner",
+//       items: [
+//         { food: "Oatmeal", sodium: 150, sugar: 150 },
+//         { food: "Banana", sodium: 150, sugar: 150 },
+//       ],
+//       date: "2023-08-26",
+//     },
+//     {
+//       name: "Snack",
+//       items: [
+//         { food: "Grilled Chicken", sodium: 150, sugar: 150 },
+//         { food: "Salad", sodium: 150, sugar: 150 },
+//       ],
+//       date: "2023-08-26",
+//     },
+//   ];
+
+
+// let tdy = moment();
+
+  // let tmr  = moment().add(1, 'days');
+
+  // console.log(tdy.format("DD-MM-YYYY"));
+  // console.log(tmr.format("DD-MM-YYYY"));
+  // const {mutate : getFilteredMeals} = useGetFilteredMeals();
+
+  // useEffect(()=>{
+
+  //     getFilteredMeals()
+  // })
