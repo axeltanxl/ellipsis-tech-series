@@ -36,7 +36,7 @@ const Food = () => {
           console.log(tmr)
         const x = getFilteredMeals({startDate : tdy, endDate : tmr})
         console.log(x)
-        queryClient.invalidateQueries("")
+        // queryClient.invalidateQueries("")
       }, [displayedDate, openFoodEntry])
 
     
@@ -167,50 +167,6 @@ console.log(formatMeals(meals))
             </div>
           </div>
 
-<<<<<<< Updated upstream
-        <div className="max-h-[300px] overflow-y-scroll">
-          <table className="table-auto w-full">
-            <thead className="sticky top-0 bg-white">
-              <tr className="border-b border-gray-300">
-                <th className="py-2">Food</th>
-                <th className="py-2">Sodium</th>
-                <th className="py-2">Sugar</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mealCategories.map((category, index) => (
-                <React.Fragment key={index}>
-                  <tr className="bg-indigo-100">
-                    <td className="p-3 font-bold">{category}</td>
-                    <td className="p-3 font-bold">
-                      {sumTotalSodium(
-                        filteredMeals.find((meal) => meal.name === category.toUpperCase())
-                          ?.items || []
-                      )}
-                    </td>
-                    <td className="p-3 font-bold">
-                      {sumTotalSugar(
-                        filteredMeals.find((meal) => meal.name === category.toUpperCase())
-                          ?.items || []
-                      )}
-                    </td>
-                  </tr>
-                  {filteredMeals
-                    .filter((meal) => meal.name === category.toUpperCase())
-                    .map((meal, mealIndex) =>
-                      meal.items.map((item, itemIndex) => (
-                        <tr key={itemIndex} className="bg-gray-100">
-                          <td className="py-2 pl-6">{item.food}</td>
-                          <td className="py-2 pl-6">{item.sodium}</td>
-                          <td className="py-2 pl-6">{item.sugar}</td>
-                        </tr>
-                      ))
-                    )}
-                </React.Fragment>
-              ))}
-            </tbody>
-          </table>
-=======
           <div className="max-h-[270px] overflow-y-scroll">
             <table className="table-auto w-full">
               <thead className="sticky top-0 bg-white">
@@ -254,7 +210,6 @@ console.log(formatMeals(meals))
               </tbody>
             </table>
           </div>
->>>>>>> Stashed changes
         </div>
         <div className="flex flex-col my-8 bg-white rounded-lg shadow-lg pt-6 px-6">
           <div className="flex flex-row justify-between items-center mb-2 w-1/2">
