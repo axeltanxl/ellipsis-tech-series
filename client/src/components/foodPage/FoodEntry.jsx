@@ -115,8 +115,7 @@ const FoodEntry = ({open, setOpenFoodEntry}) => {
             <img
                 src={"./images/yoghurtBowl.webp"}
                 style={{objectFit : "scale-down"}}
-                width="50%"
-                height="50%"
+                width="30%"
                 // className="w-2/5 max-w-[300px] max-h-[300px] mx-12 object-contain"
               />
               <div>
