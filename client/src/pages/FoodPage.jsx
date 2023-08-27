@@ -6,8 +6,8 @@ import FoodEntry from "../components/foodPage/FoodEntry";
 import { SuccessModal } from "../components/foodPage/SuccessModal";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import moment from 'moment';
-import { useGetFilteredMeals } from '../hooks/requests/mealRoutes';
+// import moment from 'moment';
+import { useGetFilteredMeals } from "../hooks/requests/mealRoutes";
 
 const Food = () => {
   // let tdy = moment();
@@ -18,11 +18,11 @@ const Food = () => {
   // console.log(tmr.format("DD-MM-YYYY"));
   // const {mutate : getFilteredMeals} = useGetFilteredMeals();
 
-    // useEffect(()=>{
-        
-    //     getFilteredMeals()
-    // })
-    const [openFoodEntry, setOpenFoodEntry] = useState(false); 
+  // useEffect(()=>{
+
+  //     getFilteredMeals()
+  // })
+  const [openFoodEntry, setOpenFoodEntry] = useState(false);
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
@@ -103,7 +103,7 @@ const Food = () => {
     const newDate = new Date(displayedDate);
     newDate.setDate(displayedDate.getDate() + nextDay);
     setDisplayedDate(newDate);
-    console.log(displayedDate.toLocaleDateString('en-US'))
+    console.log(displayedDate.toLocaleDateString("en-US"));
   };
 
   function formatDate(date) {
@@ -117,13 +117,38 @@ const Food = () => {
   const formattedDisplayedDate = displayedDate.toDateString();
   const filteredMeals = meals.filter(
     (meal) =>
-      meal.date === formatDate(displayedDate.toLocaleDateString('en-US').split("/"))
+      meal.date ===
+      formatDate(displayedDate.toLocaleDateString("en-US").split("/"))
   );
 
   return (
     <Layout>
+      {/* <div className="flex flex-col my-10 bg-white rounded-lg shadow-lg p-6">
+        <div className="flex flex-row justify-between items-center mb-2">
+          <div className="text-xl font-semibold worksans ">Analytics</div>
+          <div className="text-base">Jan - Jun 2023</div>
+        </div>
+        <img
+          src="./src/assets/analytics.png"
+          alt="Chart"
+          className="object-cover object-left-top w-1/2 h-1/2 rounded-2xl mb-10"
+        />
+      </div> */}
+
       <div className="flex flex-col my-10 bg-white rounded-lg shadow-lg p-6">
-        <div className="flex justify-center text-base md:text-lg lg:text-xl w-70 gap-1 items-center">
+        <div className="flex flex-row justify-between items-center mb-4">
+          <div className="text-xl font-semibold worksans">Food Diary</div>
+          <button
+            className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm"
+            onClick={() => {
+              setOpenFoodEntry(true);
+              console.log("open:", openFoodEntry);
+            }}
+          >
+            Log Food
+          </button>
+        </div>
+        <div className="flex justify-center text-base md:text-lg lg:text-xl w-70 gap-1 items-center mb-4">
           <div
             className="p-2 w-10 text-center text-black bg-indigo-300 hover:bg-indigo-400 rounded-l cursor-pointer"
             onClick={() => handleDateChange(-1)}
@@ -148,15 +173,7 @@ const Food = () => {
           </div>
         </div>
 
-        <div className="flex flex-row justify-between items-center mb-4">
-          <div className="text-xl font-semibold">Food Diary</div>
-          <button className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm"
-          onClick={() => {setOpenFoodEntry(true);console.log("open:" ,openFoodEntry);}}
-          >
-            Log Food
-          </button>
-        </div>
-        <div className="max-h-[500px] overflow-y-scroll">
+        <div className="max-h-[300px] overflow-y-scroll">
           <table className="table-auto w-full">
             <thead className="sticky top-0 bg-white">
               <tr className="border-b border-gray-300">
@@ -200,9 +217,34 @@ const Food = () => {
           </table>
         </div>
       </div>
+      <div className="flex flex-col my-10 bg-white rounded-lg shadow-lg p-6">
+        <div className="flex flex-row justify-between items-center mb-2 w-1/2">
+          <div className="text-xl font-semibold worksans ">Analytics</div>
+          <div className="text-base">Jan - Jun 2023</div>
+        </div>
+        <div className="flex flex-row items-center mb-2">
+          <img
+            src="./src/assets/analytics.png"
+            alt="Chart"
+            className="object-cover object-left-top w-1/2 rounded-2xl mb-2"
+          />
+          <ul className="flex flex-col items-start pl-8 xs:text-sm md:text-base lg:text-lg">
+          <li className="text-green-700 py-2">
+              Your sodium and sugar consumption is within recommended levels
+            </li>
+            <li className="py-2">
+              Your sodium and sugar consumption was higher in April than other
+              months but is going down
+            </li>
+            <li className="py-2">
+              You can continue to manage your kidney healthy by eating healthy and keeping active
+            </li>
+          </ul>
+        </div>
+      </div>
       <SuccessModal />
-      <div >
-        <FoodEntry open={openFoodEntry} setOpenFoodEntry={setOpenFoodEntry}/>
+      <div>
+        <FoodEntry open={openFoodEntry} setOpenFoodEntry={setOpenFoodEntry} />
       </div>
     </Layout>
   );

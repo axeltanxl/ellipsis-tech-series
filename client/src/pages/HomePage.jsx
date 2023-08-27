@@ -45,7 +45,7 @@ const HomePage = () => {
           <div className="flex justify-start xs:w-3/4 sm:w-1/2 h-full mt-10 pb-10 bg-light_green rounded-2xl">
             <img
               src="./src/assets/restaurants.png"
-              alt="Woman eating healthy food"
+              alt="Restaurants"
               className="object-cover object-left-top w-full h-full -mt-10 -ml-10 rounded-2xl z-10"
             />
           </div>

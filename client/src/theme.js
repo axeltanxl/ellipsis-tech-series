@@ -25,31 +25,31 @@ const themeSetting = () => {
       },
     },
     typography: {
-      fontFamily: "Nunito",
+      fontFamily: "DM Sans",
       fontSize: 14,
 
       h1: {
-        fontFamily: "Nunito",
+        fontFamily: "Work Sans",
         fontSize: 36,
       },
       h2: {
-        fontFamily: "Nunito",
+        fontFamily: "Work Sans",
         fontSize: 30,
       },
       h3: {
-        fontFamily: "Nunito",
+        fontFamily: "Work Sans",
         fontSize: 24,
       },
       h4: {
-        fontFamily: "Nunito",
+        fontFamily: "Work Sans",
         fontSize: 20,
       },
       h5: {
-        fontFamily: "Nunito",
+        fontFamily: "Work Sans",
         fontSize: 14,
       },
       h6: {
-        fontFamily: "Nunito",
+        fontFamily: "Work Sans",
         fontSize: 14,
       },
     },
