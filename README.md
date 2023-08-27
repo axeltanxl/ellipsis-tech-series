@@ -74,7 +74,7 @@ cd client
 Following this, install necessary node packages:
 
 ```
-npm i
+npm install
 ```
 
 Start the application:
