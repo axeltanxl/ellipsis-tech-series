@@ -24,7 +24,7 @@ const AppWrapper = ({children}) => {
                </StyledEngineProvider>
              </PersistGate>
            </Provider>
-           <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+           {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
          </QueryClientProvider>
     )
 }
