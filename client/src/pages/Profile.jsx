@@ -5,6 +5,7 @@ import Details from "../components/profile/Details";
 const Profile = () => {
   const handleLogout = () => {
     localStorage.removeItem("jwt");
+    window.location.reload()
   };
 
   return (

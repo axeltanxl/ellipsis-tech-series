@@ -4,40 +4,49 @@ import { persistReducer } from 'redux-persist'
 
 
 const initialState = {
-    delta : [],
-    epsilon : [],
-    zeta : [],
+    userData : {
+        name :"",
+        email :"@gmail.com",
+        password :"2b$10$IM8DJPJbw55L9.qvCuxFkuddRwGQmhfR7GuMG3DPHjkdJxaqUF/bm",
+        age : "",
+        height : "",
+        weight : "",
+        activityLevel :" (1-2 days of exercise per week)",
+        isCKD : "",
+        recommendedSodiumIntake :"",
+        id :"",
+    }
 }
 
 
-export const example2Slice = createSlice({
-    name : "post",
+export const userSlice = createSlice({
+    name : "user",
     initialState,
     reducers : {
-        setDelta : (state, action) => {
-            state.delta = [...action.payload]
+        setUserData : (state, action) => {
+            state.userData = {...action.payload}
         },
-        setEpsilon : (state, action) => {
-            state.beta = [...action.payload]
-        },
-        setZeta: (state, action) => {
-            state.zeta = [...action.payload]
-        },
+        // setEpsilon : (state, action) => {
+        //     state.beta = [...action.payload]
+        // },
+        // setZeta: (state, action) => {
+        //     state.zeta = [...action.payload]
+        // },
     }
 })
 
 
 export const {
-    setDelta, setEpsilon, setZeta
-} = example2Slice.actions;
+    setUserData
+} = userSlice.actions;
 
 
 const persistConfig = {
-    key: 'example2',
+    key: 'user',
     storage,
     timeout : 1000,
-    blacklist : ["delta", "epsilon"]
+    // blacklist : ["delta", "epsilon"]
 };
 
-export const example2Reducer = persistReducer(persistConfig, example2Slice.reducer);
+export const userReducer = persistReducer(persistConfig, userSlice.reducer);
 

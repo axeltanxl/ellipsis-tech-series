@@ -81,7 +81,7 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link
-                    to="/login"
+                    to="/profile"
                     onClick={() => {
                       toast.success("Profile Page");
                     }}

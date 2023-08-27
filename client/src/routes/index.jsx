@@ -22,6 +22,11 @@ const AppRoutes = () => (
 			path="/login"
 			element={<Login />}
 		/>
+        <Route
+				exact
+				path="/signup"
+				element={<Signup />}
+		/>
 
 		<Route element={<ProtectedRoute />}>
 			<Route
@@ -44,16 +49,12 @@ const AppRoutes = () => (
 				path="/foodapi"
 				element={<FoodApi />}
 			/>
-			<Route
-				exact
-				path="/signup"
-				element={<Signup />}
-			/>
-			<Route
+			
+			{/* <Route
 				exact
 				path="/login"
 				element={<Login />}
-			/>
+			/> */}
 			<Route
 				exact
 				path="/profile"
