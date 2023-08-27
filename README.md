@@ -17,7 +17,7 @@ Pitch video: \<to add\>
 
 ## Project Introduction
 
-**Project Goal:** Nadium aims to help Singaporeans, especially those with existing kidney diseases, lead healthier lifestyles by allowing them to log their meals, monitor their sodium and sugar intake, recommending food that 
+**Project Goal:** Nadium aims to help Singaporeans, especially those with existing kidney diseases, lead healthier lifestyles by allowing them to log their meals, monitor their sodium and sugar intake and recommending food to them.
 
 ## Key features ##
 
