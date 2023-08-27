@@ -1,15 +1,17 @@
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import TextFieldForm from "../TextFieldForm";
 import { DevTool } from "@hookform/devtools";
-import { Button } from "@mui/material";
+import { Box, Button, Dialog, DialogContent,Modal, TextField,MenuItem } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setSuccessModal, setSodiumData } from "../../store/ExampleSlice";
 
-const FoodEntry = () => {
+const FoodEntry = ({open, setOpenFoodEntry}) => {
+    const options = ["BREAKFAST", "LUNCH", "DINNER", "SNACK"]
+
   const dispatch = useDispatch();
   const { control, handleSubmit, watch, reset } = useForm({
     defaultValues: {
-      meal: "",
+      meal: "BREAKFAST",
       location: "",
       foodEntry: "",
     },
@@ -20,32 +22,53 @@ const FoodEntry = () => {
     dispatch(setSodiumData(data));
     reset();
     console.log("data", data);
+    setOpenFoodEntry(false)
   };
   const food = watch("foodEntry");
 
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col justify-center gap-4 ">
+   
+    <Modal
+    open={open}
+    onClose={() => setOpenFoodEntry(false)}
+    sx={{
+        width:"100%", height:"100%",
+        display:"flex", justifyContent:"center",
+        alignItems : "center"
+    }} 
+    >
+
+    <Box height="70%" width="60%" bgcolor="#ffffff" p="20px">
+    <form onSubmit={handleSubmit(onSubmit)} >
+      <Box className="w-full h-full flex flex-col justify-center gap-4 ">
         <div className="flex flex-col gap-4">
           <div className="w-full h-full flex justify-between items-center">
-            <div className="w-1/3 flex flex-col gap-12">
-              <div className="w-full">
+            <div className="flex flex-col gap-12">
+            <Box my="20px">
                 <Controller
                   render={({ field }) => (
-                    <TextFieldForm
-                      field={field}
+                    <TextField
+                      select
+                      {...field}
                       placeholder="eg. breakfast"
-                      rows={3}
+                    //   rows={3}
                       label="Meal Time"
-                      fullwidth
-                    />
+                      fullWidth
+                    >
+                        {options.map((option) => (
+                            <MenuItem key={option} value={option}>
+                            {option}
+                            </MenuItem>
+                        ))}
+                    </TextField>
                   )}
                   name={`meal`}
                   control={control}
                 />
-              </div>
+            </Box>
 
-              <div>
+              <Box my="20px">
                 <Controller
                   render={({ field }) => (
                     <TextFieldForm
@@ -59,22 +82,19 @@ const FoodEntry = () => {
                   name={`location`}
                   control={control}
                 />
-              </div>
+              </Box>
             </div>
 
-            <div className="flex items-center">
+            {/* <div className="flex items-center w-[200px] h-[400px] ">
               <img
                 src={"./images/salad.jpg"}
-                className="w-2/5 max-w-[200px] mx-12"
+                className="w-2/5 h-1/5 max-w-[200px] max-h-[300px] mx-12 object-scale-down"
               />
-              <img
-                src={"./images/yoghurtBowl.webp"}
-                className="w-2/5 max-w-[300px] mx-12"
-              />
-            </div>
+            </div> */}
+              
           </div>
 
-          <div>
+          <Box my="20px">
             <Controller
               render={({ field }) => (
                 <TextFieldForm
@@ -88,17 +108,30 @@ const FoodEntry = () => {
               name={`foodEntry`}
               control={control}
             />
-          </div>
+          </Box>
         </div>
 
-        <div className="w-full flex justify-end items-start my-8">
-          <Button type="submit" variant="contained">
-            Submit
-          </Button>
-        </div>
-      </div>
+        <Box w="100%" h="100%" display="flex" justifyContent="space-between"  my="20px">
+            <img
+                src={"./images/yoghurtBowl.webp"}
+                style={{objectFit : "scale-down"}}
+                width="50%"
+                height="50%"
+                // className="w-2/5 max-w-[300px] max-h-[300px] mx-12 object-contain"
+              />
+              <div>
+                <Button type="submit" variant="contained">
+                    Submit
+                </Button>
+              </div>
+        </Box>
+      </Box>
       <DevTool control={control} />
     </form>
+    </Box>
+    </Modal>
+    
   );
 };
+
 export default FoodEntry;
