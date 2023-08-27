@@ -112,7 +112,7 @@ const SignUpForm = () => {
           </Button>
         </Box>
       </form>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </Box>
   );
 };

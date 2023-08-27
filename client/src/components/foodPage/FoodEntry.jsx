@@ -145,7 +145,7 @@ const FoodEntry = ({ open, setOpenFoodEntry }) => {
               </div>
             </Box>
           </Box>
-          <DevTool control={control} />
+          {/* <DevTool control={control} /> */}
         </form>
       </Box>
     </Modal>

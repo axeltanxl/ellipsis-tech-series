@@ -255,7 +255,7 @@ const SignupForm = () => {
           </Box>
         </div>
       </form>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </>
   );
 };
