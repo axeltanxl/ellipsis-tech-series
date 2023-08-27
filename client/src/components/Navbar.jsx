@@ -7,6 +7,8 @@ import { toast } from "react-hot-toast";
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [parent, enableAnimations] = useAutoAnimate({ duration: 100 });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
@@ -22,6 +24,14 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
+  }, []);
+
+  const checkLoginStatus = () => {
+    setIsLoggedIn(localStorage.getItem("jwt"));
+  };
+
+  useEffect(() => {
+    checkLoginStatus();
   }, []);
 
   return (
@@ -55,7 +65,7 @@ export default function Navbar() {
             </button>
           </div>
           <div ref={parent}>
-            {(windowSize[0] > 768 || navbarOpen) && (
+            {(windowSize[0] > 768 || navbarOpen) && isLoggedIn ? (
               <ul className="ml-auto mt-2 flex list-none flex-col gap-y-1 md:mt-0 md:flex-row md:gap-x-5">
                 <li className="">
                   <Link
@@ -81,13 +91,27 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link
-                    to="/login"
+                    to="/profile"
                     onClick={() => {
                       toast.success("Profile Page");
                     }}
                     className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Profile
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              <ul className="ml-auto mt-2 flex list-none flex-col gap-y-1 md:mt-0 md:flex-row md:gap-x-5">
+                <li className="">
+                  <Link
+                    to="/login"
+                    onClick={() => {
+                      toast.success("Login Page");
+                    }}
+                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
+                  >
+                    Login
                   </Link>
                 </li>
               </ul>
