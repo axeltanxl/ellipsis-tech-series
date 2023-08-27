@@ -27,7 +27,6 @@ const Food = () => {
     for (let i = 0; i < items.length; i++) {
       result += items[i].sodium;
     }
-    console.log(result);
 
     return result;
   }
@@ -54,7 +53,7 @@ const Food = () => {
         { food: "Banana", sodium: 150, sugar: 150 },
         { food: "Banana", sodium: 150, sugar: 150 },
       ],
-      date: "2023-8-27",
+      date: "2023-08-27",
     },
     {
       name: "Breakfast",
@@ -103,10 +102,11 @@ const Food = () => {
     const newDate = new Date(displayedDate);
     newDate.setDate(displayedDate.getDate() + nextDay);
     setDisplayedDate(newDate);
+    console.log(displayedDate.toLocaleDateString('en-US'))
   };
 
   function formatDate(date) {
-    if (date[0] < 10) {
+    if (date[0].length === 1) {
       return date[2] + "-" + "0" + date[0] + "-" + date[1];
     }
 
@@ -116,7 +116,7 @@ const Food = () => {
   const formattedDisplayedDate = displayedDate.toDateString();
   const filteredMeals = meals.filter(
     (meal) =>
-      meal.date === formatDate(displayedDate.toLocaleDateString().split("/"))
+      meal.date === formatDate(displayedDate.toLocaleDateString('en-US').split("/"))
   );
 
   return (
