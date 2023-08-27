@@ -8,28 +8,32 @@ import tt from '@tomtom-international/web-sdk-maps';
 
 const Nearby = () => {
 	const mapElement = useRef(null);
+	const [map, setMap] = useState(null);
+	const [markers, setMarkers] = useState([]);
 
 	const [geoLocation, setGeoLocation] = useState({ latitude: 1.296568, longitude: 103.852119 });
 	const [geoError, setGeoError] = useState(null);
 	const [searchQuery, setSearchQuery] = useState('');
-	const [markers, setMarkers] = useState([]);
 
 	const [restaurantResults, setRestaurantResults] = useState([]);
 
 	useEffect(() => {
 		if (geoLocation.latitude && geoLocation.longitude) {
 			const map = tt.map({
-				key: import.meta.env.VITE_TOMTOM_API_KEY, // Use your API key
+				key: import.meta.env.VITE_TOMTOM_API_KEY,
 				container: mapElement.current,
 				center: [geoLocation.longitude, geoLocation.latitude],
 				zoom: 13,
 			});
 
+			setMap(map);
 			setMarkers([]);
+
 			addMarkers(map);
 
 			return () => {
 				map.remove();
+				setMap(null);
 			};
 		}
 	}, [geoLocation]);
@@ -62,11 +66,12 @@ const Nearby = () => {
 			setMarkers([]);
 
 			const map = tt.map({
-				key: import.meta.env.VITE_TOMTOM_API_KEY, // Use your API key
+				key: import.meta.env.VITE_TOMTOM_API_KEY,
 				container: mapElement.current,
 				center: [geoLocation.longitude, geoLocation.latitude],
 				zoom: 13,
 			});
+			setMap(map);
 
 			// Add new markers based on the search query
 			await addMarkers(map);
@@ -93,48 +98,73 @@ const Nearby = () => {
 				geoLocation={geoLocation}
 				geoError={geoError}
 			/>
-			<div
-				style={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-					marginBottom: '20px',
-				}}
-			>
-				<input
-					type="text"
-					value={searchQuery}
-					onChange={(e) => setSearchQuery(e.target.value)}
-					placeholder="Enter your query..."
-				/>
-				<button onClick={handleSearch}>Search</button>
-			</div>
-			<div>
-				{restaurantResults.map((restaurant, index) => (
-					<div key={index}>
-						<h3>{restaurant.restaurant_name}</h3>
-						<p>Location Count: {restaurant.locations.length}</p>
-						<h4>Locations:</h4>
-						<ul>
-							{restaurant.locations.map((location, locationIndex) => (
-								<li key={locationIndex}>
-									{location.poi.name} - {location.address.freeformAddress}
-								</li>
-							))}
-						</ul>
-						<h4>Food available</h4>
-						<ul>
-							{restaurant.available_options.map((food, foodIndex) => (
-								<li key={foodIndex}>{food.food_name}</li>
-							))}
-						</ul>
+			<div className="flex">
+				<div className="w-1/2 p-4">
+					{/* Search bar */}
+					<div className="mb-4 flex items-center">
+						<input
+							type="text"
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+							placeholder="Enter your query..."
+							className="px-3 py-2 border rounded-md w-full"
+						/>
+						<button
+							onClick={handleSearch}
+							className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md"
+						>
+							Search
+						</button>
 					</div>
-				))}
+
+					{/* Restaurant results */}
+					<div>
+						{restaurantResults.map((restaurant, index) => (
+							// give it a different colour backoground or smth
+							<div
+								key={index}
+								className="mb-4"
+							>
+								<h3 className="text-lg font-semibold">
+									{restaurant.restaurant_name}
+								</h3>
+								<p className="mb-2">
+									Location Count: {restaurant.locations.length}
+								</p>
+								<h4 className="font-semibold">Locations:</h4>
+								<ul className="pl-4 mb-2">
+									{restaurant.locations.map((location, locationIndex) => (
+										<li
+											key={locationIndex}
+											className="list-disc"
+										>
+											{location.poi.name} - {location.address.freeformAddress}
+										</li>
+									))}
+								</ul>
+								<h4 className="font-semibold">Food available</h4>
+								<ul className="pl-4">
+									{restaurant.available_options.map((food, foodIndex) => (
+										<li
+											key={foodIndex}
+											className="list-disc"
+										>
+											{food.food_name}
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
+				</div>
+				<div className="w-1/2">
+					{/* Map */}
+					<div
+						ref={mapElement}
+						className="w-full h-96"
+					></div>
+				</div>
 			</div>
-			<div
-				ref={mapElement}
-				style={{ width: '100%', height: '400px' }}
-			></div>
 		</Layout>
 	);
 };
