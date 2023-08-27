@@ -9,7 +9,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // import moment from 'moment';
 import { useGetFilteredMeals } from "../hooks/requests/mealRoutes";
 import { useSelector } from "react-redux";
-
+import { useQueryClient } from "@tanstack/react-query";
 const Food = () => {
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
@@ -18,7 +18,7 @@ const Food = () => {
     const [displayedDate, setDisplayedDate] = useState(today);
     const [openFoodEntry, setOpenFoodEntry] = useState(false);
     const { mutate : getFilteredMeals } = useGetFilteredMeals();
-
+    const queryClient = useQueryClient()
 
     const handleDateChange = (nextDay) => {
         const newDate = new Date(displayedDate);
@@ -36,7 +36,8 @@ const Food = () => {
           console.log(tmr)
         const x = getFilteredMeals({startDate : tdy, endDate : tmr})
         console.log(x)
-      }, [displayedDate])
+        queryClient.invalidateQueries("")
+      }, [displayedDate, openFoodEntry])
 
     
     // let filteredMeals = getFilteredMeals()

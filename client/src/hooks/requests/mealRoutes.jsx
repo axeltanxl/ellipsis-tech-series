@@ -10,6 +10,7 @@ export const useCreateMeal = () => {
     return useMutation(createMeal, {
         onSuccess : (data) => {
             console.log(data)
+            window.location.reload()
         },
         onError : (err)=> {
             const errorMessage = err.response.data.message 
