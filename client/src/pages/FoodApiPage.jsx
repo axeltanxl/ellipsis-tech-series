@@ -16,7 +16,7 @@ const FoodApi = () => {
 };
 
 const FoodLocationSearch = async () => {
-	await fuzzySearchFoodByLocation('burger');
+	const results = await fuzzySearchFoodByLocation('mcdonald burger');
 	// return <p>hi</p>;
 };
 
