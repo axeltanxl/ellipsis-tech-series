@@ -134,7 +134,7 @@ const Food = () => {
           <div className="flex flex-row justify-between items-center mb-4">
             <div className="text-xl font-semibold worksans">Food Diary</div>
             <button
-              className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm"
+              className="px-2 py-1 rounded-lg bg-indigo-200 hover:bg-indigo-300 border-0 text-sm"
               onClick={() => {
                 setOpenFoodEntry(true);
                 console.log("open:", openFoodEntry);
