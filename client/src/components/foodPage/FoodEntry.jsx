@@ -112,12 +112,21 @@ const FoodEntry = ({open, setOpenFoodEntry}) => {
         </div>
 
         <Box w="100%" h="100%" display="flex" justifyContent="space-between"  my="20px">
-            <img
-                src={"./images/yoghurtBowl.webp"}
-                style={{objectFit : "scale-down"}}
-                width="30%"
-                // className="w-2/5 max-w-[300px] max-h-[300px] mx-12 object-contain"
-              />
+            {/* <Box width ="60%" height="100%" display="flex" justifyContent="space-between"> */}
+                <img
+                    src={"./images/yoghurtBowl.webp"}
+                    style={{objectFit : "scale-down"}}
+                    width="30%"
+                    // className="w-2/5 max-w-[300px] max-h-[300px] mx-12 object-contain"
+                />
+                 {/* <img
+                src={"./images/salad.jpg"}
+                // className="w-2/5 h-1/5 max-w-[200px] max-h-[300px] mx-12 object-scale-down"
+                    style={{objectFit : "scale-down", transform : "transform:rotate(90deg)"}}
+                    width="30%"
+              /> */}
+
+            {/* </Box> */}
               <div>
                 <Button type="submit" variant="contained">
                     Submit

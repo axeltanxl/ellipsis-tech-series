@@ -51,6 +51,7 @@ function FoodSearch() {
 	return (
 		<div>
 			<p>Searching for kaya toast</p>
+
 			<h2>List of Food Names</h2>
 			<ul>
 				{foods.map((food, index) => (
