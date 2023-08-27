@@ -21,7 +21,7 @@ const Profile = () => {
                 className="text-sm border-0 h-8 px-3 text-black bg-gray-100 hover:bg-red-100 rounded-lg "
                 onClick={handleLogout}
               >
-                Log out
+                Log Out
               </button>
             </div>
             <div className="w-full h-full flex flex-col items-center">
