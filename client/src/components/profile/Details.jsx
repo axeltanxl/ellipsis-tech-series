@@ -1,6 +1,11 @@
 import { Box, Grid, TextField, InputAdornment, Checkbox } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Details = () => {
+
+    const userDetails = useSelector((state) => state.user.userData);
+    console.log(userDetails);
+
   return (
     <div>
       <Box display="flex" p="20px" pb="10px">
@@ -25,7 +30,7 @@ const Details = () => {
                 <TextField
                   variant="outlined"
                   disabled
-                  value={hardCodedValues[item.name]}
+                  value={userDetails[item.name]}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -42,7 +47,7 @@ const Details = () => {
 
       <div className="flex flex-col justify-center mb-4">
         <Grid className="flex justify-center items-center" item={true}>
-          <Checkbox checked={hardCodedValues.isCKD} />
+          <Checkbox checked={userDetails.isCKD} />
           <label>are you a CKD patient?"</label>
         </Grid>
       </div>
