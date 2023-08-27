@@ -7,7 +7,6 @@ export const SuccessModal = () => {
     const dispatch = useDispatch()
 
 
-    const sodiumLevel = "10mg"
         return (
         <Dialog open={openDialog} onClose={() => dispatch(setSuccessModal(false))}>
             {!!open && <DisplayAnalysis/>}

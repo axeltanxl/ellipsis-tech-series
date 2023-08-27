@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./validationSchema";
 import { DevTool } from "@hookform/devtools";
-import  { useLogin } from "../../hooks/requests/userRoutes"
+import { useLogin } from "../../hooks/requests/userRoutes";
 
 const LoginForm = () => {
   const {
@@ -26,6 +26,7 @@ const LoginForm = () => {
     console.log("to be submitted");
     console.log(data);
     login(data);
+    // window.location.href = "/";
   };
 
   const navigate = useNavigate();
