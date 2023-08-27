@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "./validationSchema";
 import { DevTool } from "@hookform/devtools";
-import  { useLogin } from "../../hooks/requests/userRoutes"
+// import useLogin from "../../hooks/auth/useLogin";
 
 const LoginForm = () => {
   const {
@@ -21,11 +21,11 @@ const LoginForm = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const {mutate : login} = useLogin(reset)
+  // const {mutate : login} = useLogin(reset)
   const handleSave = async (data) => {
     console.log("to be submitted");
     console.log(data);
-    login(data);
+    // login(data);
   };
 
   const navigate = useNavigate();
@@ -95,8 +95,7 @@ const LoginForm = () => {
         <Box className="flex flex-col justify-center items-center">
           <button
             className="py-2 mt-[5px] w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
-            // onClick={() => navigate("/")}
-            type="submit"
+            onClick={() => navigate("/")}
           >
             Login
           </button>
@@ -106,7 +105,7 @@ const LoginForm = () => {
               className="py-1 mt-2 text-sm bg-white text-gray-400 hover:text-black rounded-lg border-0"
               onClick={() => navigate("/signup")}
             >
-              Sign up
+              Sign up 
             </button>
           </div>
         </Box>
