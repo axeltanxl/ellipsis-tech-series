@@ -103,9 +103,9 @@ const LoginForm = () => {
             Don't have an account yet?{" "}
             <button
               className="py-1 mt-2 text-sm bg-white text-gray-400 hover:text-black rounded-lg border-0"
-              onClick={() => navigate("/signup1")}
+              onClick={() => navigate("/signup")}
             >
-              Sign up
+              Sign up 
             </button>
           </div>
         </Box>
