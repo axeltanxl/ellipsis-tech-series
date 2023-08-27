@@ -37,9 +37,7 @@ const FoodEntry = ({ open, setOpenFoodEntry }) => {
   return (
     <Modal
       open={open}
-      onClose={() => {
-        setOpenFoodEntry(false);
-      }}
+      onClose={() => {setOpenFoodEntry(false);}}
       sx={{
         width: "100%",
         height: "100%",
@@ -144,12 +142,6 @@ const FoodEntry = ({ open, setOpenFoodEntry }) => {
                 <Button type="submit" variant="contained">
                   Submit
                 </Button>
-                {/* <button
-                  className="py-1 px-2 bg-light_green hover:bg-green-200 text-base"
-                  // type="submit"
-                >
-                  Submit
-                </button> */}
               </div>
             </Box>
           </Box>
