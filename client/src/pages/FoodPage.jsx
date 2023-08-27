@@ -102,10 +102,11 @@ const Food = () => {
     const newDate = new Date(displayedDate);
     newDate.setDate(displayedDate.getDate() + nextDay);
     setDisplayedDate(newDate);
+    console.log(displayedDate.toLocaleDateString('en-US'))
   };
 
   function formatDate(date) {
-    if (date[0].length == 1) {
+    if (date[0].length === 1) {
       return date[2] + "-" + "0" + date[0] + "-" + date[1];
     }
 
@@ -115,7 +116,7 @@ const Food = () => {
   const formattedDisplayedDate = displayedDate.toDateString();
   const filteredMeals = meals.filter(
     (meal) =>
-      meal.date === formatDate(displayedDate.toLocaleDateString().split("/"))
+      meal.date === formatDate(displayedDate.toLocaleDateString('en-US').split("/"))
   );
 
   return (
