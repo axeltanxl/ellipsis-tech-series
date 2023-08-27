@@ -122,12 +122,12 @@ const Nearby = () => {
 
 	return (
 		<Layout>
-			<Banner
+			{/* <Banner
 				geoLocation={geoLocation}
 				geoError={geoError}
-			/>
-			<div className="flex">
-				<div className="w-1/2 p-4">
+			/> */}
+			<div className="flex flex-col-reverse lg:flex-row pt-4">
+				<div className="lg:w-1/2 pt-4">
 					{/* Search bar */}
 					<div className="mb-4 flex items-center">
 						<input
@@ -186,7 +186,7 @@ const Nearby = () => {
 						))}
 					</div>
 				</div>
-				<div className="w-1/2">
+				<div className="lg:w-1/2">
 					{/* Map */}
 					<div
 						ref={mapElement}
