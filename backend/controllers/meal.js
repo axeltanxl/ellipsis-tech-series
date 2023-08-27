@@ -126,9 +126,9 @@ const getMealLocations = async (req, res, next) => {
 }
 
 // Get current sodium intake level for a user for the day
-const getCurrentSodiumLevel = async (req, res) => {
+const getCurrentNutrientsIntake = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user.user_id;
     const startDate = new Date();
     // Set the time to the start of the day
     startDate.setHours(0, 0, 0, 0);
@@ -141,13 +141,15 @@ const getCurrentSodiumLevel = async (req, res) => {
       time: { $gte: startDate, $lte: endDate }
     });
 
-    // Get the sodium amount for each meal the user has taken for the day
-    let sodiumLevel = 0;
+    // Get the sodium and sugar amount for each meal the user has taken for the day
+    let sodiumIntake = 0;
+    let sugarIntake = 0;
     for (let i = 0; i < thisDurationMeals.length; i++){
-      sodiumLevel += thisDurationMeals[i].sodiumAmount;
+      sodiumIntake += thisDurationMeals[i].sodiumAmount;
+      sugarIntake += thisDurationMeals[i].sugarAmount;
     }
 
-    return res.status(200).json({ message: "Successfully retrieved current sodium intake for user.", data: { sodiumLevel } });
+    return res.status(200).json({ message: "Successfully retrieved current sodium intake for user.", data: { sodiumIntake, sugarIntake } });
   } catch (err) {
     console.error(err);
   }
@@ -161,5 +163,5 @@ module.exports = {
   getDurationMeals,
   getMealLocations,
   removeMeal,
-  getCurrentSodiumLevel
+  getCurrentNutrientsLevel
 }
