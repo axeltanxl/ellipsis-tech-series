@@ -2,6 +2,7 @@ import { register, login } from "../../services/userServices"
 import { useQuery, useMutation } from "@tanstack/react-query"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { setUserData } from "../../store/ExampleSlice2";
 
 export const useRegister = () => {
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export const useRegister = () => {
     return useMutation(register, {
         onSuccess : (data) => {
             console.log(data)
-            // dispatch(updateDetails({...data}))
+            dispatch(setUserData({...data.user}))
             navigate("/");
         },
         onError : (err)=> {
@@ -28,7 +29,7 @@ export const useLogin = () => {
     return useMutation(login, {
         onSuccess : (data) => {
             console.log(data)
-            // dispatch(updateDetails({...data}))
+            dispatch(setUserData({...data.user}))
             navigate("/");
         },
         onError : (err)=> {

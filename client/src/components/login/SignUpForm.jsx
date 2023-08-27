@@ -12,7 +12,7 @@ import StandardTextField from "../StandardTextField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpSchema } from "./validationSchema";
 import { DevTool } from "@hookform/devtools";
-// import useSignup from "../../hooks/auth/useSignup"
+import useSignup from "../../hooks/auth/useSignup"
 
 const SignUpForm = () => {
   const {
@@ -30,11 +30,11 @@ const SignUpForm = () => {
     resolver: yupResolver(signUpSchema),
   });
 
-  // const {mutate : signup} = useSignup(reset)
+  const {mutate : signup} = useSignup(reset)
   const handleSave = async (data) => {
     console.log("to be submitted");
     console.log(data);
-    // signup(data)
+    signup(data)
   };
 
   return (
