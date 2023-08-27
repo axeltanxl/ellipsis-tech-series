@@ -1,4 +1,4 @@
-import { useForm, FormProvider, Controller } from "react-hook-form";
+import { useForm, FormProvider, Controller, useFormState } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -47,6 +47,14 @@ const SignupForm = () => {
     reset,
     trigger,
   } = methods;
+
+  const { touchedFields } = useFormState({
+    control
+  });
+
+  const isTouched = (name) => {
+    return (name in touchedFields);
+  }
 
   async function handleButtonClick() {
     const result = await trigger(["name", "email", "password"]);
@@ -184,7 +192,7 @@ const SignupForm = () => {
                           //   />
                           <CustomisedTextField
                             field={field}
-                            errors={errors}
+                            errors={isTouched(item.name) && errors}
                             name={item.name}
                             label={item.label}
                             adornment={item.adornment}
@@ -231,7 +239,7 @@ const SignupForm = () => {
           <Box className="flex flex-col justify-center items-center">
             <button
               className="py-2 w-3/5 text-base bg-light_green hover:bg-green-200 rounded-lg border-0"
-              onClick={console.log(errors)}
+            //   onClick={() => trigger()}
               // type="submit" form='my-form'
               type="submit"
               form="my-form"
