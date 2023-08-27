@@ -83,6 +83,7 @@ export const result = {
 					serving_weight_grams: null,
 					calories: 590,
 					sodium_mg: 1050,
+					sugar_mg: 300,
 					photo: {
 						thumb: 'https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png',
 						highres: null,

@@ -469,7 +469,7 @@ export const fuzzySearchFoodByLocation = async (query, lat, long, limit = 5, rad
 					serving_unit: currentFood.serving_unit,
 					calories: currentFood.nf_calories,
 					sodium_mg: currentFood.nf_sodium,
-					sugar_mg: currentFood.nf_sugar,
+					sugar_mg: currentFood.nf_sugars,
 					photo: currentFood.photo,
 					updated_at: currentFood.updated_at,
 					brand_name: brandName,
