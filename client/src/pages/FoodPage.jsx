@@ -6,8 +6,8 @@ import FoodEntry from "../components/foodPage/FoodEntry";
 import { SuccessModal } from "../components/foodPage/SuccessModal";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-// import moment from 'moment';
-import { getFilteredMeals } from "../services/mealServices";
+import moment from 'moment';
+import { useGetFilteredMeals } from '../hooks/requests/mealRoutes';
 
 const Food = () => {
   // let tdy = moment();
@@ -18,16 +18,16 @@ const Food = () => {
   // console.log(tmr.format("DD-MM-YYYY"));
   // const {mutate : getFilteredMeals} = useGetFilteredMeals();
 
-  // useEffect(()=>{s
-
-  //     getFilteredMeals()
-  // })
+    // useEffect(()=>{
+        
+    //     getFilteredMeals()
+    // })
+    const [openFoodEntry, setOpenFoodEntry] = useState(false); 
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
       result += items[i].sodium;
     }
-    console.log(result);
 
     return result;
   }
@@ -54,7 +54,7 @@ const Food = () => {
         { food: "Banana", sodium: 150, sugar: 150 },
         { food: "Banana", sodium: 150, sugar: 150 },
       ],
-      date: "2023-8-27",
+      date: "2023-08-27",
     },
     {
       name: "Breakfast",
@@ -103,10 +103,11 @@ const Food = () => {
     const newDate = new Date(displayedDate);
     newDate.setDate(displayedDate.getDate() + nextDay);
     setDisplayedDate(newDate);
+    console.log(displayedDate.toLocaleDateString('en-US'))
   };
 
   function formatDate(date) {
-    if (date[0] < 10) {
+    if (date[0].length === 1) {
       return date[2] + "-" + "0" + date[0] + "-" + date[1];
     }
 
@@ -116,7 +117,7 @@ const Food = () => {
   const formattedDisplayedDate = displayedDate.toDateString();
   const filteredMeals = meals.filter(
     (meal) =>
-      meal.date === formatDate(displayedDate.toLocaleDateString().split("/"))
+      meal.date === formatDate(displayedDate.toLocaleDateString('en-US').split("/"))
   );
 
   return (
@@ -149,7 +150,9 @@ const Food = () => {
 
         <div className="flex flex-row justify-between items-center mb-4">
           <div className="text-xl font-semibold">Food Diary</div>
-          <button className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm">
+          <button className="px-2 py-1 rounded-lg bg-gray-100 border-1 text-sm"
+          onClick={() => {setOpenFoodEntry(true);console.log("open:" ,openFoodEntry);}}
+          >
             Log Food
           </button>
         </div>
@@ -198,8 +201,8 @@ const Food = () => {
         </div>
       </div>
       <SuccessModal />
-      <div>
-        <FoodEntry />
+      <div >
+        <FoodEntry open={openFoodEntry} setOpenFoodEntry={setOpenFoodEntry}/>
       </div>
     </Layout>
   );
