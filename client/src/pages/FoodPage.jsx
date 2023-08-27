@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
-import Layout from '../components/Layout';
-import FoodEntry from '../components/foodPage/FoodEntry';
+import React, { useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
+import Layout from "../components/Layout";
+import FoodEntry from "../components/foodPage/FoodEntry";
 // import Table from "../components/foodPage/FoodTable";
 import { SuccessModal } from "../components/foodPage/SuccessModal";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import moment from 'moment';
-import { getFilteredMeals } from '../services/mealServices';
+// import moment from 'moment';
+import { getFilteredMeals } from "../services/mealServices";
 
 const Food = () => {
-    
-    let tdy = moment();
+  // let tdy = moment();
 
-    let tmr  = moment().add(1, 'days');
+  // let tmr  = moment().add(1, 'days');
 
-    console.log(tdy.format("DD-MM-YYYY"));
-    console.log(tmr.format("DD-MM-YYYY"));
-    const {mutate : getFilteredMeals} = useGetFilteredMeals();
+  // console.log(tdy.format("DD-MM-YYYY"));
+  // console.log(tmr.format("DD-MM-YYYY"));
+  // const {mutate : getFilteredMeals} = useGetFilteredMeals();
 
-    // useEffect(()=>{
-        
-    //     getFilteredMeals()
-    // })
+  // useEffect(()=>{s
+
+  //     getFilteredMeals()
+  // })
   function sumTotalSodium(items) {
     let result = 0;
     for (let i = 0; i < items.length; i++) {
