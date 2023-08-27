@@ -8,7 +8,6 @@ import tt from '@tomtom-international/web-sdk-maps';
 
 const Nearby = () => {
 	const mapElement = useRef(null);
-	const [map, setMap] = useState(null);
 	const [markers, setMarkers] = useState([]);
 
 	const [geoLocation, setGeoLocation] = useState({ latitude: 1.296568, longitude: 103.852119 });
@@ -17,23 +16,36 @@ const Nearby = () => {
 
 	const [restaurantResults, setRestaurantResults] = useState([]);
 
+	function addCurrentLocation(map) {
+		const markerElement = document.createElement('div');
+		markerElement.style.width = '24px';
+		markerElement.style.height = '24px';
+		markerElement.style.backgroundColor = 'red';
+		markerElement.style.borderRadius = '50%';
+
+		const customMarker = new tt.Marker({
+			element: markerElement,
+			anchor: 'bottom',
+		})
+			.setLngLat([geoLocation.longitude, geoLocation.latitude])
+			.addTo(map);
+	}
+
 	useEffect(() => {
 		if (geoLocation.latitude && geoLocation.longitude) {
 			const map = tt.map({
 				key: import.meta.env.VITE_TOMTOM_API_KEY,
 				container: mapElement.current,
 				center: [geoLocation.longitude, geoLocation.latitude],
-				zoom: 13,
+				zoom: 16,
 			});
 
-			setMap(map);
-			setMarkers([]);
+			addCurrentLocation(map);
 
-			addMarkers(map);
+			setMarkers([]);
 
 			return () => {
 				map.remove();
-				setMap(null);
 			};
 		}
 	}, [geoLocation]);
@@ -45,7 +57,7 @@ const Nearby = () => {
 			geoLocation.longitude
 		);
 		setRestaurantResults(finalResult);
-		const locations = finalResult.restaurants.flatMap((restaurant) => restaurant.locations);
+		const locations = finalResult.flatMap((restaurant) => restaurant.locations);
 
 		const newMarkers = locations.map((location) => {
 			const marker = new tt.Marker()
@@ -69,27 +81,31 @@ const Nearby = () => {
 				key: import.meta.env.VITE_TOMTOM_API_KEY,
 				container: mapElement.current,
 				center: [geoLocation.longitude, geoLocation.latitude],
-				zoom: 13,
+				zoom: 14,
 			});
-			setMap(map);
 
+			addCurrentLocation(map);
 			// Add new markers based on the search query
 			await addMarkers(map);
 		}
 	};
 
 	useEffect(() => {
-		navigator.geolocation.getCurrentPosition(
-			(e) => {
-				setGeoLocation({
-					latitude: e.coords.latitude,
-					longitude: e.coords.longitude,
-				});
-			},
-			(err) => {
-				setGeoError(err);
-			}
-		);
+		if (import.meta.env.VITE_IS_DEVELOPMENT !== 'true') {
+			console.log('not in dev');
+			navigator.geolocation.getCurrentPosition(
+				(e) => {
+					setGeoLocation({
+						latitude: e.coords.latitude,
+						longitude: e.coords.longitude,
+					});
+				},
+				(err) => {
+					setGeoError(err);
+				}
+			);
+		}
+		console.log('in dev');
 	}, []);
 
 	const onSearchChange = async (query) => {
@@ -161,7 +177,8 @@ const Nearby = () => {
 											key={foodIndex}
 											className="list-disc"
 										>
-											{food.food_name}
+											{food.food_name} - Sodium Intake (mg):{food.sodium_mg} -
+											Sugar Intake (g): {food.sugar_mg}
 										</li>
 									))}
 								</ul>
