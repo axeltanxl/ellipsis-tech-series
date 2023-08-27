@@ -45,7 +45,7 @@ export default function Navbar() {
                 onClick={() => {
                   toast.success("Home page");
                 }}
-                className="block self-center whitespace-nowrap text-xl font-semibold text-blue-700 hover:cursor-alias"
+                className="no-underline block self-center whitespace-nowrap text-xl font-semibold text-indigo-700 hover:cursor-alias"
               >
                 NADIUM
               </Link>
@@ -73,7 +73,7 @@ export default function Navbar() {
                     onClick={() => {
                       toast.success("Food tracking page");
                     }}
-                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 px-3 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
+                    className="no-underline flex h-full w-full cursor-alias items-center justify-end rounded py-2 px-3 text-gray-700 hover:text-indigo-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Food
                   </Link>
@@ -84,7 +84,7 @@ export default function Navbar() {
                     onClick={() => {
                       toast.success("Nearby page");
                     }}
-                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
+                    className="no-underline flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-indigo-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Nearby
                   </Link>
@@ -95,7 +95,7 @@ export default function Navbar() {
                     onClick={() => {
                       toast.success("Profile Page");
                     }}
-                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
+                    className="no-underline flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-indigo-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Profile
                   </Link>
@@ -109,7 +109,7 @@ export default function Navbar() {
                     onClick={() => {
                       toast.success("Login Page");
                     }}
-                    className="flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 md:border-0 md:p-0 md:hover:bg-transparent"
+                    className="no-underline flex h-full w-full cursor-alias items-center justify-end rounded py-2 pl-3 pr-4 text-gray-700 hover:text-indigo-700 md:border-0 md:p-0 md:hover:bg-transparent"
                   >
                     Login
                   </Link>
