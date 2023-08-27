@@ -33,6 +33,8 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        <p className='dmsans'>Searching for kaya toast</p>
+		<p className='worksans'>Searching for kaya toast</p>
       </div>
     </Layout>
   );
