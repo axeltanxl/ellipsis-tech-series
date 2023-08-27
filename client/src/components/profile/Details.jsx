@@ -48,7 +48,7 @@ const Details = () => {
       <div className="flex flex-col justify-center mb-4">
         <Grid className="flex justify-center items-center" item={true}>
           <Checkbox checked={userDetails.isCKD} />
-          <label>are you a CKD patient?"</label>
+          <label>are you a CKD patient?</label>
         </Grid>
       </div>
     </div>
